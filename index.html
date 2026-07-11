@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yatra Permit Generator</title>
+    <title>Yatra Permit & ID Card Generator</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
-    <!-- FontAwesome Library for Verification Icons -->
+    <!-- FontAwesome Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -24,94 +24,41 @@
             user-select: none; 
             -webkit-user-select: none;
             -ms-user-select: none;
-            -webkit-touch-callout: none; 
         }
 
-        img {
-            pointer-events: none;
-            -webkit-user-drag: none;
-        }
+        img { pointer-events: none; -webkit-user-drag: none; }
 
+        /* Preloader */
         #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
         }
-        
-        .preloader-img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            animation: pulseAnim 1.5s infinite;
-        }
+        .preloader-img { width: 90px; height: 90px; object-fit: contain; animation: pulseAnim 1.5s infinite; }
         @keyframes pulseAnim {
             0% { transform: scale(0.85); opacity: 0.8; }
             50% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(0.85); opacity: 0.8; }
         }
-
-        .preloader-text {
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            letter-spacing: 1px;
-        }
+        .preloader-text { margin-top: 20px; font-size: 16px; font-weight: bold; color: #333; letter-spacing: 1px; }
 
         .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            width: 100%;
-            max-width: 600px; 
-            box-sizing: border-box;
-            margin-bottom: 20px;
-            overflow-x: hidden;
-            display: none; 
+            background: white; padding: 20px; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 100%;
+            max-width: 600px; box-sizing: border-box; margin-bottom: 20px; display: none; 
         }
 
-        .form-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-header img {
-            width: 85px; 
-            height: 85px;
-            margin-bottom: 10px;
-            object-fit: contain;
-        }
+        .form-header { text-align: center; margin-bottom: 20px; }
+        .form-header img { width: 85px; height: 85px; margin-bottom: 10px; object-fit: contain; }
         .form-header h2 { margin: 0; color: #333; font-size: 22px; }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 12px;
-            width: 100%;
-            position: relative; 
-        }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 12px; width: 100%; position: relative; }
         .form-group label { font-weight: bold; margin-bottom: 5px; font-size: 13px;}
         .form-group input, .form-group select {
-            padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;
-            box-sizing: border-box;
-            width: 100%;
+            padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; box-sizing: border-box; width: 100%;
         }
         
-        .status-icon {
-            position: absolute;
-            right: 12px;
-            top: 35px;
-            font-size: 18px;
-            display: none;
-        }
+        .status-icon { position: absolute; right: 12px; top: 35px; font-size: 18px; display: none; }
         .status-icon.loading { color: #007bff; }
         .status-icon.success { color: #28a745; }
 
@@ -121,70 +68,45 @@
         button {
             width: 100%; padding: 12px; background: #007bff; color: white;
             border: none; border-radius: 5px; font-size: 16px; font-weight: bold;
-            cursor: pointer; transition: 0.3s; margin-top: 10px;
-            box-sizing: border-box;
+            cursor: pointer; transition: 0.3s; margin-top: 10px; box-sizing: border-box;
         }
         button:hover { background: #0056b3; }
         .btn-success { background: #28a745; margin-bottom: 10px; }
-        .btn-success:hover { background: #218838; }
         .btn-info { background: #17a2b8; margin-bottom: 10px; }
-        .btn-info:hover { background: #138496; }
         .btn-secondary { background: #6c757d; }
-        .btn-secondary:hover { background: #5a6268; }
 
         #loader { display: none; text-align: center; margin-top: 20px; font-weight: bold; color: #d9534f; }
-
         #permit-section { display: none; width: 100%; flex-direction: column; align-items: center; }
         
+        /* Table Wrapper adjusted for perfect printing */
         .permit-wrapper {
-            background: #fff;
-            width: 100%;
-            max-width: 100%; 
-            padding: 10px;
-            box-sizing: border-box;
-            overflow: hidden;
-            margin-bottom: 15px;
+            background: #fff; width: 100%; max-width: 100%; padding: 15px;
+            box-sizing: border-box; margin-bottom: 15px; overflow: visible; /* Fixed clipping */
         }
         
         table.permit-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: "Times New Roman", Times, serif;
-            color: #000;
-            border: 2px solid #000;
-            table-layout: fixed; 
-            word-wrap: break-word;
+            width: 100%; border-collapse: collapse !important; font-family: "Times New Roman", Times, serif;
+            color: #000; border: 2px solid #000 !important; table-layout: fixed; word-wrap: break-word;
         }
         table.permit-table td, table.permit-table th {
-            border: 1px solid #000;
-            padding: 8px;
-            font-size: 14px;
-            vertical-align: middle;
+            border: 1px solid #000 !important; padding: 8px; font-size: 14px; vertical-align: middle;
         }
 
         .header-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; flex-wrap: wrap;}
-        
         .logo-qr-row { display: flex; justify-content: space-between; align-items: center; gap: 5px;}
         .logo-box-img { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
         .center-text { text-align: center; flex-grow: 1; }
         .center-text h3 { margin: 0; font-size: 16px; font-weight: bold; }
         .center-text h4 { margin: 2px 0; font-size: 14px; font-weight: normal; }
         .qr-box { width: 65px; height: 65px; flex-shrink: 0; }
-        .qr-box img { width: 100%; height: 100%; pointer-events: none;}
+        .qr-box img { width: 100%; height: 100%; }
 
         .note-row { text-align: center; font-size: 10px; font-weight: bold; }
-
         .photo-row { display: flex; justify-content: space-between; align-items: center; }
-        .pahalgam-text { font-size: 22px; font-weight: bold; letter-spacing: 1px;}
+        .route-text { font-size: 22px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;}
         
         .photo-box { width: 85px; height: 105px; border: 1px solid #333; background: #eee; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-shrink: 0;}
-        .photo-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: none; 
-            filter: grayscale(100%); 
-        }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; display: none; filter: grayscale(100%); }
 
         .details-inline { display: flex; justify-content: flex-start; gap: 15px; flex-wrap: wrap; }
         
@@ -192,139 +114,74 @@
         .aadhaar-logo { width: 35px; height: 25px; object-fit: contain; }
         .aadhaar-text { font-size: 17px; font-weight: bold; letter-spacing: 1.5px; }
 
-        .footer-row { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-            height: 85px;
-            position: relative;
-        }
-        .signature-area { 
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 150px;
-        }
-        .sig-img {
-            width: 70px;
-            height: 35px;
-            object-fit: contain;
-            margin-bottom: 2px;
-        }
+        .footer-row { display: flex; justify-content: space-between; align-items: flex-end; height: 85px; position: relative; }
+        .signature-area { display: flex; flex-direction: column; align-items: flex-start; width: 150px; }
+        .sig-img { width: 70px; height: 35px; object-fit: contain; margin-bottom: 2px; }
         .signature { font-size: 12px; font-weight: bold; line-height: 1.2; }
         
         .stamp-img {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-10deg);
-            width: 85px;
-            height: 85px;
-            object-fit: contain;
-            opacity: 0.85;
-            pointer-events: none;
-            display: none;
-            mix-blend-mode: multiply; 
+            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(-10deg);
+            width: 85px; height: 85px; object-fit: contain; opacity: 0.8; z-index: 10;
         }
+        .ekyc-area { display: flex; flex-direction: column; align-items: flex-end; width: 120px; }
+        .ekyc-img { width: 75px; height: 30px; object-fit: contain; margin-bottom: 5px; }
 
-        .ekyc-area {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            width: 120px;
-        }
-        .ekyc-img {
-            width: 75px; 
-            height: 30px; 
-            object-fit: contain;
-            margin-bottom: 5px;
-        }
 
-        /* ID CARD CSS STYLES */
-        #id-card-container {
-            display: none; 
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+        /* ========================================================
+           NEW PROFESSIONAL ID CARD CSS
+           ======================================================== */
+        #id-card-container { display: none; width: 100%; margin-top: 20px; margin-bottom: 20px; }
         
         .id-card {
-            width: 320px;
-            background: #fff;
-            border: 2px solid #222;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            padding-bottom: 25px;
-            margin: 0 auto;
+            width: 320px; background: #fff; border: 2px solid #111; border-radius: 10px;
+            overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.25); display: flex; flex-direction: column;
+            align-items: center; font-family: Arial, sans-serif; margin: 0 auto;
+            position: relative; padding-bottom: 0;
         }
 
+        /* Top Banner */
         .id-header {
-            width: 100%;
-            background-color: #d32f2f;
-            color: white;
-            text-align: center;
-            font-size: 26px;
-            font-weight: 900;
-            padding: 15px 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%; background: #ffffff; color: #333; text-align: center;
+            padding: 10px 0 5px 0; display: flex; flex-direction: column; align-items: center;
+        }
+        .id-header-logo { width: 45px; height: 45px; object-fit: contain; margin-bottom: 5px;}
+        .id-header-title { font-size: 15px; font-weight: bold; line-height: 1.2; }
+        
+        /* Red ID Title Bar */
+        .id-title-bar {
+            width: 100%; background-color: #d32f2f; color: white; text-align: center;
+            font-size: 22px; font-weight: 900; padding: 8px 0; letter-spacing: 2px;
+            text-transform: uppercase; border-top: 2px solid #b71c1c; border-bottom: 2px solid #b71c1c;
         }
 
+        /* Photo Area */
         .id-photo {
-            width: 140px;
-            height: 140px;
-            margin: 20px 0 15px 0;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            overflow: hidden;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 120px; height: 145px; margin: 15px 0 10px 0; border: 3px solid #d32f2f;
+            border-radius: 6px; overflow: hidden; background: #eee; display: flex;
+            justify-content: center; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        .id-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: none;
-        }
+        .id-photo img { width: 100%; height: 100%; object-fit: cover; display: none; }
 
-        .id-title {
-            text-align: center;
-            font-size: 17px;
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 15px;
-            padding: 0 15px;
-            line-height: 1.4;
-        }
-
-        .id-qr {
-            width: 110px;
-            height: 110px;
-            margin-bottom: 20px;
-            padding: 5px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
+        /* Yatri Details */
+        .id-name { font-size: 20px; font-weight: bold; color: #111; text-transform: uppercase; margin-bottom: 4px; text-align: center;}
+        .id-gate-route { font-size: 14px; font-weight: bold; color: #555; margin-bottom: 10px; }
+        
         .id-permit {
-            font-size: 22px;
-            font-weight: bold;
-            color: #d32f2f;
-            letter-spacing: 1px;
-            background: #f8f9fa;
-            padding: 8px 20px;
-            border-radius: 6px;
-            border: 1px dashed #d32f2f;
+            font-size: 18px; font-weight: bold; color: #d32f2f; letter-spacing: 1px;
+            background: #fdf2f2; padding: 6px 15px; border-radius: 4px; border: 1px dashed #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        /* QR Code */
+        .id-qr {
+            width: 90px; height: 90px; margin-bottom: 15px; padding: 4px; background: #fff;
+            border: 1px solid #ccc; border-radius: 4px;
+        }
+
+        /* Footer */
+        .id-footer {
+            width: 100%; background: #111; color: #fff; text-align: center;
+            padding: 8px 0; font-size: 12px; font-weight: bold; letter-spacing: 1px;
         }
     </style>
 </head>
@@ -332,22 +189,19 @@
 
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('copy', event => {
-            event.preventDefault();
-            alert("Content protection enabled. Copying is disabled.");
-        });
+        document.addEventListener('copy', event => { event.preventDefault(); alert("Copying disabled."); });
     </script>
 
     <!-- Animated Preloader -->
     <div id="preloader">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg9sT0fSrV8h8ECFKCBi-CTuoZoipHpa1xTFIFTQ5uO33yOQUoZu5WvsxP&s=10" class="preloader-img" alt="Loading...">
-        <div class="preloader-text"> Shri Amarnathji Shrine Board <br/> श्री अमरनाथजी श्राइन बोर्ड</div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3661/3661314.png" class="preloader-img" alt="Loading...">
+        <div class="preloader-text">Loading System, Please Wait...</div>
     </div>
 
     <div class="container" id="form-container">
         <div class="form-header">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg9sT0fSrV8h8ECFKCBi-CTuoZoipHpa1xTFIFTQ5uO33yOQUoZu5WvsxP&s=10" alt="Header Logo">
-            <h2> Shri Amarnathji Shrine Board <br/> श्री अमरनाथजी श्राइन बोर्ड </h2> <p> Yatra Permit Details </p>
+            <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="Header Logo">
+            <h2>Yatra Permit Details</h2>
         </div>
         <form id="permitForm">
             <div class="row">
@@ -416,13 +270,15 @@
                 <input type="file" id="inpPhoto" accept="image/*" required>
             </div>
 
-            <button type="submit" id="submitBtn">Generate Permit</button>
-            <div id="loader">Processing requests, please wait 3 seconds...</div>
+            <button type="submit" id="submitBtn">Generate Permit & Card</button>
+            <div id="loader">Processing, please wait 3 seconds...</div>
         </form>
     </div>
 
     <!-- Generated Permit Section -->
     <div class="container" id="permit-section">
+        
+        <!-- Table for PDF -->
         <div class="permit-wrapper" id="permit-wrapper">
             <table class="permit-table">
                 <tr>
@@ -436,7 +292,8 @@
                 <tr>
                     <td colspan="2">
                         <div class="logo-qr-row">
-                            <img id="outBoardLogo" class="logo-box-img" src="" alt="Board Logo">
+                            <!-- crossorigin added to prevent canvas block -->
+                            <img id="outBoardLogo" class="logo-box-img" src="" crossorigin="anonymous" alt="Board Logo">
                             <div class="center-text">
                                 <h3>Shri Amarnathji Yatra</h3>
                                 <h3>YATRA PERMIT</h3>
@@ -454,7 +311,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="photo-row">
-                            <span class="pahalgam-text">PAHALGAM</span>
+                            <span class="route-text" id="outRouteText">PAHALGAM</span>
                             <div class="photo-box">
                                 <img id="outPhoto" src="" alt="Yatri Photo">
                             </div>
@@ -469,7 +326,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="aadhaar-box">
-                            <img id="outAadhaarLogo" src="" class="aadhaar-logo" alt="Aadhaar">
+                            <img id="outAadhaarLogo" src="" class="aadhaar-logo" crossorigin="anonymous" alt="Aadhaar">
                             <span class="aadhaar-text" id="outAadhaar"></span>
                         </div>
                     </td>
@@ -503,12 +360,12 @@
                     <td colspan="2" style="padding-bottom: 12px;">
                         <div class="footer-row">
                             <div class="signature-area">
-                                <img id="outSigImg" class="sig-img" src="" alt="Signature Seal">
+                                <img id="outSigImg" class="sig-img" src="" crossorigin="anonymous" alt="Signature Seal">
                                 <div class="signature">Signature & Seal of<br>Registering Officer</div>
                             </div>
-                            <img id="outStamp" class="stamp-img" src="https://theins.in/wp-content/uploads/2024/08/Image.jpg" alt="Stamp Badge">
+                            <img id="outStamp" class="stamp-img" src="" crossorigin="anonymous" alt="Stamp Badge">
                             <div class="ekyc-area">
-                                <img id="outEkycImg" class="ekyc-img" src="https://theins.in/wp-content/uploads/2024/08/Image.jpg" alt="eKYC Badge">
+                                <img id="outEkycImg" class="ekyc-img" src="" crossorigin="anonymous" alt="eKYC Badge">
                             </div>
                         </div>
                     </td>
@@ -516,24 +373,37 @@
             </table>
         </div>
         
-        <!-- Action Buttons -->
         <button id="downloadPdfBtn" class="btn-success">Save Permit as PDF</button>
-        <button id="viewCardBtn" class="btn-info">View Card</button> 
+        <button id="viewCardBtn" class="btn-info">View ID Card</button> 
         <button onclick="location.reload()" class="btn-secondary">Create New</button>
 
-        <!-- ID Card Component -->
+        <!-- Professional ID Card Component -->
         <div id="id-card-container">
             <div class="id-card" id="id-card-wrapper">
-                <div class="id-header">YATRA CARD</div>
-                <div class="id-photo">
-                    <img id="idCardPhoto" src="" alt="Yatra Symbol">
+                
+                <div class="id-header">
+                    <img id="idCardLogo" src="" class="id-header-logo" crossorigin="anonymous" alt="Logo">
+                    <div class="id-header-title">AMARNATH SHRINE BOARD<br>JAMMU & KASHMIR</div>
                 </div>
-                <div class="id-title"> Shri Amarnathji Shrine Board <br/> श्री अमरनाथजी श्राइन बोर्ड </div>
+                
+                <div class="id-title-bar">YATRA CARD</div>
+                
+                <div class="id-photo">
+                    <!-- यह वही चित्र होगा जो यूज़र ने अपलोड किया है -->
+                    <img id="idCardPhoto" src="" alt="Yatri Uploaded Photo">
+                </div>
+                
+                <div class="id-name" id="idCardName"></div>
+                <div class="id-gate-route" id="idCardGateRoute"></div>
+                
+                <div class="id-permit">Permit No: <span id="idCardPermitNo"></span></div>
+                
                 <div class="id-qr" id="idCardQr"></div>
-                <div class="id-permit" id="idCardPermitNo"></div>
+                
+                <div class="id-footer">AUTHORISED IDENTIFICATION CARD</div>
             </div>
             
-            <button id="downloadCardJpgBtn" class="btn-success" style="width: 320px; margin: 15px auto; display: block;">Save Card as JPG</button>
+            <button id="downloadCardJpgBtn" class="btn-success" style="width: 320px; margin: 15px auto; display: block;">Save ID Card as JPG</button>
         </div>
     </div>
 
@@ -541,28 +411,13 @@
         let photoDataUrl = "";
         
         // =========================================================================
-        // IMAGE CONFIGURATIONS (ONLY PNG OR JPG FORMATS)
-        // यहाँ आप अपनी असली PNG या JPG इमेज के लिंक लगा सकते हैं।
+        // IMAGE CONFIGURATIONS (PNG OR JPG)
         // =========================================================================
-        
-        // 1. Shrine Board Logo (टेबल के ऊपर वाला)
-        let shrineBoardLogoUrl = "https://theins.in/wp-content/uploads/2024/08/Image.jpg"; 
-        
-        // 2. Stamp / मोहर (नीचे बीच में)
-        let stampImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaw-ctkg5I1JToxy0lnASsJR-e-sp2AigcocFQo9GK_C___BNSRR0H-CK&s=10"; 
-        
-        // 3. Signature / हस्ताक्षर (अधिकारी के)
-        let signatureImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/af/Ryan-Signature.png"; 
-        
-        // 4. eKYC Badge / बैज
-        let ekycBadgeImageUrl = "https://5.imimg.com/data5/SELLER/Default/2025/7/531030055/QC/YF/WL/39702676/e-kyc-500x500.png"; 
-        
-        // 5. Yatra ID Card Symbol (ओम या यात्रा का फिक्स चित्र जो सबमें एक जैसा होगा)
-        let fixedCardImageUrl = "https://theins.in/wp-content/uploads/2024/08/Image.jpg"; 
-
-        // 6. Aadhaar Logo (टेबल में आधार नंबर के आगे का छोटा चित्र)
-        let aadhaarIconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/3840px-Aadhaar.svg.png";
-
+        let shrineBoardLogoUrl = "https://cdn-icons-png.flaticon.com/512/3661/3661314.png"; 
+        let stampImageUrl = "https://cdn-icons-png.flaticon.com/512/9198/9198457.png"; 
+        let signatureImageUrl = "https://cdn-icons-png.flaticon.com/512/6009/6009133.png"; 
+        let ekycBadgeImageUrl = "https://cdn-icons-png.flaticon.com/512/10006/10006325.png"; 
+        let aadhaarIconUrl = "https://cdn-icons-png.flaticon.com/512/8982/8982631.png";
         // =========================================================================
 
         window.addEventListener('load', () => {
@@ -584,14 +439,10 @@
 
         aadhaarInput.addEventListener('input', function() {
             this.value = this.value.replace(/\D/g, ''); 
-            
             if (this.value.length === 12) {
                 aadhaarStatus.className = 'fa-solid fa-spinner fa-spin status-icon loading';
                 aadhaarStatus.style.display = 'block';
-                
-                setTimeout(() => {
-                    aadhaarStatus.className = 'fa-solid fa-check-circle status-icon success';
-                }, 2000);
+                setTimeout(() => { aadhaarStatus.className = 'fa-solid fa-check-circle status-icon success'; }, 2000);
             } else {
                 aadhaarStatus.style.display = 'none';
                 aadhaarStatus.className = 'status-icon';
@@ -609,15 +460,11 @@
 
         document.getElementById('permitForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             if(document.getElementById('inpAadhaar').value.length !== 12) {
-                alert("Please enter exactly 12 digits for Aadhaar.");
-                return;
+                alert("Please enter exactly 12 digits for Aadhaar."); return;
             }
-
             document.getElementById('submitBtn').style.display = 'none';
             document.getElementById('loader').style.display = 'block';
-
             setTimeout(() => { generatePermit(); }, 3000);
         });
 
@@ -646,8 +493,7 @@
             const permitNo = document.getElementById('inpPermitNo').value;
             const name = document.getElementById('inpName').value;
             const gender = document.getElementById('inpGender').value;
-            const rawDob = document.getElementById('inpDob').value;
-            const dob = formatDate(rawDob); 
+            const dob = formatDate(document.getElementById('inpDob').value); 
             const bg = document.getElementById('inpBg').value;
             const father = document.getElementById('inpFather').value;
             const address = document.getElementById('inpAddress').value;
@@ -657,12 +503,19 @@
             const formattedAadhaar = aadhaar.replace(/(\d{4})/g, '$1 ').trim();
 
             document.getElementById('outGateName').innerText = randomGate;
+            
+            let routeName = "";
+            if (randomGate === "CHANDANWARI GATE") {
+                routeName = "PAHALGAM";
+            } else if (randomGate === "DOMEL GATE") {
+                routeName = "BALTAL";
+            }
+            document.getElementById('outRouteText').innerText = routeName;
+
             document.getElementById('outDate').innerText = randomDate;
             document.getElementById('outPermitNo').innerText = "Permit No : " + permitNo;
             document.getElementById('outName').innerText = name;
-            
             document.getElementById('outAadhaar').innerText = formattedAadhaar;
-
             document.getElementById('outGender').innerText = gender;
             document.getElementById('outDob').innerText = dob;
             document.getElementById('outBg').innerText = bg;
@@ -670,59 +523,42 @@
             document.getElementById('outAddress').innerText = father + " " + address;
             document.getElementById('outEmergency').innerText = father + " (" + emergency + ")";
 
+            // Populate ID Card Details
+            document.getElementById('idCardName').innerText = name;
+            document.getElementById('idCardGateRoute').innerText = `${randomGate} (${routeName})`;
             document.getElementById('idCardPermitNo').innerText = permitNo;
 
+            // Render User Photo in BOTH Table and ID Card
             if (photoDataUrl) {
                 const photoImg = document.getElementById('outPhoto');
                 photoImg.src = photoDataUrl;
                 photoImg.style.display = 'block';
-            }
 
-            // Setting images from the Configuration Block
-            if(fixedCardImageUrl.trim() !== "") {
                 const idPhotoImg = document.getElementById('idCardPhoto');
-                idPhotoImg.src = fixedCardImageUrl;
+                idPhotoImg.src = photoDataUrl;
                 idPhotoImg.style.display = 'block';
             }
+
+            // Setting external config images
             if (shrineBoardLogoUrl.trim() !== "") {
                 document.getElementById('outBoardLogo').src = shrineBoardLogoUrl;
+                document.getElementById('idCardLogo').src = shrineBoardLogoUrl;
             }
-            if (signatureImageUrl.trim() !== "") {
-                document.getElementById('outSigImg').src = signatureImageUrl;
-            }
-            if (ekycBadgeImageUrl.trim() !== "") {
-                document.getElementById('outEkycImg').src = ekycBadgeImageUrl;
-            }
+            if (signatureImageUrl.trim() !== "") document.getElementById('outSigImg').src = signatureImageUrl;
+            if (ekycBadgeImageUrl.trim() !== "") document.getElementById('outEkycImg').src = ekycBadgeImageUrl;
             if (stampImageUrl.trim() !== "") {
                 const stampImg = document.getElementById('outStamp');
-                stampImg.src = stampImageUrl;
-                stampImg.style.display = 'block';
+                stampImg.src = stampImageUrl; stampImg.style.display = 'block';
             }
-            if (aadhaarIconUrl.trim() !== "") {
-                document.getElementById('outAadhaarLogo').src = aadhaarIconUrl;
-            }
+            if (aadhaarIconUrl.trim() !== "") document.getElementById('outAadhaarLogo').src = aadhaarIconUrl;
 
-            const qrData = `ID: ${permitNo} | Name: ${name} | Aadhaar: ****${aadhaar.slice(-4)} | DOB: ${dob} | BG: ${bg} | Emergency Contact: ${emergency}`;
-            
+            // Generate QRs
+            const qrData = `ID: ${permitNo} | Name: ${name} | Aadhaar: ****${aadhaar.slice(-4)} | DOB: ${dob} | BG: ${bg}`;
             document.getElementById('qrcode').innerHTML = ""; 
-            new QRCode(document.getElementById("qrcode"), {
-                text: qrData,
-                width: 65,
-                height: 65,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.L
-            });
+            new QRCode(document.getElementById("qrcode"), { text: qrData, width: 65, height: 65, colorDark: "#000", colorLight: "#fff" });
 
             document.getElementById('idCardQr').innerHTML = ""; 
-            new QRCode(document.getElementById("idCardQr"), {
-                text: qrData,
-                width: 100,
-                height: 100,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.L
-            });
+            new QRCode(document.getElementById("idCardQr"), { text: qrData, width: 90, height: 90, colorDark: "#000", colorLight: "#fff" });
 
             document.getElementById('form-container').style.display = 'none';
             document.getElementById('permit-section').style.display = 'flex';
@@ -732,33 +568,35 @@
             const cardContainer = document.getElementById('id-card-container');
             if (cardContainer.style.display === 'none' || cardContainer.style.display === '') {
                 cardContainer.style.display = 'block';
-                this.innerText = "Hide Card";
+                this.innerText = "Hide ID Card";
                 this.classList.replace('btn-info', 'btn-secondary');
             } else {
                 cardContainer.style.display = 'none';
-                this.innerText = "View Card";
+                this.innerText = "View ID Card";
                 this.classList.replace('btn-secondary', 'btn-info');
             }
         });
 
+        // 1. PDF Download Fix - ensures margins and no clipping
         document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+            window.scrollTo(0,0); // Prevent canvas clipping bug
             const element = document.getElementById('permit-wrapper');
             const opt = {
-                margin:       0.1,
+                margin:       [0.2, 0.2, 0.2, 0.2], // Perfect margin for A4 border printing
                 filename:     'Yatra_Permit_Document.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true },
+                image:        { type: 'jpeg', quality: 1.0 },
+                html2canvas:  { scale: 2, useCORS: true, allowTaint: true },
                 jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
             html2pdf().set(opt).from(element).save();
         });
 
+        // 2. JPG Download Fix for ID Card 
         document.getElementById('downloadCardJpgBtn').addEventListener('click', function() {
+            window.scrollTo(0,0); // Prevent canvas clipping bug
             const cardElement = document.getElementById('id-card-wrapper');
-            cardElement.style.borderRadius = '0';
             
-            html2canvas(cardElement, { scale: 3, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
-                cardElement.style.borderRadius = '12px';
+            html2canvas(cardElement, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: "#ffffff" }).then(canvas => {
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/jpeg', 1.0);
                 link.download = 'Yatra_ID_Card.jpg';
