@@ -67,7 +67,7 @@
         padding: 40px 20px 20px 20px;
         position: relative;
         background: linear-gradient(rgba(15, 23, 42, 0.70), rgba(15, 23, 42, 0.80)),
-                    url('https://img.magnific.com/free-vector/army-camouflage-vector-seamless-pattern-texture-military-camouflage-repeats-seamless-army-design-vector-background_1142-11146.jpg?semt=ais_hybrid&w=740&q=80') center/cover no-repeat fixed;
+                    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk59Vs602EEjRWQFUuF2qKBWCkTuMx9K-R0G2dbBHokmj24LbuXVo9RUY&s=10') center/cover no-repeat fixed;
       }
 
       .login-content {
@@ -78,12 +78,12 @@
         margin: auto 0;
       }
 
-      /* DASHBOARD TOP HEADER LOGOS (SAFE AREA ADDED FOR MOBILE STATUS BAR) */
+      /* DASHBOARD TOP HEADER LOGOS */
       .header-logos {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 80px 20px 12px 20px; /* Top padding added to prevent overlap with status bar */
+        padding: 80px 20px 12px 20px;
         background: #ffffff;
         border-bottom: 1px solid #e2e8f0;
         position: relative;
@@ -92,7 +92,7 @@
       }
 
       .header-logos img {
-        max-width: 45px;
+        max-width: 85px;
         max-height: 45px;
         width: auto;
         height: auto;
@@ -108,7 +108,6 @@
         flex-direction: column;
       }
 
-      /* LOGIN CENTER EMBLEM IMAGE */
       .login-center-logo {
         width: 75px;
         height: 75px;
@@ -270,7 +269,6 @@
         font-weight: 600;
       }
 
-      /* RIGHT ACTIONS CONTAINER (BELL & LOGOUT) */
       .action-controls {
         display: flex;
         flex-direction: column;
@@ -397,10 +395,47 @@
       .section-notice p {
         font-size: 12px;
         color: #64748b;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
 
-      /* GRID CONTAINER */
+      /* BILINGUAL BIOGRAPHY TOGGLE BUTTONS CONTAINER (PLACED ABOVE PORTALS) */
+      .bio-buttons-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .bio-btn {
+        flex: 1;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        transition: transform 0.1s ease;
+      }
+
+      .bio-btn:active {
+        transform: scale(0.97);
+      }
+
+      .btn-hindi {
+        background: #1e3a8a;
+        color: #ffffff;
+      }
+
+      .btn-english {
+        background: #0f172a;
+        color: #ffffff;
+      }
+
+      /* GRID CONTAINER (6 BOXES) */
       .grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -425,6 +460,73 @@
         object-fit: cover;
         display: block;
         pointer-events: none;
+      }
+
+      /* POPUP MODAL STYLING */
+      .bio-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .bio-modal-card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 400px;
+        max-height: 80vh;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        animation: modalPopup 0.25s ease-out;
+      }
+
+      @keyframes modalPopup {
+        0% { transform: scale(0.9); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      .bio-modal-header {
+        padding: 16px 20px;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .bio-modal-title {
+        font-size: 14px;
+        font-weight: 800;
+        color: #1e293b;
+      }
+
+      .bio-modal-close {
+        background: none;
+        border: none;
+        font-size: 20px;
+        font-weight: 800;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0 4px;
+      }
+
+      .bio-modal-body {
+        padding: 20px;
+        overflow-y: auto;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #334155;
+        text-align: left;
       }
 
       /* TRANSPARENT FOOTER STYLING */
@@ -455,19 +557,18 @@
         color: #64748b;
       }
 
-      /* FOOTER IMAGE SHADOW REMOVED */
       .footer-icon-img {
         width: 28px;
         height: 28px;
         object-fit: contain;
         margin-bottom: 6px;
-        filter: none; /* Shadow completely removed */
+        filter: none;
       }
 
       .footer-title {
         font-weight: 800;
-        font-size: 13px;
-        text-transform: lowercase;
+        font-size: 16px;
+        text-transform: TitleCase;
       }
 
       .footer-subtext {
@@ -527,7 +628,7 @@
       <!-- LOGIN SECTION -->
       <div id="loginSection" class="login-section">
         <div class="login-content">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Center Logo" class="login-center-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/ADGPI_Indian_Army.svg/960px-ADGPI_Indian_Army.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Center Logo" class="login-center-logo">
           
           <div class="login-card">
             <div id="errorToast" class="error-toast">Invalid Service / Personal ID!</div>
@@ -537,7 +638,7 @@
                 <input 
                   type="text" 
                   id="serviceId" 
-                  placeholder="e.g. IC80129D" 
+                  placeholder="" 
                   autocomplete="off" 
                   maxlength="8"
                   inputmode="text"
@@ -549,11 +650,10 @@
           </div>
         </div>
 
-        <!-- Transparent Footer inside Login -->
         <div class="footer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Footer Icon" class="footer-icon-img">
-          <div class="footer-title">indianarmy</div>
-          <div class="footer-subtext">rtyploiyr fgdtsycjuu pgtdgvjjkuguij</div>
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjowxibl3ld-wAsyHC5SBcUWb_6kz6JIraFrZLXnLjcaqFq-e2cDD4hxixMGt0-JU9USsFh1DqVQZVkQU3dt_CWWz1fbzvyvYxlISJJDjV19HVy3vLW-mnx_VANl5h3SsKTDCwhs2hbTUCvLMjrSRpnm6QglQzrGv0ttVhZwPgcPbv_ylf2LD6LJ-ydKlY/s1600/0AC35AA7-2F19-461B-8236-A76ABE4522CF.png" alt="Footer Icon" class="footer-icon-img">
+          <div class="footer-title">Indian Armed Forces</div>
+          <div class="footer-subtext">Integrated Headquarters of the MoD (Army)</div>
         </div>
       </div>
 
@@ -567,14 +667,14 @@
       <div id="dashboardSection" class="dashboard-section">
         
         <div class="profile-card">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Profile Picture" class="profile-img">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2v3uXiABl9Z7iW8Y56f46sJKDRdNEIs2Qt5wa-4Gu8oI_Y4qQd3uHgqiGMv1X-eWBhByGL1IECnouUzpdY_PrrDUbbrkjKX_BG_-amZ_lQ3Ku8K0-O7Csl4jSpUozSBTT8QaEM3fJEJV7xb0xFaoajawHQcrOefbuBKUbAvWTohNCYENPlbDUiy_mAUQ/s1600/2FC59BDC-5D98-47FC-9982-51549262B6BE.jpeg" alt="Profile Picture" class="profile-img">
           
           <div class="profile-info">
             <div class="name-row">
-              <span class="name">Manish Chaudhary</span>
+              <span class="name">Capt Manish Chaudhary</span>
               <span class="btn-3d-active">ACTIVE</span>
             </div>
-            <div class="service-id">IC80***D</div>
+            <div class="service-id">18 DOGRA</div>
           </div>
 
           <!-- RIGHT ACTIONS (BELL & LOGOUT) -->
@@ -604,49 +704,66 @@
         </div>
 
         <div class="section-notice">
-          <h3>Quick Access Portals</h3>
-          <p>Select an authorized portal below to open designated external services.</p>
+          <h3>Military Biography</h3>
+          <p>A concise overview of the disciplined training, NDA-IMA journey, and illustrious military service of Captain Manish Chaudhary (IC-80129D), an officer of the 18 Dogra Regiment, currently deployed at HQ 1 Corps of the Indian Army.</p>
         </div>
 
-        <!-- 8 Clickable Image Portals -->
+        <!-- Bilingual Biography Buttons (PLACED JUST BELOW NOTICE TEXT & ABOVE PORTAL BOXES) -->
+        <div class="bio-buttons-container">
+          <button class="bio-btn btn-hindi" onclick="openBioModal('hindi')">
+            <i class="fa-solid fa-book-open"></i> हिंदी
+          </button>
+          <button class="bio-btn btn-english" onclick="openBioModal('english')">
+            <i class="fa-solid fa-book"></i> English 
+          </button>
+        </div>
+
+        <!-- Exactly 6 Clickable Image Portals -->
         <div class="grid-container">
           <a href="https://amarnath.manishchaudharymathura.in/armaan" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=300&q=80" alt="Portal 1">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6fjZo3JrvWVMzps4RjYw0UMhhxyKKijUfOn4TXFG4HcVSfwwzLz5X04euZQYbWdBVJ207BSrOQMN9yK6OGZQve2YrAjjSfC-28y56_tMzFDKDOYzHl0xl1fO6iPZzNE6zeM6SpaFejnnaDU2J96lpcHN2e7FgINAAZFY426dRn_Rg5js5yc6hVXBfi7k/s1600/S%20-%206.jpeg" alt="Portal 1">
           </a>
           <a href="https://example.com/portal2" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=300&q=80" alt="Portal 2">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLm93xyWVSAGG-TnNgdlpPdFlUyM1xM5XLyt092XPAUjg55P4AaMBXgFF9f5nOjFW4z0bMePWLCcBj9txtasKobGwarFc4T5v9Yw9rUYHKLvXbxjitsp9wUc3_3MSEPHmYvUrqaOsFftQtrSd0grpSYgEgq4KnpWk3_XRDPqfEFGotIxA8__PVAHuX7K0/s1600/S%20-%205.jpeg" alt="Portal 2">
           </a>
-          <a href="https://example.com/portal3" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=300&q=80" alt="Portal 3">
+          <a href="https://amarnath.manishchaudharymathura.in/officers" class="grid-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiq8RsD4rsM527k0qDwqNTf-J4X1Bhj5oR1fj8pjzf5H16jP4pRMPeBEPVVfgHfr6ILd1WOqHoyKggI_W3-KPCcqFyUuLi6To-rOi9zOaWEM5TC138KbphrP_qmaW_Gm_Zs0uaHS0rUiXh53cdIztZPX9j4k0vINAV2GYQifzyagsv8tXNIjXOtCYwzd2I/s1600/S%20-%204.jpeg" alt="Portal 3">
           </a>
-          <a href="https://example.com/portal4" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80" alt="Portal 4">
+          <a href="https://amarnath.manishchaudharymathura.in/csd" class="grid-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhObj35zq6mg7gjkZXu0Ni7nBuxi9md1P82uVrdHaTgNpKkzHigYtPLdUlIHUr5Z3H4aEggAGvVJcbu4CWuVGHTzVIr5oTzmbO2YgPlzBsCcu-0hgJX8HqlZVd6rzLl0siZoUn_d7jIjcdtxv4XNIKUP8B-e9eWF9uODDngquav9uCAe_p9Z_oNCeWUook/s1600/S%20-%203.jpeg" alt="Portal 4">
           </a>
-          <a href="https://example.com/portal5" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80" alt="Portal 5">
+          <a href="https://amarnath.manishchaudharymathura.in/mh" class="grid-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSkQ_i3CZh7TWYdC9LPrJCKH_hKjxqN7gw9CRw4hfDAe7J_b1YTT682f8x6j3KuC14kUyRE_WBY4zcVmKHl_gco4w-HJ9BF0QDAOM6DN-fbgmghKF90Pryr67tZFdBveRHmxtQ3qCEZ12U5SJot0WnXDhKq-g07rAvoPkroaD9jmAFN3EEkYyyUGubYzY/s1600/S%20-%202.jpeg" alt="Portal 5">
           </a>
-          <a href="https://example.com/portal6" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=300&q=80" alt="Portal 6">
-          </a>
-          <a href="https://example.com/portal7" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=300&q=80" alt="Portal 7">
-          </a>
-          <a href="https://example.com/portal8" class="grid-box">
-            <img src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=300&q=80" alt="Portal 8">
+          <a href="https://amarnath.manishchaudharymathura.in/sambhav" class="grid-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxNu_SyiGwSEV4SJvZ2l0ekeleFDQhk8V8Yyyktcu32hi9iQn5FCwB-sXzABw37L0PH_GjQPYMTmUXH6964wnKO4ANMbJiSKxduFVT9r78gowHmZcnh5R04ZlRLo3CpreIVogA98V0gxV2xjl1BGHLMJUa0CvlSwySuqsb-qjQfy3_ldMGO6MIGyxjMiQ/s1600/S%20-%201.jpeg" alt="Portal 6">
           </a>
         </div>
 
         <!-- Dashboard Footer -->
         <div class="footer">
-          <img src="https://img.icons8.com/color/48/star.png" alt="Footer Icon" class="footer-icon-img">
-          <div class="footer-title">indianarmy</div>
-          <div class="footer-subtext">rtyploiyr fgdtsycjuu pgtdgvjjkuguij</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Footer Icon" class="footer-icon-img">
+          <div class="footer-title">Indian Armed Forces</div>
+          <div class="footer-subtext">Integrated Headquarters of the MoD (Army)</div>
         </div>
 
       </div>
 
     </div>
 
+  </div>
+
+  <!-- BIOGRAPHY POPUP MODALS -->
+  <div id="bioModalOverlay" class="bio-modal-overlay" onclick="closeBioModal(event)">
+    <div class="bio-modal-card">
+      <div class="bio-modal-header">
+        <span class="bio-modal-title" id="bioModalTitle">Biography</span>
+        <button class="bio-modal-close" onclick="closeBioModalDirect()">&times;</button>
+      </div>
+      <div class="bio-modal-body" id="bioModalContent">
+        <!-- Content gets injected dynamically -->
+      </div>
+    </div>
   </div>
 
   <script>
@@ -661,7 +778,6 @@
       }
     });
 
-    // Dynamic keyboard & format handler: 2 Alphabets -> 5 Numbers -> 1 Alphabet
     function handleServiceIdInput(input) {
       let val = input.value.toUpperCase();
       let formattedVal = "";
@@ -669,20 +785,16 @@
       for (let i = 0; i < val.length; i++) {
         let char = val[i];
         if (i < 2) {
-          // First 2 must be alphabets
           if (/[A-Z]/.test(char)) formattedVal += char;
         } else if (i >= 2 && i < 7) {
-          // Middle 5 must be numbers
           if (/[0-9]/.test(char)) formattedVal += char;
         } else if (i === 7) {
-          // Last 1 must be alphabet
           if (/[A-Z]/.test(char)) formattedVal += char;
         }
       }
 
       input.value = formattedVal;
 
-      // Dynamically switch mobile keyboard modes based on character length
       if (formattedVal.length < 2) {
         input.setAttribute("inputmode", "text");
       } else if (formattedVal.length >= 2 && formattedVal.length < 7) {
@@ -740,6 +852,41 @@
         dropdown.style.display = "block";
         badge.style.display = "none";
       }
+    }
+
+    // Modal Controls for Biographies
+    const hindiBioText = `<strong>सैन्य जीवन परिचय (IC-80129D)</strong><br><br>
+    कैप्टन मनीष चौधरी का सैन्य सफर अनुशासन, समर्पण और गौरवशाली परंपराओं का एक उत्कृष्ट उदाहरण है। राष्ट्रीय रक्षा अकादमी (NDA) के 135वें कोर्स (डेल्टा स्क्वाड्रन / डैगर्स) के अंतर्गत वर्ष 2015 से 2018 तक कठोर प्रारंभिक प्रशिक्षण प्राप्त करने के बाद, उन्होंने 30 नवंबर 2018 को पुणे के खेत्रपाल परेड ग्राउंड में तत्कालीन थल सेनाध्यक्ष जनरल बिपिन रावत की समीक्षा में अपनी पासिंग आउट परेड (POP) संपन्न की, जिसमें उनके बैच से कुल 261 कैडेट्स पास आउट हुए थे। इसके पश्चात, उन्होंने भारतीय सैन्य अकादमी (IMA) देहरादून के 146वें रेगुलर कोर्स (करियप्पा बटालियन, कोहिमा कंपनी) से जुलाई 2018 से जून 2020 तक उन्नत सैन्य प्रशिक्षण प्राप्त किया। कोविड-19 महामारी की विषम परिस्थितियों के बीच 13 जून 2020 को आयोजित यह ऐतिहासिक पासिंग आउट परेड संपन्न हुई, जिसका नेतृत्व अकादमी कैडेट कैप्टन जयप्रीत सिंह और पॉप परेड कमांडर शिव कुमार सिंह चौहान (गोल्ड मेडल विजेता, गोरखा राइफल्स) ने किया था, जबकि उस समय IMA के कमांडेंट लेफ्टिनेंट जनरल जे.एस. नेगी थे और एसयूओ सौरभ गुप्ता, बीयूओ आकाशदीप सिंह ढिल्लों ('स्वॉर्ड ऑफ ऑनर' सम्मानित) तथा एसीए सूरज सिंह (सभी पैरा) ने प्रमुख नेतृत्व संभाला था。<br><br>
+    प्रशिक्षण पूरा करने के पश्चात, 13 जून 2020 को उन्हें लेफ्टिनेंट के रूप में भारतीय थल सेना की प्रतिष्ठित <strong>18वीं बटालियन, द डोगरा रेजिमेंट (अशोक चक्र पलटन)</strong> में कमीशन प्राप्त हुआ। उनकी प्रथम पोस्टिंग 'फॉरएवर इन ऑपरेशंस' के आदर्श वाक्य वाले उत्तरी कमान (ध्रुव कमान) के अंतर्गत जम्मू-कश्मीर के संवेदनशील क्षेत्र में हुई। अपनी उत्कृष्ट सेवा और कर्तव्यनिष्ठा के चलते 13 जून 2022 को उन्हें कैप्टन के पद पर पदोन्नत किया गया, और वर्तमान में वे <strong>मुख्यालय I कोर (स्ट्राइक 1 कोर), मथुरा, उत्तर प्रदेश</strong> में अपनी सेवाएं दे रहे हैं।`;
+
+    const englishBioText = `<strong>Military Biography (IC-80129D)</strong><br><br>
+    Captain Manish Chaudhary's military journey is an exceptional testament to discipline, dedication, and glorious traditions. After completing his rigorous foundational training from 2015 to 2018 as part of the 135th Course (Delta Squadron / Daggers) at the National Defence Academy (NDA), he successfully participated in the Passing Out Parade (POP) on November 30, 2018, at the Khetrapal Parade Ground, Pune, reviewed by the then Chief of the Army Staff, General Bipin Rawat, marking a milestone where a total of 261 cadets passed out in this batch. Following this, he underwent advanced military training at the Indian Military Academy (IMA), Dehradun, as part of the 146th Regular Course (Kariappa Battalion, Kohima Company) from July 2018 to June 2020. Amidst the unprecedented and challenging circumstances of the COVID-19 pandemic, this historic Passing Out Parade took place on June 13, 2020. The academy leadership during this period was headed by Commandant Lt. Gen. J.S. Negi, alongside Academy Cadet Captain Jaipreet Singh, POP Parade Commander Shiv Kumar Singh Chauhan (Gold Medalist, Gorkha Rifles), SUO Saurabh Gupta (PARA), BUO Akashdeep Singh Dhillon (PARA - awarded the Sword of Honour), and ACA Suraj Singh (PARA).<br><br>
+    Upon completion of his training, he was commissioned as a Lieutenant into the prestigious <strong>18th Battalion, The Dogra Regiment (Ashoka Chakra Paltan)</strong> on June 13, 2020. His initial operational posting was under the Northern Command (Dhruv Command), known for its motto 'Forever in Operations', in the sensitive region of Jammu and Kashmir. Demonstrating unwavering commitment and professional excellence, he was promoted to the rank of Captain on June 13, 2022, and is currently serving at the <strong>Headquarters I Corps (Strike 1 Corps) in Mathura, Uttar Pradesh</strong>.`;
+
+    function openBioModal(lang) {
+      const overlay = document.getElementById("bioModalOverlay");
+      const titleElem = document.getElementById("bioModalTitle");
+      const contentElem = document.getElementById("bioModalContent");
+
+      if (lang === 'hindi') {
+        titleElem.innerText = "सेवा परमो धर्म";
+        contentElem.innerHTML = hindiBioText;
+      } else {
+        titleElem.innerText = "Service Before Self";
+        contentElem.innerHTML = englishBioText;
+      }
+
+      overlay.style.display = "flex";
+    }
+
+    function closeBioModal(event) {
+      if (event.target.id === "bioModalOverlay") {
+        document.getElementById("bioModalOverlay").style.display = "none";
+      }
+    }
+
+    function closeBioModalDirect() {
+      document.getElementById("bioModalOverlay").style.display = "none";
     }
   </script>
 </body>
