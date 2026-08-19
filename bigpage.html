@@ -78,17 +78,17 @@
         margin: auto 0;
       }
 
-      /* DASHBOARD TOP HEADER LOGOS */
+      /* DASHBOARD TOP HEADER LOGOS (SAFE AREA ADDED FOR MOBILE STATUS BAR) */
       .header-logos {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 20px;
+        padding: 36px 20px 12px 20px; /* Top padding added to prevent overlap with status bar */
         background: #ffffff;
         border-bottom: 1px solid #e2e8f0;
         position: relative;
         z-index: 2;
-        min-height: 60px;
+        min-height: 80px;
       }
 
       .header-logos img {
@@ -148,6 +148,7 @@
         font-size: 15px;
         outline: none;
         background: #f8fafc;
+        text-transform: uppercase;
       }
 
       .btn-submit {
@@ -426,7 +427,7 @@
         pointer-events: none;
       }
 
-      /* TRANSPARENT FOOTER STYLING (NO CONTAINER/BOX) */
+      /* TRANSPARENT FOOTER STYLING */
       .footer {
         padding: 16px 16px;
         display: flex;
@@ -454,12 +455,13 @@
         color: #64748b;
       }
 
+      /* FOOTER IMAGE SHADOW REMOVED */
       .footer-icon-img {
         width: 28px;
         height: 28px;
         object-fit: contain;
         margin-bottom: 6px;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        filter: none; /* Shadow completely removed */
       }
 
       .footer-title {
@@ -516,8 +518,8 @@
 
     <!-- Top Header Logos -->
     <div class="header-logos" id="headerLogos" style="display: none;">
-      <img src="https://img.icons8.com/color/96/shield.png" alt="Left Logo">
-      <img src="https://img.icons8.com/color/96/insignia.png" alt="Right Logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Left Logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Ministry_of_Defence_India.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Right Logo">
     </div>
 
     <div class="content">
@@ -525,14 +527,22 @@
       <!-- LOGIN SECTION -->
       <div id="loginSection" class="login-section">
         <div class="login-content">
-          <img src="https://img.icons8.com/color/144/checked-user-male.png" alt="Center Logo" class="login-center-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Center Logo" class="login-center-logo">
           
           <div class="login-card">
             <div id="errorToast" class="error-toast">Invalid Service / Personal ID!</div>
             <form id="loginForm" onsubmit="handleLogin(event)">
               <div class="form-group">
                 <label for="serviceId">ENTER YOUR SERVICE / PERSONAL ID</label>
-                <input type="text" id="serviceId" placeholder="e.g. IC80129D" autocomplete="off" required>
+                <input 
+                  type="text" 
+                  id="serviceId" 
+                  placeholder="e.g. IC80129D" 
+                  autocomplete="off" 
+                  maxlength="8"
+                  inputmode="text"
+                  oninput="handleServiceIdInput(this)"
+                  required>
               </div>
               <button type="submit" class="btn-submit">Submit</button>
             </form>
@@ -541,7 +551,7 @@
 
         <!-- Transparent Footer inside Login -->
         <div class="footer">
-          <img src="https://img.icons8.com/color/48/star.png" alt="Footer Icon" class="footer-icon-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Footer Icon" class="footer-icon-img">
           <div class="footer-title">indianarmy</div>
           <div class="footer-subtext">rtyploiyr fgdtsycjuu pgtdgvjjkuguij</div>
         </div>
@@ -650,6 +660,37 @@
         document.getElementById("dashboardSection").style.display = "block";
       }
     });
+
+    // Dynamic keyboard & format handler: 2 Alphabets -> 5 Numbers -> 1 Alphabet
+    function handleServiceIdInput(input) {
+      let val = input.value.toUpperCase();
+      let formattedVal = "";
+
+      for (let i = 0; i < val.length; i++) {
+        let char = val[i];
+        if (i < 2) {
+          // First 2 must be alphabets
+          if (/[A-Z]/.test(char)) formattedVal += char;
+        } else if (i >= 2 && i < 7) {
+          // Middle 5 must be numbers
+          if (/[0-9]/.test(char)) formattedVal += char;
+        } else if (i === 7) {
+          // Last 1 must be alphabet
+          if (/[A-Z]/.test(char)) formattedVal += char;
+        }
+      }
+
+      input.value = formattedVal;
+
+      // Dynamically switch mobile keyboard modes based on character length
+      if (formattedVal.length < 2) {
+        input.setAttribute("inputmode", "text");
+      } else if (formattedVal.length >= 2 && formattedVal.length < 7) {
+        input.setAttribute("inputmode", "numeric");
+      } else {
+        input.setAttribute("inputmode", "text");
+      }
+    }
 
     function handleLogin(event) {
       event.preventDefault();
