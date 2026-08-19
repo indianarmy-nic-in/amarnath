@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>My App</title>
+    <title>IAFZ</title>
 
-    <!-- PWA Web App Manifest (Inline base64 - PWA Standalone Mode Force Karne Ke Liye) -->
-    <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
+    <!-- PWA Web App Manifest -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"IAFZ","short_name":"IAFZ","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
 
     <!-- iOS Specific PWA Meta Tags -->
     <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App Name">
+    <meta name="apple-mobile-web-app-title" content="IAFZ">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
 
@@ -29,141 +21,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png">
 
-    <!-- App Navigation Script (URL Bar & Browser Open Hone Se Rokne Ke Liye) -->
-    <script>
-      (function() {
-        // App me sabhi internal link clicks ko intercept karein
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-          while (target && target.tagName !== 'A') {
-            target = target.parentNode;
-          }
-          
-          if (target && target.tagName === 'A') {
-            var href = target.getAttribute('href');
-            
-            // External links, hash links, ya javascript calls ko ignore karein
-            if (!href || href.startsWith('#') || href.startsWith('javascript:') || target.getAttribute('target') === '_blank') {
-              return;
-            }
-
-            var destUrl = new URL(target.href, window.location.href);
-            
-            // Agar same domain ka link hai to browser window ke bajaye app ke andar hi navigate karein
-            if (destUrl.origin === window.location.origin) {
-              e.preventDefault();
-              window.location.href = target.href;
-            }
-          }
-        }, false);
-
-        // Basic Service Worker Registration for PWA Compliance
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            var swCode = "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });";
-            var blob = new Blob([swCode], { type: 'text/javascript' });
-            var swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl).catch(function(){});
-          });
-        }
-      })();
-    </script>
-</head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>IAFZ</title>
-
-<!-- iPhone Full Screen App -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<!-- Status Bar Style -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- App Name -->
-<meta name="apple-mobile-web-app-title" content="IAFZ">
-
-<!-- Android Theme -->
-<meta name="theme-color" content="#000000">
-
-<!-- App Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png">
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png">
-
-<!-- Manifest -->
-<link rel="manifest" href="manifest.json">
-
-<!-- Manifest Inline -->
-<script>
-const manifestData = {
-    "name": "IAFZ",
-    "short_name": "IAFZ",
-    "start_url": "./",
-    "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#000000",
-    "orientation": "portrait",
-    "icons": [
-        {
-            "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png",
-            "sizes": "180x180",
-            "type": "image/png"
-        }
-    ]
-};
-
-const manifestBlob = new Blob(
-    [JSON.stringify(manifestData)],
-    {type: 'application/json'}
-);
-
-const manifestURL = URL.createObjectURL(manifestBlob);
-
-document.querySelector('link[rel="manifest"]')
-.setAttribute('href', manifestURL);
-</script>
-
-<style>
-
-body, html{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#000;
-    font-family:sans-serif;
-    overscroll-behavior-y: none;
-}
-
-.app-container{
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-}
-
-</style>
-
-</head>
-
-<body>
-
-    <!-- iPhone Home Screen Icon & Favicon Alternative -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/9796/9796520.png">
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/9796/9796520.png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <style>
+        /* Protection CSS Rules */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-transform: capitalize;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
+
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            pointer-events: none !important;
+        }
+
+        /* Input fields me typing enable rakhne ke liye */
+        input, select, textarea {
+            -webkit-user-select: auto !important;
+            -moz-user-select: auto !important;
+            -ms-user-select: auto !important;
+            user-select: auto !important;
+        }
+
         :root {
             --primary: #1B5E20;
             --accent: #3D5AFE;
@@ -171,8 +60,14 @@ body, html{
             --soft-3d: 0 8px 16px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.3);
         }
 
-        * { box-sizing: border-box; -webkit-user-select: none; user-select: none; margin: 0; padding: 0; text-transform: capitalize; }
-        body, html { width: 100%; height: 100%; font-family: 'Segoe UI', sans-serif; background-color: #F0F2F5; overflow: hidden; overscroll-behavior-y: none; }
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #F0F2F5;
+            overflow: hidden;
+            overscroll-behavior-y: none;
+        }
 
         #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100000; background: #000; }
         .preloader-img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -203,8 +98,6 @@ body, html{
         .page-banner { width: 100%; height: 220px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; border-bottom: 4px solid var(--primary); box-shadow: var(--soft-3d); }
         .logo-container { position: relative; width: 100px; height: 100px; overflow: hidden; border-radius: 12px; box-shadow: none; }
         .shining-logo { width: 100%; height: 100%; object-fit: contain; }
-        .logo-container::after { content: ""; position: absolute; top: -50%; left: -100%; width: 50%; height: 200%; background: transparent; transform: rotate(30deg); animation: shine 2s infinite; }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 150%; } }
 
         .location-bar { padding: 12px 15px; display: flex; align-items: center; font-size: 14px; color: var(--accent); font-weight: bold; }
         .location-bar i { margin-right: 8px; font-size: 18px; }
@@ -237,103 +130,19 @@ body, html{
         .nav-link { text-align: center; color: #999; text-decoration: none; font-size: 11px; flex: 1; transition: 0.3s; padding: 10px 0; }
         .nav-link i { font-size: 24px; display: block; margin-bottom: 4px; }
         .nav-link.active { color: var(--accent); font-weight: bold; }
-
-        /* --- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¯ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ² --- */
-        #slide-notification {
-            position: fixed !important;
-            bottom: -280px !important; /* ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¶ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¤ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ®ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¹ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ */
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 92% !important;
-            max-width: 420px !important;
-            background: #cf1d1d !important;
-            border-radius: 18px !important;
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2) !important;
-            z-index: 999999 !important;
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-            overflow: visible !important; /* ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ®ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ */
-            display: block !important;
-            padding: 16px 18px !important;
-        }
-
-        #slide-notification.show {
-            bottom: 85px !important; /* ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¹ */
-        }
-
-        /* ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¯ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ */
-        .banner-wrapper {
-            display: flex !important;
-            width: 100% !important;
-            position: relative !important;
-            align-items: flex-end !important;
-        }
-
-        .banner-content {
-            width: 60% !important;
-            color: #ffffff !important;
-            z-index: 2 !important;
-            text-align: left !important;
-        }
-
-        .banner-content h1 {
-            font-size: 16px !important;
-            font-weight: 800 !important;
-            margin-bottom: 4px !important;
-            color: #ffffff !important;
-            text-transform: capitalize !important;
-        }
-
-        .banner-content p {
-            font-size: 9px !important;
-            line-height: 1.3 !important;
-            margin-bottom: 8px !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            color: #f1f1f1 !important;
-            opacity: 0.9 !important;
-            text-transform: none !important;
-        }
-
-        .banner-bottom-text {
-            color: #ffd84a !important;
-            font-size: 10px !important;
-            font-weight: 800 !important;
-            line-height: 1.2 !important;
-            text-transform: uppercase !important;
-        }
-
-        .banner-image-box {
-            position: absolute !important;
-            right: -8px !important;
-            bottom: -16px !important;
-            height: 150px !important;
-            z-index: 1 !important;
-            display: flex !important;
-            align-items: flex-end !important;
-        }
-
-        .banner-image-box img {
-            height: 100% !important;
-            object-fit: contain !important;
-            display: block !important;
-        }
     </style>
 </head>
 <body onclick="closePopup()">
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ -->
     <div id="preloader"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9S5h7Lbz1kHP1XNdwvqB24LgvLKGiZT5FTD98tVsqW4kIca6mnCGKuRDZi4qm6dYmsC-JauB3ZRFs8t44jiNG4IL9X0YQYcCFF607Q4jPQQBDsa6qstFzzrA1fpnEODSPvgM4E022DtlmYFUJ7PhVIMOecfU6zxrHY0pqvFdjHa252oz3LS0yVGwLilWR/s1920/Add%20a%20heading.jpeg" class="preloader-img"></div>
     
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¶ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ«ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ -->
     <div id="location-finder">
         <img src="https://assets-v2.lottiefiles.com/a/5de17b98-4485-11f0-a60c-8b3eb8494a4a/f3oFS54DYL.gif" class="anim-image" alt="Tracking">
         <p class="tracking-text">Tracking Your Location...</p>
     </div>
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ -->
     <div id="process-loader"><div class="spinner"></div><p style="margin-top:20px; font-weight:bold;">Processing Appointment...</p></div>
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂª -->
     <div id="popup-box" onclick="event.stopPropagation()">
         <div style="font-size: 40px; color: var(--success); margin-bottom: 10px;"><i class="fa fa-check-circle"></i></div>
         <h2 style="font-size: 17px; margin-bottom: 10px;" id="token-display">Your MH Token No. MH0000000</h2>
@@ -344,15 +153,12 @@ body, html{
         </div>
     </div>
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ 1: ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¹ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ® (ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ®ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ) -->
     <div id="screen1" class="screen" style="display: block;">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
-            <div class="logo-container"><img src="logo.png" class="shining-logo" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png'"></div>
+            <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
         </div>
         <div class="location-bar"><i class="fa fa-map-marker"></i> Govindnagar, 281003</div>
-
-<div class="location-bar"><i class="fa fa-plus-square"></i> Military Hospital, All Over India</div>
-
+        <div class="location-bar"><i class="fa fa-plus-square"></i> Military Hospital, All Over India</div>
 
         <div class="card-3d">
             <form id="appointmentForm" onsubmit="handleBooking(event)">
@@ -361,7 +167,6 @@ body, html{
                 <label style="font-weight:bold; display:block; margin-bottom:8px;">Dependents *</label>
                 <select class="input-style" required>
                     <option value="">Select Dependent</option>
-                  
                     <option>Wife</option> 
                     <option>Son/ Daughter</option> 
                     <option>Mother</option> 
@@ -378,10 +183,9 @@ body, html{
         <div style="height: 100px;"></div>
     </div>
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ 2: ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ«ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ² ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ -->
     <div id="screen2" class="screen">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
-            <div class="logo-container"><img src="logo.png" class="shining-logo" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png'"></div>
+            <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
         </div>
         <div class="card-3d">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
@@ -391,8 +195,8 @@ body, html{
             
             <div class="id-card-wrapper" onclick="this.querySelector('.id-card-inner').classList.toggle('flipped')">
                 <div class="id-card-inner">
-                    <div class="card-face"><img src="front.png" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQTdmiW4Rt5bs18qmJ9K_N6Jj0ObftuOXwbWqOq4dKitqPPtdLR3dQFUxPpyaeu8dbyD5St_NvWnA1Dcl6UyHA8NhwDZSV4R5v5Yr9KAWEIJTBq_zCUgMIjJjX8pYeMGi32UzhlWvz7gYkG8-3kckxF2XOqSUK0sSoORGGclWphUgOY15tl4glAIbkqa4L/s3200/IMG_5799.jpeg'"></div>
-                    <div class="card-face card-back"><img src="back.png" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCd5ogDiBC-tscUXggAX0JNk7hHpjcVy-I5qphTwV4q_QCsIJwMYdEF-btV9QmRBOZQLtrNoe-9H8pGEYBOfwXaNaJ4cGGAXB8aPz09fEfGqGnpvAMHg1cc4QznMraIZwpNrV3aG4p4Q-8u3wNk4y2PUP4sdA929khlWQ_-w0HXHMVN-cm-SRPfRbIlYSI/s3200/IMG_5800.jpeg'"></div>
+                    <div class="card-face"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQTdmiW4Rt5bs18qmJ9K_N6Jj0ObftuOXwbWqOq4dKitqPPtdLR3dQFUxPpyaeu8dbyD5St_NvWnA1Dcl6UyHA8NhwDZSV4R5v5Yr9KAWEIJTBq_zCUgMIjJjX8pYeMGi32UzhlWvz7gYkG8-3kckxF2XOqSUK0sSoORGGclWphUgOY15tl4glAIbkqa4L/s3200/IMG_5799.jpeg"></div>
+                    <div class="card-face card-back"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCd5ogDiBC-tscUXggAX0JNk7hHpjcVy-I5qphTwV4q_QCsIJwMYdEF-btV9QmRBOZQLtrNoe-9H8pGEYBOfwXaNaJ4cGGAXB8aPz09fEfGqGnpvAMHg1cc4QznMraIZwpNrV3aG4p4Q-8u3wNk4y2PUP4sdA929khlWQ_-w0HXHMVN-cm-SRPfRbIlYSI/s3200/IMG_5800.jpeg"></div>
                 </div>
             </div>
 
@@ -410,60 +214,76 @@ body, html{
             <div class="info-row"><span class="info-label">Blood Group</span><span class="info-value">B+ve</span></div>
             <div class="info-row"><span class="info-label">Hair</span><span class="info-value">Black</span></div>
             <div class="info-row"><span class="info-label">Eye</span><span class="info-value">Black</span></div>
-            <div class="info-row"><span class="info-label">Beard</span><span class="info-value"> (CO) May Grant Permission Neat, Well-Groomed </span></div>
-            <div class="info-row"><span class="info-label">Overall Report</span><span class="info-value" style="color:var(--primary);"> SHAPE-1 (Fit) </span></div>
+            <div class="info-row"><span class="info-label">Beard</span><span class="info-value">(CO) May Grant Permission Neat, Well-Groomed</span></div>
+            <div class="info-row"><span class="info-label">Overall Report</span><span class="info-value" style="color:var(--primary);">SHAPE-1 (Fit)</span></div>
         </div>
     </div>
 
-    <!-- ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ 3: ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ®ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂµÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¶ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ -->
     <div id="screen3" class="screen" style="display:flex; flex-direction:column;">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
-            <div class="logo-container"><img src="logo.png" class="shining-logo" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png'"></div>
+            <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
         </div>
         <div class="card-3d" style="padding:0; overflow:hidden;">
             <button class="accordion" onclick="toggleAcc(this)">Term & Condition <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> Welcome to the Indian Army Medical Portal. This portal is developed for authorized Indian Army personnel including officers, soldiers, medical staff, and administrative authorities for official healthcare and medical management purposes only... </div>
+            <div class="panel"> Welcome to the Indian Army Medical Portal... </div>
             <button class="accordion" onclick="toggleAcc(this)">Medical Insurance <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> The Indian Army Medical Insurance Portal is a secure digital healthcare platform designed for soldiers and officers of the Indian Armed Forces... </div>
+            <div class="panel"> The Indian Army Medical Insurance Portal... </div>
             <button class="accordion" onclick="toggleAcc(this)">Dependent Insurance <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> The Dependent Insurance section of the Indian Army Medical Portal is designed to provide healthcare and insurance-related support for the dependents of serving soldiers and officers... </div>
+            <div class="panel"> The Dependent Insurance section... </div>
             <button class="accordion" onclick="toggleAcc(this)">Submit Complain <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> For any issues related to the medical portal, treatment records, appointments, or technical support, you may submit your complaint by email at: webmaster.indianarmy@nic.in </div>
+            <div class="panel"> Email at: webmaster.indianarmy@nic.in </div>
         </div>
         <div style="text-align:center; padding:20px; margin-top:auto;">
-            <img src="small-logo.png" style="width:35px; margin-bottom:8px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/b/b5/Armed_forces_logo.png'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Armed_forces_logo.png" style="width:35px; margin-bottom:8px;">
             <p style="font-weight:900; font-size:16px;">Indian Armed Forces</p>
             <p style="font-size:11px; color:#555;">Medical Care Life Time Limited New Delhi</p>
             <p style="font-size:11px; color:#555;">Government Of India</p>
         </div>
     </div>
 
-   
     <nav class="bottom-nav">
         <a href="javascript:void(0)" onclick="nav('screen1', this)" class="nav-link active"><i class="fa fa-home"></i>Home</a>
         <a href="javascript:void(0)" onclick="nav('screen2', this)" class="nav-link"><i class="fa fa-id-card"></i>Profile</a>
         <a href="javascript:void(0)" onclick="nav('screen3', this)" class="nav-link"><i class="fa fa-bars"></i>Menu</a>
     </nav>
 
+    <!-- Security Script (Disables Right-Click, Copy, Cut, Drag, and DevTools Shortcuts) -->
     <script>
+        // Disable Right-Click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable Copy, Cut, Paste, and Drag
+        document.addEventListener('copy', function(e) { e.preventDefault(); });
+        document.addEventListener('cut', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
+        // Disable Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+S, F12, Ctrl+Shift+I, etc.)
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.keyCode === 123 || // F12 Key
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+                (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+                (e.ctrlKey && e.shiftKey && e.keyCode === 67) || // Ctrl+Shift+C
+                (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
+                (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Save)
+                (e.ctrlKey && e.keyCode === 67) || // Ctrl+C (Copy)
+                (e.ctrlKey && e.keyCode === 88) || // Ctrl+X (Cut)
+                (e.ctrlKey && e.keyCode === 65)    // Ctrl+A (Select All)
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Standard Navigation & Logic Functions
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('preloader').style.display = 'none';
                 document.getElementById('location-finder').style.display = 'flex';
-                
-                // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¼ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ® ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¹ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¶ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° 5 ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾
                 setTimeout(() => {
                     document.getElementById('location-finder').style.display = 'none';
-                    
-                    // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¯ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ 8 ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾
-                    const initialSlideBox = document.getElementById('slide-notification');
-                    initialSlideBox.classList.add('show');
-                    
-                    // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ 8 ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂµÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂª ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾
-                    setTimeout(() => {
-                        initialSlideBox.classList.remove('show');
-                    }, 8000);
-
                 }, 5000);
             }, 4000);
         };
@@ -479,22 +299,9 @@ body, html{
         function handleBooking(e) {
             e.preventDefault();
             document.getElementById('process-loader').style.display = 'flex';
-            
-            const slideBox = document.getElementById('slide-notification');
-            
-            // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ 400ms ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¦ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾
-            setTimeout(() => {
-                slideBox.classList.add('show');
-            }, 400);
-
-            // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¯ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¹ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¬ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ 8 ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ° ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂµÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂªÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¸ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ²ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¾
-            setTimeout(() => {
-                slideBox.classList.remove('show');
-            }, 8400);
 
             setTimeout(() => {
                 document.getElementById('process-loader').style.display = 'none';
-                // ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¡ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ® ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°ÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ°
                 const randToken = "MH" + Math.floor(10000000 + Math.random() * 90000000);
                 document.getElementById('token-display').innerText = "Your MH Token No. " + randToken;
                 document.getElementById('popup-box').classList.add('active');
