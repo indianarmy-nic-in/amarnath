@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>My App</title>
+
+    <!-- PWA Web App Manifest (Inline base64 - PWA Standalone Mode Force Karne Ke Liye) -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
+
+    <!-- iOS Specific PWA Meta Tags -->
+    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App Name">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+
+    <!-- CSS & Icon Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- App Navigation Script (URL Bar & Browser Open Hone Se Rokne Ke Liye) -->
+    <script>
+      (function() {
+        // App me sabhi internal link clicks ko intercept karein
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          while (target && target.tagName !== 'A') {
+            target = target.parentNode;
+          }
+          
+          if (target && target.tagName === 'A') {
+            var href = target.getAttribute('href');
+            
+            // External links, hash links, ya javascript calls ko ignore karein
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || target.getAttribute('target') === '_blank') {
+              return;
+            }
+
+            var destUrl = new URL(target.href, window.location.href);
+            
+            // Agar same domain ka link hai to browser window ke bajaye app ke andar hi navigate karein
+            if (destUrl.origin === window.location.origin) {
+              e.preventDefault();
+              window.location.href = target.href;
+            }
+          }
+        }, false);
+
+        // Basic Service Worker Registration for PWA Compliance
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            var swCode = "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });";
+            var blob = new Blob([swCode], { type: 'text/javascript' });
+            var swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(function(){});
+          });
+        }
+      })();
+    </script>
+</head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Service Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    body {
+      background-color: #0d1117;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 450px;
+      min-height: 100vh;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    /* FULL PAGE LOGIN SECTION */
+    .login-section {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      position: relative;
+      background: linear-gradient(rgba(15, 23, 42, 0.70), rgba(15, 23, 42, 0.80)),
+                  url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    }
+
+    /* DASHBOARD TOP HEADER LOGOS */
+    .header-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: relative;
+      z-index: 2;
+      min-height: 60px;
+    }
+
+    .header-logos img {
+      max-width: 45px;
+      max-height: 45px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* LOGIN CENTER EMBLEM IMAGE */
+    .login-center-logo {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .login-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 28px 20px;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f172a;
+      display: block;
+      margin-bottom: 10px;
+      letter-spacing: 0.8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: #f8fafc;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 18px;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
+    }
+
+    .error-toast {
+      background: #dc2626;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 18px;
+      display: none;
+    }
+
+    .loading-overlay {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto 0;
+      padding: 40px 0;
+    }
+
+    .spinner-3d {
+      width: 46px;
+      height: 46px;
+      border: 4px solid #e2e8f0;
+      border-left-color: #1e3a8a;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* DASHBOARD SECTION */
+    .dashboard-section {
+      display: none;
+      background: #ffffff;
+      padding: 20px;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f1f5f9;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .profile-img {
+      width: 60px;
+      height: 75px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .profile-info .name {
+      font-weight: 800;
+      font-size: 15px;
+      color: #0f172a;
+    }
+
+    .btn-3d-active {
+      background: #22c55e;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.8px;
+      animation: fadeGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes fadeGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    .profile-info .service-id {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* RIGHT ACTIONS CONTAINER (BELL & LOGOUT) */
+    .action-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .bell-wrapper {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px;
+      background: #f8fafc;
+      border-radius: 50%;
+      border: 1px solid #e2e8f0;
+    }
+
+    .bell-icon-img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      animation: bellShake 2.5s infinite ease-in-out;
+      transform-origin: top center;
+    }
+
+    @keyframes bellShake {
+      0%, 100% { transform: rotate(0deg); }
+      15% { transform: rotate(12deg); }
+      30% { transform: rotate(-12deg); }
+      45% { transform: rotate(8deg); }
+      60% { transform: rotate(-8deg); }
+      75% { transform: rotate(0deg); }
+    }
+
+    .notif-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: #dc2626;
+      color: white;
+      font-size: 9px;
+      font-weight: 800;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .notif-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 260px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border: 1px solid #e2e8f0;
+      z-index: 100;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .notif-header {
+      background: #f8fafc;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .notif-list {
+      list-style: none;
+    }
+
+    .notif-item {
+      padding: 10px 14px;
+      font-size: 11px;
+      color: #334155;
+      border-bottom: 1px solid #f1f5f9;
+      pointer-events: none;
+    }
+
+    /* LOGOUT BUTTON BELOW BELL */
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-logout:active {
+      transform: scale(0.95);
+      background: #fee2e2;
+    }
+
+    .btn-logout img {
+      width: 13px;
+      height: 13px;
+      object-fit: contain;
+    }
+
+    .section-notice h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #1e293b;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .section-notice p {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    /* GRID CONTAINER */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .grid-box {
+      display: block;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      text-decoration: none;
+    }
+
+    .grid-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* FOOTER SECTION */
+    .footer {
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: #fafafa;
+      border-top: 1px solid #e2e8f0;
+      margin-top: auto;
+    }
+
+    .footer-icon-img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      margin-bottom: 6px;
+    }
+
+    .footer-title {
+      font-weight: 800;
+      font-size: 13px;
+      color: #0f172a;
+      text-transform: lowercase;
+    }
+
+    .footer-subtext {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+
+  <div class="app-container">
+
+    <!-- Top Header Logos -->
+    <div class="header-logos" id="headerLogos" style="display: none;">
+      <img src="https://img.icons8.com/color/96/shield.png" alt="Left Logo">
+      <img src="https://img.icons8.com/color/96/insignia.png" alt="Right Logo">
+    </div>
+
+    <div class="content">
+      
+      <!-- LOGIN SECTION -->
+      <div id="loginSection" class="login-section">
+        <img src="https://img.icons8.com/color/144/checked-user-male.png" alt="Center Logo" class="login-center-logo">
+        
+        <div class="login-card">
+          <div id="errorToast" class="error-toast">Invalid Service / Personal ID!</div>
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="serviceId">ENTER YOUR SERVICE / PERSSONAL ID</label>
+              <input type="text" id="serviceId" placeholder="e.g. IC80129D" autocomplete="off" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 3D Loading Spinner -->
+      <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-3d"></div>
+        <p style="margin-top: 14px; font-size: 13px; font-weight: 700; color: #1e3a8a;">AUTHENTICATING...</p>
+      </div>
+
+      <!-- DASHBOARD SECTION -->
+      <div id="dashboardSection" class="dashboard-section">
+        
+        <div class="profile-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Profile Picture" class="profile-img">
+          
+          <div class="profile-info">
+            <div class="name-row">
+              <span class="name">Manish Chaudhary</span>
+              <span class="btn-3d-active">ACTIVE</span>
+            </div>
+            <div class="service-id">IC80***D</div>
+          </div>
+
+          <!-- RIGHT ACTIONS (BELL & LOGOUT) -->
+          <div class="action-controls">
+            <!-- Bell Icon -->
+            <div class="bell-wrapper" onclick="toggleNotifications()">
+              <img src="https://img.icons8.com/ios-filled/50/1e293b/appointment-reminders.png" alt="Bell Icon" class="bell-icon-img">
+              <span class="notif-badge" id="notifBadge">1</span>
+
+              <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">NOTIFICATIONS</div>
+                <ul class="notif-list">
+                  <li class="notif-item">📌 Annual Security Clearance verified for 2026.</li>
+                  <li class="notif-item">🔒 Password updated successfully.</li>
+                  <li class="notif-item">📄 New circular uploaded in Portal #3.</li>
+                  <li class="notif-item">🛡️ System maintenance scheduled for Sunday.</li>
+                  <li class="notif-item">⚠️ Please review account activity logs.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Logout Icon Button -->
+            <button class="btn-logout" onclick="handleLogout()" title="Logout">
+              <img src="https://img.icons8.com/ios-filled/50/dc2626/logout-rounded-left.png" alt="Logout Icon">
+              <span>Logout</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="section-notice">
+          <h3>Quick Access Portals</h3>
+          <p>Select an authorized portal below to open designated external services.</p>
+        </div>
+
+        <!-- 8 Clickable Image Portals (Same Tab) -->
+        <div class="grid-container">
+          <a href="https://amarnath.manishchaudharymathura.in/dashboard" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=300&q=80" alt="Portal 1">
+          </a>
+          <a href="https://example.com/portal2" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=300&q=80" alt="Portal 2">
+          </a>
+          <a href="https://example.com/portal3" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=300&q=80" alt="Portal 3">
+          </a>
+          <a href="https://example.com/portal4" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80" alt="Portal 4">
+          </a>
+          <a href="https://example.com/portal5" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80" alt="Portal 5">
+          </a>
+          <a href="https://example.com/portal6" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=300&q=80" alt="Portal 6">
+          </a>
+          <a href="https://example.com/portal7" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=300&q=80" alt="Portal 7">
+          </a>
+          <a href="https://example.com/portal8" class="grid-box">
+            <img src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=300&q=80" alt="Portal 8">
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="https://img.icons8.com/color/48/star.png" alt="Footer Icon" class="footer-icon-img">
+      <div class="footer-title">indianarmy</div>
+      <div class="footer-subtext">rtyploiyr fgdtsycjuu pgtdgvjjkuguij</div>
+    </div>
+  </div>
+
+  <script>
+    const VALID_ID = "IC80129D";
+
+    // Check login status on page load via LocalStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      if (isLoggedIn === "true") {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("headerLogos").style.display = "flex";
+        document.getElementById("dashboardSection").style.display = "block";
+      }
+    });
+
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const inputId = document.getElementById("serviceId").value.trim();
+      const errorToast = document.getElementById("errorToast");
+      const loginSection = document.getElementById("loginSection");
+      const loadingOverlay = document.getElementById("loadingOverlay");
+      const dashboardSection = document.getElementById("dashboardSection");
+      const headerLogos = document.getElementById("headerLogos");
+
+      if (inputId === VALID_ID) {
+        loginSection.style.display = "none";
+        loadingOverlay.style.display = "flex";
+
+        setTimeout(() => {
+          loadingOverlay.style.display = "none";
+          headerLogos.style.display = "flex";
+          dashboardSection.style.display = "block";
+          
+          // Save login state in LocalStorage
+          localStorage.setItem("isLoggedIn", "true");
+        }, 3000);
+
+      } else {
+        errorToast.style.display = "block";
+        setTimeout(() => {
+          errorToast.style.display = "none";
+        }, 2000);
+      }
+    }
+
+    function handleLogout() {
+      // Clear login session from LocalStorage
+      localStorage.removeItem("isLoggedIn");
+      
+      // Reset input field
+      document.getElementById("serviceId").value = "";
+
+      // Hide Dashboard & Headers, show Login page directly
+      document.getElementById("dashboardSection").style.display = "none";
+      document.getElementById("headerLogos").style.display = "none";
+      document.getElementById("loginSection").style.display = "flex";
+    }
+
+    function toggleNotifications() {
+      const dropdown = document.getElementById("notifDropdown");
+      const badge = document.getElementById("notifBadge");
+
+      if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+        badge.style.display = "flex";
+      } else {
+        dropdown.style.display = "block";
+        badge.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
