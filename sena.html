@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>My App</title>
+
+    <!-- PWA Web App Manifest (Inline base64 - PWA Standalone Mode Force Karne Ke Liye) -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
+
+    <!-- iOS Specific PWA Meta Tags -->
+    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App Name">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+
+    <!-- CSS & Icon Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- App Navigation Script (URL Bar & Browser Open Hone Se Rokne Ke Liye) -->
+    <script>
+      (function() {
+        // App me sabhi internal link clicks ko intercept karein
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          while (target && target.tagName !== 'A') {
+            target = target.parentNode;
+          }
+          
+          if (target && target.tagName === 'A') {
+            var href = target.getAttribute('href');
+            
+            // External links, hash links, ya javascript calls ko ignore karein
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || target.getAttribute('target') === '_blank') {
+              return;
+            }
+
+            var destUrl = new URL(target.href, window.location.href);
+            
+            // Agar same domain ka link hai to browser window ke bajaye app ke andar hi navigate karein
+            if (destUrl.origin === window.location.origin) {
+              e.preventDefault();
+              window.location.href = target.href;
+            }
+          }
+        }, false);
+
+        // Basic Service Worker Registration for PWA Compliance
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            var swCode = "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });";
+            var blob = new Blob([swCode], { type: 'text/javascript' });
+            var swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(function(){});
+          });
+        }
+      })();
+    </script>
+</head>
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <!-- Web App & iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Secure Service Portal</title>
+    
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= Core Styles & Variables ================= */
+        :root {
+            --bg-color: #0f172a;
+            --dashboard-bg: rgba(255, 255, 255, 0.96);
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --accent-color: #1d4ed8;
+            --success-color: #10b981;
+        }
+
+        [data-theme="dark"] {
+            --dashboard-bg: rgba(15, 23, 42, 0.96);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --accent-color: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+            object-fit: cover;
+        }
+
+        html, body {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--bg-color);
+            touch-action: none;
+        }
+
+        /* Application Container */
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDC5080TbaO_BSYEJSZn4Uw5yURZgtJ-5ZklY5hMU1-LDHUSUDb1nM0DLEcLDBEewKBUGpPpKwjW9d3G1G9I-oyxEuHk5uymPuTAQZ9hOnyTpJVraJQvkr4O1x4HVuLwxtqRl39ztlyr7eXLAdsa5F1aD9iBuMRJeASBUpiOxIPFDDG5Yg2bhJa2e_nzc/s2640/Realise%20On.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* ================= Full Screens ================= */
+        .full-screen {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 999;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .preloader-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .success-tick {
+            font-size: 85px;
+            color: var(--success-color);
+            display: none; 
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* PIN Lock Screen */
+        #auth-screen {
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .pin-box-container {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .pin-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #38bdf8;
+            background: transparent;
+        }
+        .pin-dot.filled {
+            background: #38bdf8;
+        }
+        .pin-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 70px);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .pin-btn {
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pin-btn:active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Wrong PIN Error Text Styling */
+        #pin-error-msg {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 700;
+            height: 20px;
+            margin-top: 5px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        #pin-error-msg.show {
+            opacity: 1;
+        }
+
+        /* Shake Animation for Wrong PIN */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        .shake-effect {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+
+        /* ================= Dashboard Layout ================= */
+        #dashboard {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            background: var(--dashboard-bg);
+        }
+
+        .app-content-scrollable {
+            flex-grow: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+            padding-top: env(safe-area-inset-top, 20px); 
+            padding-bottom: 20px;
+        }
+
+        /* Top Header & Theme Switcher */
+        .top-header-section {
+            width: 100%;
+            background: transparent;
+        }
+        .top-logos {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            align-items: center;
+        }
+        .top-logos img { width: 90px; height: 45px; border-radius: 0%; }
+        
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-banner-container {
+            width: 100%;
+            aspect-ratio: 16 / 6;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .banner-slider-track {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .header-banner {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .center-identity {
+            text-align: center;
+            padding: 20px 10px 10px 10px;
+        }
+        .center-identity img { width: 55px; height: 55px; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        .center-identity h3 { font-size: 16px; margin-top: 8px; color: var(--text-main); font-weight: 800; }
+        .center-identity p { font-size: 12px; color: var(--text-sub); font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+
+        /* Profile Layout */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .profile-img { width: 65px; height: 85px; border-radius: 8px; margin-right: 15px; }
+        .profile-info h2 { font-size: 17px; color: var(--text-main); font-weight: 800; }
+        .profile-info p { font-size: 13px; color: var(--text-sub); margin-top: 2px; font-weight: 500; }
+        .profile-info .regiment { font-weight: 800; color: var(--accent-color); margin-top: 4px; display: inline-block; }
+
+        .profile-desc-text {
+            padding: 5px 20px 15px 20px;
+            font-size: 12.5px;
+            color: var(--text-sub);
+            text-align: justify;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* Search & Filter Bar */
+        .search-filter-container {
+            padding: 0 15px 10px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 11px 15px 11px 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 13.5px;
+            outline: none;
+        }
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+        .filter-tags {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+        .filter-tags::-webkit-scrollbar { display: none; }
+        .filter-tag {
+            padding: 5px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 11.5px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filter-tag.active {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        /* Dropdowns with File Icons */
+        .dropdown-container { padding: 5px 15px; }
+        .dropdown-btn {
+            background: var(--card-bg);
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .dropdown-btn-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dropdown-btn-content i {
+            color: var(--accent-color);
+            font-size: 15px;
+        }
+        .dropdown-content {
+            display: none;
+            padding: 5px 0 15px 0;
+            text-align: center;
+        }
+        .dropdown-content.active { display: block; }
+        .a4-thumbnail {
+            width: 100%;
+            max-width: 250px;
+            aspect-ratio: 1 / 1.414;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            cursor: zoom-in;
+            pointer-events: auto; 
+        }
+
+        /* Security & Guidelines Notes */
+        .notes-section {
+            padding: 15px;
+            margin: 5px 15px 15px 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .notes-section h3 {
+            font-size: 13px;
+            color: var(--text-main);
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .notes-section h3 i {
+            color: var(--accent-color);
+        }
+        .notes-list {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .notes-list li {
+            font-size: 12px;
+            color: var(--text-sub);
+            font-weight: 600;
+            line-align: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            pointer-events: none; /* क्लिक न होने वाले पॉइंट्स */
+        }
+        .notes-list li i {
+            color: var(--success-color);
+            font-size: 11px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ================= Support Section ================= */
+        .extra-support-section {
+            padding: 15px;
+            margin: 0 15px 15px 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .extra-support-section h3 {
+            font-size: 13px;
+            color: var(--text-main);
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+        .extra-support-section h3 i {
+            color: var(--accent-color);
+        }
+        .non-clickable-points {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .non-clickable-points li {
+            font-size: 11.5px;
+            color: var(--text-sub);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+        .non-clickable-points li i {
+            color: var(--accent-color);
+            font-size: 10px;
+        }
+
+        /* एक्शन बटन्स ग्रिड */
+        .action-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .support-action-btn {
+            background: rgba(29, 78, 216, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-align: center;
+        }
+        .support-action-btn:active {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+        .support-action-btn i {
+            color: var(--accent-color);
+        }
+        .support-action-btn:active i {
+            color: #ffffff;
+        }
+
+        /* रियल टाइम, लोकेशन और डेट बार */
+        .session-status-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11px;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+        .session-status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .session-status-row strong {
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        /* Fixed Bottom Footer */
+        .footer-section {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 12px 10px 15px 10px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+        }
+        .footer-section img { width: 36px; height: 36px; border-radius: 50%; margin-bottom: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .footer-section h4 { font-size: 11.5px; color: var(--text-main); font-weight: 800; }
+        .footer-section p { font-size: 10.5px; color: var(--text-sub); margin-top: 2px; font-weight: 600; text-transform: uppercase; }
+
+        /* ================= Gallery Zoom Overlay ================= */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000000;
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+        }
+        .zoom-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .zoom-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform-origin: center center;
+            pointer-events: auto;
+            will-change: transform;
+        }
+        .zoom-img.smooth-trans {
+            transition: transform 0.25s ease-out;
+        }
+        
+        .security-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 18px;
+            font-weight: 900;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 10001;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .zoom-action-sheet {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 10002;
+        }
+        .zoom-action-sheet span {
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .close-zoom {
+            position: absolute;
+            top: env(safe-area-inset-top, 20px); 
+            right: 20px;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10003;
+            background: rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="app-container">
+
+        <!-- 1. Validation Loading Screen -->
+        <div id="loading-screen" class="full-screen">
+            <img src="https://placehold.co/100x100/10b981/ffffff?text=Secure" alt="Secure Logo" class="preloader-img" id="loading-image">
+            <i class="fa-solid fa-circle-check success-tick" id="success-icon"></i>
+            <p id="loading-text" style="margin-top: 25px; font-weight: 800; color: #10b981; font-size: 15px; letter-spacing: 1px;">VERIFYING CREDENTIALS...</p>
+        </div>
+
+        <!-- 2. PIN Lock Authentication Screen -->
+        <div id="auth-screen" class="full-screen">
+            <i class="fa-solid fa-lock" style="font-size: 45px; color: #38bdf8; margin-bottom: 10px;"></i>
+            <h3 style="color: #ffffff; font-size: 18px; font-weight: 700;">Enter Security PIN</h3>
+            <p style="color: #94a3b8; font-size: 12px; margin-top: 2px;">Service Digital Locker</p>
+            
+            <div class="pin-box-container" id="pin-container-box">
+                <div class="pin-dot" id="dot-0"></div>
+                <div class="pin-dot" id="dot-1"></div>
+                <div class="pin-dot" id="dot-2"></div>
+                <div class="pin-dot" id="dot-3"></div>
+            </div>
+
+            <!-- Wrong PIN Error Text -->
+            <div id="pin-error-msg">Wrong PIN</div>
+
+            <div class="pin-pad">
+                <button class="pin-btn" onclick="pressPin('1')">1</button>
+                <button class="pin-btn" onclick="pressPin('2')">2</button>
+                <button class="pin-btn" onclick="pressPin('3')">3</button>
+                <button class="pin-btn" onclick="pressPin('4')">4</button>
+                <button class="pin-btn" onclick="pressPin('5')">5</button>
+                <button class="pin-btn" onclick="pressPin('6')">6</button>
+                <button class="pin-btn" onclick="pressPin('7')">7</button>
+                <button class="pin-btn" onclick="pressPin('8')">8</button>
+                <button class="pin-btn" onclick="pressPin('9')">9</button>
+                <button class="pin-btn" style="visibility: hidden;"></button>
+                <button class="pin-btn" onclick="pressPin('0')">0</button>
+                <button class="pin-btn" onclick="clearPin()"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
+        </div>
+
+        <!-- Main App Dashboard -->
+        <div id="dashboard">
+            
+            <div class="app-content-scrollable">
+                
+                <div class="top-header-section">
+                    <div class="top-logos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/960px-Flag_of_Indian_Army.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Left Logo">
+                        
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle Theme">
+                                <i class="fa-solid fa-moon"></i>
+                            </button>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJwSa5mBD1AEcmdfQiDr7xK5G1HGajd7hjtnBmx158w&s=10" alt="Right Logo">
+                        </div>
+                    </div>
+                    
+                    <!-- Auto-sliding Dual Header Banners -->
+                    <div class="header-banner-container">
+                        <div class="banner-slider-track" id="banner-track">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcOKAi0QgPRWEmQBgpdker4ar5WLnKYpP8NszxdIvZ21pwAEbyDfngSnGK7NZBmosKckR9yKeMOJwyAWUGzvoLMUS3InxuhZl9LEtGHME7PhU8lb66_xYHaSej_BWtlAL0xmSAPPSrkZiTnKo9NLt4PbpBZMTSv8s-yO2tdtmqxVvGvJM03EUr3Ehy79Bi/s754/SERVICE%20DIGITAL%20LOCKER%20-%201.jpeg" alt="Header Banner 1" class="header-banner">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBYAzLdtQT5u57BDEkBzTUEyH3rCW_Xm2EUJfMOraNdz9xqLDjX6DRGC9YzUSCby4-q4QF5QALZErfbJZncq9OzqXfUIsC_EIEO-ZE2JykEUzv8VOvjDsIX6PL8mzqnXwwAKke-f4hdwhHJWJZn9cZ-ZTS7jBuiEJnVi1nSvL0Rcjmn09hhiy1tGM294IQ/s754/SERVICE%20DIGITAL%20LOCKER%20-%202.jpeg" alt="Header Banner 2" class="header-banner">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center-identity">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk7ZBfd-biiGz1gi_nufmvEcZ_zPePhYM5k1IdILNPlv2tgYN5KlY0y6DQ7r-gOasSRd8UDv38x5enLj_2TuBlU7gWpuNXMF01uTmeI0vluaRHJettLM74rCsv5xfVZ_HBCi0HCZYH291OxhlcVxeCMFx8NGs50mniu7rfl5mzL_NYDPfgvfkwEMZriPK8/s1800/Copy%20of%20SGMC%20NEW%20-%203.jpeg" alt="Center Logo">
+                    <h3>Service Digital Locker</h3>
+                    <p>Indian Army</p>
+                </div>
+
+                <div class="profile-section">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2v3uXiABl9Z7iW8Y56f46sJKDRdNEIs2Qt5wa-4Gu8oI_Y4qQd3uHgqiGMv1X-eWBhByGL1IECnouUzpdY_PrrDUbbrkjKX_BG_-amZ_lQ3Ku8K0-O7Csl4jSpUozSBTT8QaEM3fJEJV7xb0xFaoajawHQcrOefbuBKUbAvWTohNCYENPlbDUiy_mAUQ/s1208/2FC59BDC-5D98-47FC-9982-51549262B6BE.jpeg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <h2>Captain Manish Chaudhary</h2>
+                        <p>Staff Officer Grade II</p>
+                        <p class="regiment">18 DOGRA</p>
+                        <p>IC80129D</p>
+                    </div>
+                </div>
+
+                <div class="profile-desc-text">
+                    This information system is highly secure and restricted to authorized military personnel only. Documents stored in this digital locker are classified as strictly confidential.
+                </div>
+
+                <!-- Search and Filter Bar -->
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="doc-search-input" placeholder="Search confidential documents..." onkeyup="filterDocuments()">
+                    </div>
+                    <div class="filter-tags">
+                        <div class="filter-tag active" onclick="setFilter('all', this)">All Files</div>
+                        <div class="filter-tag" onclick="setFilter('service', this)">Service Records</div>
+                        <div class="filter-tag" onclick="setFilter('medical', this)">Medical</div>
+                        <div class="filter-tag" onclick="setFilter('orders', this)">Official Orders</div>
+                    </div>
+                </div>
+
+                <!-- Document Dropdown List -->
+                <div class="dropdown-container" id="dropdown-list"></div>
+
+                <!-- Security & Guidelines Notes -->
+                <div class="notes-section">
+                    <h3><i class="fa-solid fa-circle-info"></i> Security Guidelines</h3>
+                    <ul class="notes-list">
+                        <li><i class="fa-solid fa-check"></i><span>All digital records and confidential documents are encrypted.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Unauthorized distribution or copying is strictly prohibited.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Ensure your 4-digit security PIN is kept confidential.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Use the built-in search bar to quickly locate specific records.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Tap thumbnails to open the high-resolution secure zoom view.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Always lock your active session after document verification.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section with Real Data and GPS Location -->
+                <div class="extra-support-section">
+                    <h3><i class="fa-solid fa-sliders"></i> Portal Tools & Session Info</h3>
+                    
+                    <ul class="non-clickable-points">
+                        <li><i class="fa-solid fa-shield"></i> Node Status: Secured via Defense Gateway Node-04</li>
+                        <li><i class="fa-solid fa-lock"></i> Encryption Type: End-to-End Military Grade AES-256</li>
+                    </ul>
+
+                    <div class="action-buttons-grid">
+                        <button class="support-action-btn" onclick="alert('Exporting Verified Ledger Summary...')">
+                            <i class="fa-solid fa-download"></i> Export Summary
+                        </button>
+                        <button class="support-action-btn" onclick="alert('Checking Audit Logs from Mathura HQ...')">
+                            <i class="fa-solid fa-shield-halved"></i> Audit Logs
+                        </button>
+                    </div>
+
+                    <!-- Live Session, Location & Clock Box -->
+                    <div class="session-status-box">
+                        <div class="session-status-row">
+                            <span>Last Seen Session:</span>
+                            <strong id="last-seen-time">Loading...</strong>
+                        </div>
+                        <div class="session-status-row">
+                            <span>Active Portal:</span>
+                            <strong id="user-geo-location">Fetching Location...</strong>
+                        </div>
+                        <div class="session-status-row">
+                            <span>System Date & Time:</span>
+                            <strong id="live-system-clock">Loading...</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Indian_Army_Circular_Insignia.svg/250px-Indian_Army_Circular_Insignia.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" alt="Footer Logo">
+                <h4> IHQ of MoD (Army) </h4>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Gallery Zoom Overlay -->
+    <div id="zoom-modal" class="zoom-overlay">
+        <div class="close-zoom" onclick="closeZoomModal()">&times;</div>
+        <div class="security-watermark">CONFIDENTIAL - CAPT MANISH CHAUDHARY</div>
+        <div class="zoom-container" id="zoom-container">
+            <img src="" id="target-zoom-img" class="zoom-img" alt="Confidential Document">
+        </div>
+        <div class="zoom-action-sheet">
+            <span><i class="fa-solid fa-lock"></i> Secure View Only (Encrypted)</span>
+        </div>
+    </div>
+
+    <script>
+        // Security Lockdowns
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.shiftKey && e.keyCode == 74) || (e.ctrlKey && e.keyCode == 85)) {
+                return false;
+            }
+        };
+        document.addEventListener('copy', function(e){ e.preventDefault(); });
+
+        // Theme Switcher Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        }
+
+        // PIN Lock Variables & Logic
+        let enteredPin = "";
+        const correctPin = "8755";
+
+        function pressPin(digit) {
+            if (enteredPin.length < 4) {
+                enteredPin += digit;
+                updatePinDots();
+                if (enteredPin.length === 4) {
+                    setTimeout(verifyPin, 200);
+                }
+            }
+        }
+
+        function clearPin() {
+            enteredPin = "";
+            updatePinDots();
+        }
+
+        function updatePinDots() {
+            for (let i = 0; i < 4; i++) {
+                let dot = document.getElementById(`dot-${i}`);
+                if (i < enteredPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function verifyPin() {
+            if (enteredPin === correctPin) {
+                // सेट करें "Last Seen" जब पोर्टल खुला (या पिछला सेशन टाइम रिकॉर्ड करें)
+                recordLastSeenTime();
+                
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'flex';
+                
+                startLiveClock(); // डिवाइस का रियल टाइम चालू करें
+                requestUserLocation(); // लोकेशन परमिशन मांगें
+            } else {
+                triggerWrongPinEffects();
+            }
+        }
+
+        // रॉन्ग पिन पर शेक इफ़ेक्ट
+        function triggerWrongPinEffects() {
+            const boxContainer = document.getElementById('pin-container-box');
+            const errorMsg = document.getElementById('pin-error-msg');
+            
+            errorMsg.classList.add('show');
+            boxContainer.classList.add('shake-effect');
+
+            setTimeout(() => {
+                boxContainer.classList.remove('shake-effect');
+                clearPin();
+            }, 400);
+
+            setTimeout(() => {
+                errorMsg.classList.remove('show');
+            }, 1200);
+        }
+
+        // Boot Sequence
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loading-image').style.display = 'none';
+                document.getElementById('success-icon').style.display = 'block';
+                document.getElementById('loading-text').innerText = 'VERIFICATION SUCCESSFUL';
+                
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('auth-screen').style.display = 'flex';
+                }, 1000);
+
+            }, 1500);
+            
+            buildSecureDropdowns();
+            startBannerSlider();
+        };
+
+        // Dual Header Banner Auto Slider
+        function startBannerSlider() {
+            const track = document.getElementById('banner-track');
+            let bannerIndex = 0;
+            setInterval(function() {
+                bannerIndex = (bannerIndex === 0) ? 1 : 0;
+                track.style.transform = `translateX(-${bannerIndex * 50}%)`;
+            }, 2000);
+        }
+
+        // 1. रियल टाइम (Device Live Clock)
+        function startLiveClock() {
+            setInterval(() => {
+                const now = new Date();
+                const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                document.getElementById('live-system-clock').innerText = now.toLocaleDateString('en-GB', options);
+            }, 1000);
+        }
+
+        // 2. Last Seen Time सेट करना
+        function recordLastSeenTime() {
+            const now = new Date();
+            const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('last-seen-time').innerText = "Today, " + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // 3. रियल जियोलोकेशन (GPS Location Fetching)
+        function requestUserLocation() {
+            const locationElement = document.getElementById('user-geo-location');
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        try {
+                            // मुफ्त और तेज रिवर्स जियोकोडिंग API का उपयोग शहर और राज्य पता करने के लिए
+                            let response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                            let data = await response.json();
+                            let city = data.address.city || data.address.town || data.address.village || data.address.state_district || "Unknown Area";
+                            let state = data.address.state || "";
+                            locationElement.innerText = `${city}, ${state} (GPS Secured)`;
+                        } catch (err) {
+                            locationElement.innerText = `Lat: ${lat.toFixed(2)}, Lon: ${lon.toFixed(2)}`;
+                        }
+                    },
+                    (error) => {
+                        locationElement.innerText = "Location Access Denied ";
+                    },
+                    { timeout: 10000 }
+                );
+            } else {
+                locationElement.innerText = "Mathura HQ (GPS Unsupported)";
+            }
+        }
+
+        // Document Data Array
+        const secureDocuments = [
+            { title: "Confidential Document - 01", category: "service", img: "https://placehold.co/1000x1414/e2e8f0/0f172a?text=Service+Record+01" },
+            { title: "Confidential Document - 02", category: "medical", img: "https://placehold.co/1000x1414/0f172a?text=Medical+Report+02" },
+            { title: "Confidential Document - 03", category: "orders", img: "https://placehold.co/1000x1414/e2e8f0/0f172a?text=Official+Order+03" },
+            { title: "Confidential Document - 04", category: "service", img: "https://placehold.co/1000x1414/e2e8f0/0f172a?text=Service+Record+04" },
+            { title: "Confidential Document - 05", category: "orders", img: "https://placehold.co/1000x1414/e2e8f0/0f172a?text=Official+Order+05" }
+        ];
+
+        // Dynamic Dropdowns Generation
+        function buildSecureDropdowns(filteredDocs = secureDocuments) {
+            const container = document.getElementById('dropdown-list');
+            container.innerHTML = "";
+
+            if(filteredDocs.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-sub); font-size:13px; padding:15px;">No documents found</p>`;
+                return;
+            }
+
+            filteredDocs.forEach((doc) => {
+                let btn = document.createElement('button');
+                btn.className = 'dropdown-btn';
+                
+                btn.innerHTML = `
+                    <div class="dropdown-btn-content">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>${doc.title}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: var(--text-sub);"></i>
+                `;
+                
+                let content = document.createElement('div');
+                content.className = 'dropdown-content';
+                
+                let img = document.createElement('img');
+                img.className = 'a4-thumbnail';
+                img.src = doc.img;
+                img.onclick = function() { openZoomModal(doc.img); };
+
+                content.appendChild(img);
+                
+                btn.onclick = function() {
+                    let activeItems = document.querySelectorAll('.dropdown-content.active');
+                    activeItems.forEach(item => {
+                        if (item !== content) item.classList.remove('active');
+                    });
+                    content.classList.toggle('active');
+                };
+
+                container.appendChild(btn);
+                container.appendChild(content);
+            });
+        }
+
+        // Search & Category Filter
+        let currentCategory = 'all';
+
+        function setFilter(category, element) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-tag').forEach(tag => tag.classList.remove('active'));
+            element.classList.add('active');
+            filterDocuments();
+        }
+
+        function filterDocuments() {
+            let query = document.getElementById('doc-search-input').value.toLowerCase();
+            let filtered = secureDocuments.filter(doc => {
+                let matchesCategory = (currentCategory === 'all' || doc.category === currentCategory);
+                let matchesQuery = doc.title.toLowerCase().includes(query);
+                return matchesCategory && matchesQuery;
+            });
+            buildSecureDropdowns(filtered);
+        }
+
+        // Gallery Zoom Engine
+        const zoomModal = document.getElementById('zoom-modal');
+        const zoomImg = document.getElementById('target-zoom-img');
+        const zoomContainer = document.getElementById('zoom-container');
+
+        let scale = 1, initialScale = 1;
+        let pointX = 0, pointY = 0, startX = 0, startY = 0;
+        let panning = false;
+        let initialDistance = 0;
+
+        function openZoomModal(src) {
+            zoomImg.src = src;
+            zoomModal.style.display = 'flex';
+            resetZoom();
+        }
+
+        function closeZoomModal() {
+            zoomModal.style.display = 'none';
+        }
+
+        function resetZoom() {
+            scale = 1; pointX = 0; pointY = 0;
+            zoomImg.classList.add('smooth-trans');
+            zoomImg.style.transform = `translate(0px, 0px) scale(1)`;
+            setTimeout(() => { zoomImg.classList.remove('smooth-trans'); }, 250);
+        }
+
+        zoomContainer.addEventListener('touchstart', (e) => {
+            zoomImg.classList.remove('smooth-trans');
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                panning = false;
+                initialDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                initialScale = scale;
+            } else if (e.touches.length === 1) {
+                panning = true;
+                startX = e.touches[0].clientX - pointX;
+                startY = e.touches[0].clientY - pointY;
+            }
+        }, { passive: false });
+
+        zoomContainer.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (e.touches.length === 2) {
+                let currentDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                scale = Math.min(Math.max(1, initialScale * (currentDistance / initialDistance)), 5);
+                zoomImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+            } else if (e.touches.length === 1 && panning) {
+                pointX = e.touches[0].clientX - startX;
+                pointY = e.touches[0].clientY - startY;
+                zoomImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+            }
+        }, { passive: false });
+
+        zoomContainer.addEventListener('touchend', (e) => {
+            if (e.touches.length < 2) {
+                initialScale = scale;
+            }
+            if (e.touches.length === 0) {
+                panning = false;
+            }
+        });
+
+        // Double-Tap to Zoom
+        let lastTapTime = 0;
+        zoomContainer.addEventListener('touchend', (e) => {
+            let currentTime = new Date().getTime();
+            let tapLength = currentTime - lastTapTime;
+            
+            if (tapLength < 300 && tapLength > 0 && e.touches.length === 0) {
+                if (scale > 1) {
+                    resetZoom();
+                } else {
+                    scale = 2.5; 
+                    pointX = 0; 
+                    pointY = 0;
+                    zoomImg.classList.add('smooth-trans');
+                    zoomImg.style.transform = `translate(0px, 0px) scale(2.5)`;
+                    setTimeout(() => { zoomImg.classList.remove('smooth-trans'); }, 250);
+                }
+            }
+            lastTapTime = currentTime;
+        });
+    </script>
+</body>
+</html>
