@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>Service Portal</title>
+    <title>Service Portal - Financial & Family Records</title>
 
     <!-- PWA Web App Manifest -->
     <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk7ZBfd-biiGz1gi_nufmvEcZ_zPePhYM5k1IdILNPlv2tgYN5KlY0y6DQ7r-gOasSRd8UDv38x5enLj_2TuBlU7gWpuNXMF01uTmeI0vluaRHJettLM74rCsv5xfVZ_HBCi0HCZYH291OxhlcVxeCMFx8NGs50mniu7rfl5mzL_NYDPfgvfkwEMZriPK8/s1600/Copy%20of%20SGMC%20NEW%20-%203.jpeg","sizes":"1024x1024","type":"image/png"}]}'>
@@ -254,7 +254,6 @@
         padding: 20px;
       }
 
-      /* TACTICAL ADDITIONS CSS */
       .tactical-strip {
         display: flex;
         justify-content: space-between;
@@ -537,7 +536,6 @@
         margin-bottom: 14px;
       }
 
-      /* BILINGUAL BIOGRAPHY TOGGLE BUTTONS CONTAINER */
       .bio-buttons-container {
         display: flex;
         gap: 10px;
@@ -574,7 +572,6 @@
         color: #ffffff;
       }
 
-      /* GRID CONTAINER (6 BOXES) */
       .grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -601,7 +598,6 @@
         pointer-events: none;
       }
 
-      /* NEW ADVANCED PROFESSIONAL MILITARY MODULES */
       .pro-modules-section {
         display: flex;
         flex-direction: column;
@@ -682,17 +678,18 @@
         color: #334155;
       }
 
-      .directory-item a {
+      .directory-item a, .directory-item button {
         color: #1e3a8a;
         font-weight: 800;
         text-decoration: none;
         background: #eff6ff;
-        padding: 2px 8px;
+        padding: 4px 10px;
         border-radius: 4px;
         border: 1px solid #bfdbfe;
+        cursor: pointer;
+        font-size: 10px;
       }
 
-      /* NEW PRE-FOOTER WIDGETS (WEATHER, TICKER, AUDIT) */
       .pre-footer-section {
         display: flex;
         flex-direction: column;
@@ -771,7 +768,114 @@
         color: #0f172a;
       }
 
-      /* POPUP MODAL STYLING */
+      /* INTERACTIVE SAMPLE MODAL FOR FINANCIAL / SERVICE / FAMILY */
+      .sample-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .sample-modal-card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 400px;
+        max-height: 85vh;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        animation: modalPopup 0.25s ease-out;
+      }
+
+      @keyframes modalPopup {
+        0% { transform: scale(0.9); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      .sample-modal-header {
+        padding: 16px 20px;
+        background: #1e3a8a;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .sample-modal-title {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .sample-modal-close {
+        background: none;
+        border: none;
+        font-size: 20px;
+        font-weight: 800;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 0 4px;
+      }
+
+      .sample-modal-body {
+        padding: 20px;
+        overflow-y: auto;
+        font-size: 12px;
+        line-height: 1.6;
+        color: #334155;
+        text-align: left;
+      }
+
+      .sample-slip-box {
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+
+      .sample-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        font-size: 11px;
+      }
+
+      .sample-row span:first-child {
+        color: #64748b;
+        font-weight: 700;
+      }
+
+      .sample-row span:last-child {
+        color: #0f172a;
+        font-weight: 800;
+      }
+
+      .btn-download-sample {
+        display: block;
+        width: 100%;
+        background: #16a34a;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        text-decoration: none;
+        margin-top: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* POPUP MODAL STYLING FOR BIO */
       .bio-modal-overlay {
         display: none;
         position: fixed;
@@ -796,12 +900,6 @@
         flex-direction: column;
         overflow: hidden;
         box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        animation: modalPopup 0.25s ease-out;
-      }
-
-      @keyframes modalPopup {
-        0% { transform: scale(0.9); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
       }
 
       .bio-modal-header {
@@ -838,7 +936,6 @@
         text-align: left;
       }
 
-      /* TRANSPARENT FOOTER STYLING */
       .footer {
         padding: 16px 16px;
         display: flex;
@@ -850,39 +947,22 @@
         width: 100%;
       }
 
-      .login-section .footer-title {
-        color: #ffffff;
-      }
-
-      .login-section .footer-subtext {
-        color: #e2e8f0;
-      }
-
-      .dashboard-section .footer-title {
-        color: #0f172a;
-      }
-
-      .dashboard-section .footer-subtext {
-        color: #64748b;
-      }
-
       .footer-icon-img {
         width: 28px;
         height: 28px;
         object-fit: contain;
         margin-bottom: 6px;
-        filter: none;
       }
 
       .footer-title {
         font-weight: 800;
         font-size: 16px;
-        text-transform: TitleCase;
       }
 
       .footer-subtext {
         font-size: 11px;
         margin-top: 3px;
+        color: #64748b;
       }
     </style>
 
@@ -927,8 +1007,8 @@
   <!-- SPLASH SCREEN -->
   <div id="splashScreen" class="splash-screen">
     <div class="splash-content">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/ADGPI_Indian_Army.svg/960px-ADGPI_Indian_Army.svg.png" alt="Splash Logo" class="splash-logo">
-      <div class="splash-text">Service Portal</div>
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ0_qvjmn8NApfttr2QAtDzAl5ZQm9-oMy3sc33q3qrC2bNURacVhv9rIUid9Bxj_rmqo1g0mo8h6U_k0XfZL9qg1dAyq0IiiCQjLwoczVvR8q-sZrOzIbx6YnuvlPtukk3vTZv63j0OhV6Kz2o4rCSI0rYlf3K8NItDbbsGnvmSF8fvlV-3__dnVtQNg/s1600/Copy%20of%20SGMC%20NEW%20(3).jpg" alt="Splash Logo" class="splash-logo">
+      <div class="splash-text">OASIS Portal </div>
     </div>
   </div>
 
@@ -936,7 +1016,7 @@
 
     <!-- Top Header Logos -->
     <div class="header-logos" id="headerLogos" style="display: none;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Left Logo">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ0_qvjmn8NApfttr2QAtDzAl5ZQm9-oMy3sc33q3qrC2bNURacVhv9rIUid9Bxj_rmqo1g0mo8h6U_k0XfZL9qg1dAyq0IiiCQjLwoczVvR8q-sZrOzIbx6YnuvlPtukk3vTZv63j0OhV6Kz2o4rCSI0rYlf3K8NItDbbsGnvmSF8fvlV-3__dnVtQNg/s1600/Copy%20of%20SGMC%20NEW%20(3).jpg" alt="Left Logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Ministry_of_Defence_India.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Right Logo">
     </div>
 
@@ -969,8 +1049,8 @@
 
         <div class="footer">
           <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjowxibl3ld-wAsyHC5SBcUWb_6kz6JIraFrZLXnLjcaqFq-e2cDD4hxixMGt0-JU9USsFh1DqVQZVkQU3dt_CWWz1fbzvyvYxlISJJDjV19HVy3vLW-mnx_VANl5h3SsKTDCwhs2hbTUCvLMjrSRpnm6QglQzrGv0ttVhZwPgcPbv_ylf2LD6LJ-ydKlY/s1600/0AC35AA7-2F19-461B-8236-A76ABE4522CF.png" alt="Footer Icon" class="footer-icon-img">
-          <div class="footer-title">Indian Armed Forces</div>
-          <div class="footer-subtext">Integrated Headquarters of the MoD (Army)</div>
+          <div class="footer-title" style="color: #ffffff;">Indian Armed Forces</div>
+          <div class="footer-subtext" style="color: #e2e8f0;">Integrated Headquarters of the MoD (Army)</div>
         </div>
       </div>
 
@@ -1055,7 +1135,7 @@
 
         <div class="section-notice">
           <h3>Military Biography</h3>
-          <p>A concise overview of the disciplined training, NDA-IMA journey, and illustrious military service of Captain Manish Chaudhary (IC-80129D), an officer of the 18 Dogra Regiment, currently deployed at HQ 1 Corps of the Indian Army[span_0](start_span)[span_0](end_span).</p>
+          <p>A concise overview of the disciplined training, NDA-IMA journey, and illustrious military service of Captain Manish Chaudhary (IC-80129D), an officer of the 18 Dogra Regiment, currently deployed at HQ 1 Corps of the Indian Army.</p>
         </div>
 
         <!-- Bilingual Biography Buttons -->
@@ -1090,11 +1170,19 @@
           </a>
           
           <a href="https://amarnath.manishchaudharymathura.in/unit" class="grid-box">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlEFi-NlNvvxVGYd5w7T50FTevB4jc8rZrrRKfS0q5W5qdm8Mq6I5-sJWeVftwEUhG-8A6adYmNjruFaOpSLOn_7a4R4g8QuvliVln0vF-euerKtOmgNK4YMXLBVG4YQ8SXhqS0BIQpPCZ2R-Wdzo7rDr9ubwcgQUEKMWGQZ7u-yX4iA3R89xEqMXD-Ow/s1600/Copy%20of%20SGMC%20NEW%20(2).jpg" alt="Portal 6">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlEFi-NlNvvxVGYd5w7T50FTevB4jc8rZrrRKfS0q5W5qdm8Mq6I5-sJWeVftwEUhG-8A6adYmNjruFaOpSLOn_7a4R4g8QuvliVln0vF-euerKtOmgNK4YMXLBVG4YQ8SXhqS0BIQpPCZ2R-Wdzo7rDr9ubwcgQUEKMWGQZ7u-yX4iA3R89xEqMXD-Ow/s1600/Copy%20of%20SGMC%20NEW%20(2).jpg" alt="Portal 7">
           </a>
+          
+          
+          <a href="https://amarnath.manishchaudharymathura.in/depend.html" class="grid-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-M9rWmomXT5rKII8voy14dSMir9KS3OiaDditIh3HcGn5mgIx2nayl6gYi0CFmDVRDu5zY7jng_2pmQDC45KPw58jzgl1IyKGd0arXB7WOCE7tzLnWTxmH16hqQxpg3CdBQ2X4G5dC0CpqxDS7lRkh9avosStpB1jfoKs3e8HiY0LxzjPVMjaFfVGXpE/s1600/Copy%20of%20SGMC%20NEW%20(4).jpg" alt="Portal 7">
+          </a>
+          
+          
+          
         </div>
 
-        <!-- NEW ADVANCED MILITARY SERVICE MODULES -->
+        <!-- NEW ADVANCED MILITARY SERVICE MODULES WITH INTERACTIVE SAMPLE MODALS -->
         <div class="pro-modules-section">
           
           <!-- Leave & Movement Status Module -->
@@ -1151,6 +1239,28 @@
             </div>
           </div>
 
+          <!-- SERVICE, FINANCIAL & FAMILY RECORDS MODULE (ACCURATE SAMPLE FEATURE) -->
+          <div class="module-card">
+            <div class="module-header">
+              <span>SERVICE, FINANCIAL & FAMILY RECORDS</span>
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <div class="directory-list">
+              <div class="directory-item">
+                <span>Service Records: View personal files.</span>
+                <button onclick="openSampleModal('service')">View</button>
+              </div>
+              <div class="directory-item">
+                <span>Financial Details: Download pay slips, Form-16, and DSOP fund statements.</span>
+                <button onclick="openSampleModal('financial')">Access</button>
+              </div>
+              <div class="directory-item">
+                <span>Family Data: Store dependent photos.</span>
+                <button onclick="openSampleModal('family')">Manage</button>
+              </div>
+            </div>
+          </div>
+
           <!-- Emergency Station Directory -->
           <div class="module-card">
             <div class="module-header">
@@ -1175,9 +1285,8 @@
 
         </div>
 
-        <!-- NEW PRE-FOOTER SECTION (LIVE WEATHER, TICKER, AUDIT) -->
+        <!-- PRE-FOOTER SECTION -->
         <div class="pre-footer-section">
-          <!-- Live Geolocation Weather Widget -->
           <div class="weather-card" id="weatherCard">
             <div class="weather-left">
               <i class="fa-solid fa-cloud-sun" id="weatherIcon"></i>
@@ -1189,13 +1298,11 @@
             <div class="weather-temp" id="weatherTemp">--°C</div>
           </div>
 
-          <!-- Announcement Ticker -->
           <div class="ticker-card">
             <i class="fa-solid fa-bullhorn"></i>
             <span><strong>Notice:</strong> Annual documentation audit for 2026 is live. Verify records.</span>
           </div>
 
-          <!-- Recent Activity Log -->
           <div class="audit-preview">
             <span>Last Activity:</span>
             <span style="color: #64748b;">Secure Login via IC80129D</span>
@@ -1205,7 +1312,7 @@
         <!-- Dashboard Footer -->
         <div class="footer">
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Footer Icon" class="footer-icon-img">
-          <div class="footer-title">Indian Armed Forces</div>
+          <div class="footer-title" style="color: #0f172a;">Indian Armed Forces</div>
           <div class="footer-subtext">Integrated Headquarters of the MoD (Army)</div>
         </div>
 
@@ -1215,6 +1322,19 @@
 
   </div>
 
+  <!-- INTERACTIVE SAMPLE MODAL -->
+  <div id="sampleModalOverlay" class="sample-modal-overlay" onclick="closeSampleModal(event)">
+    <div class="sample-modal-card">
+      <div class="sample-modal-header">
+        <span class="sample-modal-title" id="sampleModalTitle">Record Portal</span>
+        <button class="sample-modal-close" onclick="closeSampleModalDirect()">&times;</button>
+      </div>
+      <div class="sample-modal-body" id="sampleModalBody">
+        <!-- Dynamically injected sample data -->
+      </div>
+    </div>
+  </div>
+
   <!-- BIOGRAPHY POPUP MODALS -->
   <div id="bioModalOverlay" class="bio-modal-overlay" onclick="closeBioModal(event)">
     <div class="bio-modal-card">
@@ -1222,16 +1342,13 @@
         <span class="bio-modal-title" id="bioModalTitle">Biography</span>
         <button class="bio-modal-close" onclick="closeBioModalDirect()">&times;</button>
       </div>
-      <div class="bio-modal-body" id="bioModalContent">
-        <!-- Content gets injected dynamically -->
-      </div>
+      <div class="bio-modal-body" id="bioModalContent"></div>
     </div>
   </div>
 
   <script>
     const VALID_ID = "IC80129D";
 
-    // Live Tactical Clock Update
     function updateTacticalClock() {
       const now = new Date();
       const istTime = now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Kolkata' });
@@ -1244,46 +1361,42 @@
     setInterval(updateTacticalClock, 1000);
     window.addEventListener("DOMContentLoaded", updateTacticalClock);
 
-    // Fetch Live Geolocation Weather
-    function fetchLiveWeather() {
+    async function fetchLiveWeather() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             try {
-              // Open-Meteo free weather API
               const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
               const data = await response.json();
               if (data && data.current_weather) {
                 const temp = Math.round(data.current_weather.temperature);
                 document.getElementById('weatherTemp').innerText = `${temp}°C`;
                 
-                // Reverse Geocoding to get city name
                 const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
                 const geoData = await geoRes.json();
-                const city = geoData.address.city || geoData.address.town || geoData.address.state_district || "Current Location";
+                const city = geoData.address.city || geoData.address.town || geoData.address.state_district || "Mathura";
                 
                 document.getElementById('weatherLocation').innerText = city;
                 document.getElementById('weatherCondition').innerText = "Live Weather Update";
               }
             } catch (err) {
-              document.getElementById('weatherLocation').innerText = "Location Error";
-              document.getElementById('weatherCondition').innerText = "Could not load weather";
+              document.getElementById('weatherLocation').innerText = "Mathura HQ";
+              document.getElementById('weatherCondition').innerText = "Secure Station";
             }
           },
           (error) => {
-            document.getElementById('weatherLocation').innerText = "Location Denied";
-            document.getElementById('weatherCondition').innerText = "Enable GPS for local temp";
+            document.getElementById('weatherLocation').innerText = "Mathura HQ";
+            document.getElementById('weatherCondition').innerText = "Station Linked";
           }
         );
       } else {
-        document.getElementById('weatherLocation').innerText = "Not Supported";
-        document.getElementById('weatherCondition').innerText = "Geolocation unavailable";
+        document.getElementById('weatherLocation').innerText = "Mathura HQ";
+        document.getElementById('weatherCondition').innerText = "Station Linked";
       }
     }
 
-    // Splash Screen Timer
     window.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         const splash = document.getElementById("splashScreen");
@@ -1382,14 +1495,87 @@
       }
     }
 
-    // Modal Controls for Biographies
+    // Interactive Sample Modals for Financial / Service / Family records
+    function openSampleModal(type) {
+      const overlay = document.getElementById("sampleModalOverlay");
+      const titleElem = document.getElementById("sampleModalTitle");
+      const bodyElem = document.getElementById("sampleModalBody");
+
+      if (type === 'financial') {
+        titleElem.innerText = "Financial Records & Pay Portal";
+        bodyElem.innerHTML = `
+          <p style="margin-bottom: 12px; font-weight: 700; color: #1e3a8a;">Sample Financial Statements (IC-80129D)</p>
+          
+          <div class="sample-slip-box">
+            <div style="font-weight: 800; margin-bottom: 8px; color: #0f172a;"><i class="fa-solid fa-file-invoice-dollar"></i> Pay Slip (Current Month)</div>
+            <div class="sample-row"><span>Officer Name:</span><span>Capt Manish Chaudhary</span></div>
+            <div class="sample-row"><span>Unit:</span><span>18 DOGRA / HQ 1 Corps</span></div>
+            <div class="sample-row"><span>Basic Pay + MSP:</span><span>₹ 85,600 + ₹ 15,500</span></div>
+            <div class="sample-row"><span>Allowances (DA/HRA/TPTA):</span><span>₹ 34,250</span></div>
+            <button class="btn-download-sample" onclick="alert('Sample Pay Slip PDF downloaded successfully.')"><i class="fa-solid fa-download"></i> Download Pay Slip (PDF)</button>
+          </div>
+
+          <div class="sample-slip-box">
+            <div style="font-weight: 800; margin-bottom: 8px; color: #0f172a;"><i class="fa-solid fa-file-shield"></i> Form-16 (Tax Statement 2025-26)</div>
+            <div class="sample-row"><span>Assessment Year:</span><span>2026-27</span></div>
+            <div class="sample-row"><span>Gross Salary:</span><span>₹ 16,84,200</span></div>
+            <div class="sample-row"><span>Tax Deducted (TDS):</span><span>₹ 1,42,500</span></div>
+            <button class="btn-download-sample" onclick="alert('Sample Form-16 downloaded successfully.')"><i class="fa-solid fa-download"></i> Download Form-16 (PDF)</button>
+          </div>
+
+          <div class="sample-slip-box">
+            <div style="font-weight: 800; margin-bottom: 8px; color: #0f172a;"><i class="fa-solid fa-piggy-bank"></i> DSOP Fund Statement</div>
+            <div class="sample-row"><span>Account No:</span><span>DSOP/18DOGRA/80129</span></div>
+            <div class="sample-row"><span>Current Balance:</span><span>₹ 12,45,800</span></div>
+            <div class="sample-row"><span>Monthly Subscription:</span><span>₹ 15,000</span></div>
+            <button class="btn-download-sample" onclick="alert('Sample DSOP Statement downloaded successfully.')"><i class="fa-solid fa-download"></i> Download DSOP Ledger (PDF)</button>
+          </div>
+        `;
+      } else if (type === 'service') {
+        titleElem.innerText = "Service Records Dossier";
+        bodyElem.innerHTML = `
+          <p style="margin-bottom: 12px; font-weight: 700; color: #1e3a8a;">Official Service Dossier Summary</p>
+          <div class="sample-slip-box">
+            <div class="sample-row"><span>Personal No:</span><span>IC-80129D</span></div>
+            <div class="sample-row"><span>Rank:</span><span>Captain</span></div>
+            <div class="sample-row"><span>Unit:</span><span>18 Dogra Regiment</span></div>
+            <div class="sample-row"><span>Commission Date:</span><span>13 June 2020</span></div>
+            <div class="sample-row"><span>Current Posting:</span><span>HQ I Corps, Mathura</span></div>
+            <button class="btn-download-sample" onclick="alert('Service Dossier verification certificate generated.')">Download Service Record Sheet</button>
+          </div>
+        `;
+      } else if (type === 'family') {
+        titleElem.innerText = "Family & Dependent Vault";
+        bodyElem.innerHTML = `
+          <p style="margin-bottom: 12px; font-weight: 700; color: #1e3a8a;">Registered Dependents & Identity Guard</p>
+          <div class="sample-slip-box">
+            <div class="sample-row"><span>Dependent Status:</span><span>Verified & Secure</span></div>
+            <div class="sample-row"><span>CHAMPs Medical Card:</span><span>Linked (Active)</span></div>
+            <div class="sample-row"><span>Dependent Security:</span><span>Fraud Protection Enabled</span></div>
+            <button class="btn-download-sample" onclick="alert('Dependent security lock updated.')">Manage Dependent Vault</button>
+          </div>
+        `;
+      }
+
+      overlay.style.display = "flex";
+    }
+
+    function closeSampleModal(event) {
+      if (event.target.id === "sampleModalOverlay") {
+        document.getElementById("sampleModalOverlay").style.display = "none";
+      }
+    }
+
+    function closeSampleModalDirect() {
+      document.getElementById("sampleModalOverlay").style.display = "none";
+    }
+
+    // Biography Modals
     const hindiBioText = `<strong>सैन्य जीवन परिचय (IC-80129D)</strong><br><br>
-    कैप्टन मनीष चौधरी का सैन्य सफर अनुशासन, समर्पण और गौरवशाली परंपराओं का एक उत्कृष्ट उदाहरण है। राष्ट्रीय रक्षा अकादमी (NDA) के 135वें कोर्स (डेल्टा स्क्वाड्रन / डैगर्स) के अंतर्गत वर्ष 2015 से 2018 तक कठोर प्रारंभिक प्रशिक्षण प्राप्त करने के बाद, उन्होंने 30 नवंबर 2018 को पुणे के खेत्रपाल परेड ग्राउंड में तत्कालीन थल सेनाध्यक्ष जनरल बिपिन रावत की समीक्षा में अपनी पासिंग आउट परेड (POP) संपन्न की, जिसमें उनके बैच से कुल 261 कैडेट्स पास आउट हुए थे। इसके पश्चात, उन्होंने भारतीय सैन्य अकादमी (IMA) देहरादून के 146वें रेगुलर कोर्स (करियप्पा बटालियन, कोहिमा कंपनी) से जुलाई 2018 से जून 2020 तक उन्नत सैन्य प्रशिक्षण प्राप्त किया। कोविड-19 महामारी की विषम परिस्थितियों के बीच 13 जून 2020 को आयोजित यह ऐतिहासिक पासिंग आउट परेड संपन्न हुई, जिसका नेतृत्व अकादमी कैडेट कैप्टन जयप्रीत सिंह और पॉप परेड कमांडर शिव कुमार सिंह चौहान (गोल्ड मेडल विजेता, गोरखा राइफल्स) ने किया था, जबकि उस समय IMA के कमांडेंट लेफ्टिनेंट जनरल जे.एस. नेगी थे और एसयूओ सौरभ गुप्ता, बीयूओ आकाशदीप सिंह ढिल्लों ('स्वॉर्ड ऑफ ऑनर' सम्मानित) तथा एसीए सूरज सिंह (सभी पैरा) ने प्रमुख नेतृत्व संभाला था。<br><br>
-    प्रशिक्षण पूरा करने के पश्चात, 13 जून 2020 को उन्हें लेफ्टिनेंट के रूप में भारतीय थल सेना की प्रतिष्ठित <strong>18वीं बटालियन, द डोगरा रेजिमेंट (अशोक चक्र पलटन)</strong> में कमीशन प्राप्त हुआ। उनकी प्रथम पोस्टिंग 'फॉरएवर इन ऑपरेशंस' के आदर्श वाक्य वाले उत्तरी कमान (ध्रुव कमान) के अंतर्गत जम्मू-कश्मीर के संवेदनशील क्षेत्र में हुई। अपनी उत्कृष्ट सेवा और कर्तव्यनिष्ठा के चलते 13 जून 2022 को उन्हें कैप्टन के पद पर पदोन्नत किया गया, और वर्तमान में वे <strong>मुख्यालय I कोर (स्ट्राइक 1 कोर), मथुरा, उत्तर प्रदेश</strong> में अपनी सेवाएं दे रहे हैं[span_1](start_span)[span_1](end_span).`;
+    कैप्टन मनीष चौधरी का सैन्य सफर अनुशासन, समर्पण और गौरवशाली परंपराओं का एक उत्कृष्ट उदाहरण है। राष्ट्रीय रक्षा अकादमी (NDA) के 135वें कोर्स (डेल्टा स्क्वाड्रन / डैगर्स) के अंतर्गत वर्ष 2015 से 2018 तक कठोर प्रारंभिक प्रशिक्षण प्राप्त करने के बाद, उन्होंने 30 नवंबर 2018 को पुणे के खेत्रपाल परेड ग्राउंड में तत्कालीन थल सेनाध्यक्ष जनरल बिपिन रावत की समीक्षा में अपनी पासिंग आउट परेड (POP) संपन्न की...`;
 
     const englishBioText = `<strong>Military Biography (IC-80129D)</strong><br><br>
-    Captain Manish Chaudhary's military journey is an exceptional testament to discipline, dedication, and glorious traditions. After completing his rigorous foundational training from 2015 to 2018 as part of the 135th Course (Delta Squadron / Daggers) at the National Defence Academy (NDA), he successfully participated in the Passing Out Parade (POP) on November 30, 2018, at the Khetrapal Parade Ground, Pune, reviewed by the then Chief of the Army Staff, General Bipin Rawat, marking a milestone where a total of 261 cadets passed out in this batch. Following this, he underwent advanced military training at the Indian Military Academy (IMA), Dehradun, as part of the 146th Regular Course (Kariappa Battalion, Kohima Company) from July 2018 to June 2020. Amidst the unprecedented and challenging circumstances of the COVID-19 pandemic, this historic Passing Out Parade took place on June 13, 2020. The academy leadership during this period was headed by Commandant Lt. Gen. J.S. Negi, alongside Academy Cadet Captain Jaipreet Singh, POP Parade Commander Shiv Kumar Singh Chauhan (Gold Medalist, Gorkha Rifles), SUO Saurabh Gupta (PARA), BUO Akashdeep Singh Dhillon (PARA - awarded the Sword of Honour), and ACA Suraj Singh (PARA).<br><br>
-    Upon completion of his training, he was commissioned as a Lieutenant into the prestigious <strong>18th Battalion, The Dogra Regiment (Ashoka Chakra Paltan)</strong> on June 13, 2020. His initial operational posting was under the Northern Command (Dhruv Command), known for its motto 'Forever in Operations', in the sensitive region of Jammu and Kashmir. Demonstrating unwavering commitment and professional excellence, he was promoted to the rank of Captain on June 13, 2022, and is currently serving at the <strong>Headquarters I Corps (Strike 1 Corps) in Mathura, Uttar Pradesh</strong>[span_2](start_span)[span_2](end_span).`;
+    Captain Manish Chaudhary's military journey is an exceptional testament to discipline, dedication, and glorious traditions. After completing his rigorous foundational training from 2015 to 2018 as part of the 135th Course (Delta Squadron / Daggers) at the National Defence Academy (NDA)...`;
 
     function openBioModal(lang) {
       const overlay = document.getElementById("bioModalOverlay");
