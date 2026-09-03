@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard & Upload</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding-bottom: 50px;
+        }
+
+        /* Top Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-img {
+            width: 45px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .animated-btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Banner Section */
+        .banner-container {
+            width: 100%;
+            height: 400px;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Login Section */
+        #login-section {
+            background: white;
+            padding: 25px;
+            margin: 20px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        #login-section h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+            outline: none;
+        }
+
+        .login-input:focus {
+            border-color: #3498db;
+        }
+
+        .login-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* Main Dashboard Content (Hidden initially) */
+        #dashboard-content {
+            display: none;
+        }
+
+        /* Profile Section */
+        .profile-card {
+            background: white;
+            margin: 16px;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .profile-portrait {
+            width: 60px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 15px;
+        }
+
+        .profile-info h4 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .profile-info p {
+            font-size: 13px;
+            color: #666;
+            margin: 2px 0;
+        }
+
+        .active-status {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #27ae60;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 5px #27ae60;
+        }
+
+        /* Post Upload Section */
+        .upload-section {
+            background: white;
+            margin: 16px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .upload-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input[type="file"],
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        .post-submit-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Loader Overlay */
+        #loader-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-tick {
+            display: none;
+            font-size: 50px;
+            color: #2ecc71;
+            background: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+            animation: bounceIn 0.5s;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* View Posts Navigation Button Container */
+        .view-posts-container {
+            padding: 0 16px;
+            margin-top: 20px;
+        }
+
+        .view-posts-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #8e44ad;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://picsum.photos/100/60" alt="Logo" class="header-img">
+        <button class="animated-btn">Explore</button>
+    </header>
+
+    <div class="banner-container">
+        <img src="https://picsum.photos/800/400" alt="Banner">
+    </div>
+
+    <div id="login-section">
+        <h3>Secure Login</h3>
+        <input type="text" id="loginInput" class="login-input" placeholder="ENTER YOUR NO.">
+        <button class="login-btn" onclick="handleLogin()">Login</button>
+        <div id="errorMsg" class="error-msg">Incorrect Number! Try again.</div>
+    </div>
+
+    <div id="dashboard-content">
+        
+        <div class="profile-card">
+            <img src="https://picsum.photos/150/200" alt="Portrait" class="profile-portrait">
+            <div class="profile-info">
+                <h4>John Doe</h4>
+                <p>Content Creator & Admin</p>
+                <div class="active-status">
+                    <span class="online-dot"></span> Active Online
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <h3>Upload New Post</h3>
+            <div class="form-group">
+                <label>Select Photo</label>
+                <input type="file" id="postImage" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>Post Title</label>
+                <input type="text" id="postTitle" placeholder="Enter post title...">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="postDesc" placeholder="Write something about this post..."></textarea>
+            </div>
+            <button class="post-submit-btn" onclick="uploadPost()">Post</button>
+        </div>
+
+        <div class="view-posts-container">
+            <a href="posts.html" class="view-posts-btn">View Posts Grid</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Community Portal. All Rights Reserved.</p>
+    </footer>
+
+    <div id="loader-overlay">
+        <div id="spinner-box" style="text-align:center;">
+            <div class="spinner"></div>
+            <p id="loader-text">Uploading...</p>
+        </div>
+        <div id="success-box" class="success-tick">&#10003;</div>
+    </div>
+
+    <script>
+        // Check if already logged in during session
+        window.onload = function() {
+            if(localStorage.getItem("isLoggedIn") === "true") {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+            }
+        };
+
+        function handleLogin() {
+            const inputVal = document.getElementById('loginInput').value.trim();
+            const errorDiv = document.getElementById('errorMsg');
+
+            if (inputVal === "IC8-80129D") {
+                localStorage.setItem("isLoggedIn", "true");
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+            } else {
+                errorDiv.style.display = 'block';
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 2000);
+            }
+        }
+
+        function uploadPost() {
+            const fileInput = document.getElementById('postImage');
+            const titleInput = document.getElementById('postTitle').value;
+            const descInput = document.getElementById('postDesc').value;
+
+            if (fileInput.files.length === 0) {
+                alert("Please select an image!");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.readAsDataURL(fileInput.files[0]);
+            
+            reader.onload = function(event) {
+                const imageData = event.target.result;
+
+                // Show Loader Overlay
+                const overlay = document.getElementById('loader-overlay');
+                const spinnerBox = document.getElementById('spinner-box');
+                const successBox = document.getElementById('success-box');
+                
+                overlay.style.display = 'flex';
+                spinnerBox.style.display = 'block';
+                successBox.style.display = 'none';
+
+                // 3 Seconds loading simulation
+                setTimeout(() => {
+                    spinnerBox.style.display = 'none';
+                    successBox.style.display = 'block';
+
+                    // Save data globally inside localStorage so everyone can view it
+                    let posts = JSON.parse(localStorage.getItem('all_global_posts')) || [];
+                    
+                    const newPost = {
+                        id: Date.now(),
+                        image: imageData,
+                        title: titleInput || "Untitled Post",
+                        description: descInput || "No description provided."
+                    };
+
+                    posts.unshift(newPost); // Add to top
+                    localStorage.setItem('all_global_posts', JSON.stringify(posts));
+
+                    // Hide overlay after 3 seconds of showing success tick
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        // Reset form fields
+                        fileInput.value = '';
+                        document.getElementById('postTitle').value = '';
+                        document.getElementById('postDesc').value = '';
+                    }, 3000);
+
+                }, 3000);
+            };
+        }
+    </script>
+</body>
+</html>
