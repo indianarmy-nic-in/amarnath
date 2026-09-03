@@ -32,14 +32,14 @@
         }
 
         .header-img {
-            width: 45px;
-            height: 30px;
+            width: 85px;
+            height: 42px;
             object-fit: cover;
             border-radius: 4px;
         }
 
         .animated-btn {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            background: linear-gradient(45deg, #00A300, #00A300);
             color: white;
             border: none;
             padding: 8px 16px;
@@ -58,7 +58,7 @@
         /* Banner Section */
         .banner-container {
             width: 100%;
-            height: 400px;
+            height: 150px;
             background: #ddd;
             overflow: hidden;
         }
@@ -67,59 +67,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Login Section */
-        #login-section {
-            background: white;
-            padding: 25px;
-            margin: 20px 16px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        #login-section h3 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        .login-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-bottom: 10px;
-            text-align: center;
-            outline: none;
-        }
-
-        .login-input:focus {
-            border-color: #3498db;
-        }
-
-        .login-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .error-msg {
-            color: #e74c3c;
-            font-size: 14px;
-            margin-top: 8px;
-            display: none;
-        }
-
-        /* Main Dashboard Content (Hidden initially) */
-        #dashboard-content {
-            display: none;
         }
 
         /* Profile Section */
@@ -302,19 +249,12 @@
 <body>
 
     <header>
-        <img src="https://picsum.photos/100/60" alt="Logo" class="header-img">
-        <button class="animated-btn">Explore</button>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Logo" class="header-img">
+        <button class="animated-btn">Serving</button>
     </header>
 
     <div class="banner-container">
         <img src="https://picsum.photos/800/400" alt="Banner">
-    </div>
-
-    <div id="login-section">
-        <h3>Secure Login</h3>
-        <input type="text" id="loginInput" class="login-input" placeholder="ENTER YOUR NO.">
-        <button class="login-btn" onclick="handleLogin()">Login</button>
-        <div id="errorMsg" class="error-msg">Incorrect Number! Try again.</div>
     </div>
 
     <div id="dashboard-content">
@@ -353,7 +293,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Community Portal. All Rights Reserved.</p>
+        <p>&copy; 2026 Integrated Headquarters of the Ministry of Defence (Army)</p>
     </footer>
 
     <div id="loader-overlay">
@@ -365,30 +305,6 @@
     </div>
 
     <script>
-        // Check if already logged in during session
-        window.onload = function() {
-            if(localStorage.getItem("isLoggedIn") === "true") {
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('dashboard-content').style.display = 'block';
-            }
-        };
-
-        function handleLogin() {
-            const inputVal = document.getElementById('loginInput').value.trim();
-            const errorDiv = document.getElementById('errorMsg');
-
-            if (inputVal === "IC8-80129D") {
-                localStorage.setItem("isLoggedIn", "true");
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('dashboard-content').style.display = 'block';
-            } else {
-                errorDiv.style.display = 'block';
-                setTimeout(() => {
-                    errorDiv.style.display = 'none';
-                }, 2000);
-            }
-        }
-
         function uploadPost() {
             const fileInput = document.getElementById('postImage');
             const titleInput = document.getElementById('postTitle').value;
