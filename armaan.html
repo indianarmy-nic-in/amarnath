@@ -1,74 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-
-  <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
-    <title>My App</title>
-
-    <!-- PWA Web App Manifest (Inline base64 - PWA Standalone Mode Force Karne Ke Liye) -->
-    <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
-
-    <!-- iOS Specific PWA Meta Tags -->
-    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App Name">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#000000">
-
-    <!-- CSS & Icon Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- App Navigation Script (URL Bar & Browser Open Hone Se Rokne Ke Liye) -->
-    <script>
-      (function() {
-        // App me sabhi internal link clicks ko intercept karein
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-          while (target && target.tagName !== 'A') {
-            target = target.parentNode;
-          }
-          
-          if (target && target.tagName === 'A') {
-            var href = target.getAttribute('href');
-            
-            // External links, hash links, ya javascript calls ko ignore karein
-            if (!href || href.startsWith('#') || href.startsWith('javascript:') || target.getAttribute('target') === '_blank') {
-              return;
-            }
-
-            var destUrl = new URL(target.href, window.location.href);
-            
-            // Agar same domain ka link hai to browser window ke bajaye app ke andar hi navigate karein
-            if (destUrl.origin === window.location.origin) {
-              e.preventDefault();
-              window.location.href = target.href;
-            }
-          }
-        }, false);
-
-        // Basic Service Worker Registration for PWA Compliance
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            var swCode = "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });";
-            var blob = new Blob([swCode], { type: 'text/javascript' });
-            var swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl).catch(function(){});
-          });
-        }
-      })();
-    </script>
-</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
@@ -566,23 +498,27 @@
                 <div class="story-circle-inner">DUTY<br>Schedule</div>
             </div>
             <br/><br/><br/>
-            <h2 style="font-size:28px;font-weight:700;margin-top:5px;">Capt. Manish Chaudhary</h2>
-            <p style="color:#555;margin-top:6px;text-align:center;">Yudh Seva Medal, Sena Medal,<br>COAS Commendation</p>
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCHloBHTkY8lAYNgE2CFaQOfVCH5jD9S3Y5EdnNKmLM3-n0Uv6wphxOW8ZmNw_frMef_XJ2RhyaELuYiZ7VqMQIhFJU6PdSsHUHIBWbklZZo_Qr5IX98Dk3BujZljBTAtO7PYS-5TaF8Ju36QeUfBQB-52lBDnRRNMtsTBr8gz8l4WetEL-Q9HUj6EwlO4/s523/Untitled%20design.jpeg">
+            <h2 style="font-size:28px;font-weight:700;margin-top:5px;">Maj Manish Chaudhary</h2>
+            <p style="color:#555;margin-top:6px;text-align:center;">COAS Commendation</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtto6evmRAK9UtyGlLAb9Ae-q2eknTQTb_KfLSlpus3PakYY_gRgKtuYbE80smpALDPlOTyk-_YJsjAHfCd9sakCOULRKB8Vpycru0PmW10ZL4GmMU2ZlZeC9Sblm9IAvAKBEHB57wa9ZviSzfEf0miHwLoyZEUF4rrXWncYSaBWSKbBtOBwwz5AY3IEeY/s1462/B28EEC0D-3D37-4373-AF48-B3A34F6C6BAA.png">
         </div>
 
         <div class="table-box">
             <table>
                 <tr><td>Allegiance</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png"> India</span></td></tr>
                 <tr><td>Branch</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png"> Indian Army</span></td></tr>
-                <tr><td>Years of Service</td><td>13 June 2020 – Present</td></tr>
-                <tr><td>Rank</td><td>Captain</td></tr>
-                <tr><td>Alma Mater</td><td> ➤ NDA (Bsc) <br/> ➤ IMA</td></tr>
+                <tr><td>Years of Service</td><td>13 June 2020 - Present</td></tr>
+                <tr><td>Rank</td><td>Major</td></tr>
+                <tr><td>Alma Mater</td><td> NDA (Bsc) <br/> IMA</td></tr>
                 <tr><td>Service ID</td><td>IC-80129D</td></tr>
-                <tr><td>Unit</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Dogra_Regiment.svg/1280px-Dogra_Regiment.svg.png"> 18 Dogra</span></td></tr>
-                <tr><td>First Posting</td><td>Platoon Commander, Delta Company, Northern Command HQ, Udhampur, Jammu & Kashmir<br><b>Year 2020 - 2023</b></td></tr>
-                <tr><td>Currently Deployed</td><td>Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P<br><b>Year 2023 - Present</b></td></tr>
-                <tr><td>Conflicts</td><td>• OPS Sindoor<br>• OPS Mahadev<br>• OPS Jammu Drill<br>• Counter-Insurgency OPS<br>• POK Border OPS</td></tr>
+                <tr><td>Unit</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Dogra_Regiment.svg/1280px-Dogra_Regiment.svg.png">18 Dogra</span></td></tr>
+                <tr><td> Ist Posting<br/> (15 DOGRA)</td><td> Commissioned into Infantry w.e.f. 13 Jun 2020. TOS by 15 DOGRA as Platoon Commander. Promoted to the rank of Captain w.e.f. 13 Jun 2022. SOS on 12 Jun 2023. (Auth: MS Branch Order No A/5433/Post/Dogra/2020).<br><b>Year 2020 - 2023</b></td></tr>
+
+                <tr><td> IInd Posting (HQ 1 Corps)</td><td> TOS by Headquarters 1 Corps (Mathura, UP) as Staff Officer w.e.f. 13 Jun 2023. Promoted to the rank of Major w.e.f. 13 Jun 2026. SOS on 12 Jun 2026. (Auth: MS Branch Order No MS/8542/Post/Staff/2023). <br><b>Year 2023 - 2026</b></td></tr>
+
+<tr><td> Current Posting (18 DOGRA)</td><td> Posted on promotion to Major. TOS by 18 DOGRA (Rajouri, J&K) as Company Commander w.e.f. 13 Jun 2026. Currently serving in the unit. (Auth: MS Branch Order No A/7955/Post/Dogra/2026).<br><b>Year 2026 - Present</b></td></tr>
+
+                <tr><td>Conflicts</td><td>OPS Sindoor<br>OPS Mahadev<br>OPS Jammu Drill<br>Counter-Insurgency OPS<br>POK Border OPS</td></tr>
                 <tr><td>Awards</td><td>
                     <div style="display: flex; flex-direction: column; gap: 6px;">
                         <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Yudh_Seva_Medal_ribbon.svg/1280px-Yudh_Seva_Medal_ribbon.svg.png"> Yudh Seva Medal</span>
@@ -590,8 +526,6 @@
                         <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Army_Commander_Commendation_disc.png/1280px-Army_Commander_Commendation_disc.png"> COAS Commendation</span>
                     </div>
                 </td></tr>
-                <tr><td>Next of Kin (NOK):</td><td> Dr Megha Khandelwal (Spouse)</td></tr>
-                <tr><td>Relations</td><td><strong>Koushal Kishore</strong><br/>Retd. Subedar Major<br/> 23 JAT Regiment <br/>(Father)</td></tr>
             </table>
         </div>
 
@@ -617,18 +551,18 @@
                 <ol style="padding-left:20px;">
                     <li><strong>National Defence Academy (NDA)</strong>
                         <ul style="padding-left:20px;margin-top:10px;">
-                            <li> ➤ Course: 135th Course</li>
-                            <li> ➤ Joined NDA: 2015</li>
-                            <li> ➤ Passing Out Parade (POP): 30 November 2018 at Khetrapal Parade Ground at the NDA in Pune.</li>
-                            <li> ➤ Reviewing Officer: Chief of Army Staff, General Bipin Rawat</li>
+                            <li> Course: 135th Course</li>
+                            <li> Joined NDA: 2015</li>
+                            <li> Passing Out Parade (POP): 30 November 2018 at Khetrapal Parade Ground at the NDA in Pune.</li>
+                            <li> Reviewing Officer: Chief of Army Staff, General Bipin Rawat</li>
                         </ul>
                     </li><br>
                     <li><strong>Indian Military Academy (IMA)</strong>
                         <ul style="padding-left:20px;margin-top:10px;">
-                            <li> ➤ Course: 146th Regular Course, Delta Company</li>
-                            <li> ➤ Joined IMA: July 2018</li>
-                            <li> ➤ Passing Out Parade (POP): 13 June 2020 at Chetwode Drill Square, IMA Dehradun.</li>
-                            <li> ➤ Reviewing Officer: Chief of Army Staff, General MM Naravane</li>
+                            <li> Course: 146th Regular Course, Delta Company</li>
+                            <li> Joined IMA: July 2018</li>
+                            <li> Passing Out Parade (POP): 13 June 2020 at Chetwode Drill Square, IMA Dehradun.</li>
+                            <li> Reviewing Officer: Chief of Army Staff, General MM Naravane</li>
                         </ul>
                     </li>
                 </ol>
@@ -638,15 +572,33 @@
         <div class="accordion">
             <div class="acc-head" onclick="toggleAcc(2)">Military Career & Commissioning <span>+</span></div>
             <div class="acc-body" id="acc2">
-                <p><strong>Commission as Lieutenant</strong></p>
-                <ul style="padding-left:20px;margin-top:10px;">
-                    <li> ➤ Date: 13 June 2020</li>
-                    <li> ➤ First Posting: 18th Battalion, Dogra Infantry Regiment</li>
-                </ul><br>
-                <p><strong>Promotion to Captain</strong></p>
-                <ul style="padding-left:20px;margin-top:10px;">
-                    <li> ➤ Date: 13 June 2022</li>
-                    <li> ➤ Current Posting: HQ I Corps, Strike 1 Corps</li>
+                <p><strong>Chronological Record of Postings</strong></p><br>
+                
+                <p><strong>1st Posting: 15th Battalion, The Dogra Regiment (15 DOGRA)</strong></p>
+                <ul style="padding-left:20px;margin-top:5px;margin-bottom:15px;">
+                    <li><strong>Rank held:</strong> Lieutenant / Captain</li>
+                    <li><strong>Appointment:</strong> Platoon Commander</li>
+                    <li><strong>Tenure:</strong> 13 June 2020 to 12 June 2023</li>
+                    <li><strong>Record Entry:</strong> Commissioned into the Regiment of Infantry w.e.f. 13 June 2020. Taken on Strength (TOS) by 15 DOGRA as Platoon Commander. Promoted to the rank of Captain w.e.f. 13 June 2022. Struck off Strength (SOS) on 12 June 2023 upon posting out to Headquarters Mathura Military Station.</li>
+                    <li><strong>Authority:</strong> Integrated HQ of MoD (Army) MS Branch Order No A/12001/Post/Dogra/2020.</li>
+                </ul>
+
+                <p><strong>2nd Posting: Headquarters, Mathura Military Station</strong></p>
+                <ul style="padding-left:20px;margin-top:5px;margin-bottom:15px;">
+                    <li><strong>Rank held:</strong> Captain / Major</li>
+                    <li><strong>Appointment:</strong> Staff Officer</li>
+                    <li><strong>Tenure:</strong> 13 June 2023 to 12 June 2026</li>
+                    <li><strong>Record Entry:</strong> Taken on Strength (TOS) by Headquarters Mathura Military Station on 13 June 2023. Promoted to the rank of Major w.e.f. 13 June 2026 based on commission seniority. Struck off Strength (SOS) from Headquarters Mathura Military Station on 12 June 2026 upon posting out to 18 DOGRA.</li>
+                    <li><strong>Authority:</strong> Integrated HQ of MoD (Army) MS Branch Order No MS/8542/Post/Staff/2023.</li>
+                </ul>
+
+                <p><strong>3rd Posting: 18th Battalion, The Dogra Regiment (18 DOGRA) – Rajouri, Jammu & Kashmir</strong></p>
+                <ul style="padding-left:20px;margin-top:5px;">
+                    <li><strong>Rank held:</strong> Major</li>
+                    <li><strong>Appointment:</strong> Company Commander</li>
+                    <li><strong>Tenure:</strong> 13 June 2026 to Present</li>
+                    <li><strong>Record Entry:</strong> Posted to Field Area on promotion to the rank of Major. Taken on Strength (TOS) by 18 DOGRA located at Rajouri, Jammu & Kashmir on 13 June 2026. Assumed the operational appointment of Company Commander. Currently serving in the unit.</li>
+                    <li><strong>Authority:</strong> Integrated HQ of MoD (Army) MS Branch Order No A/12001/Post/Dogra/2026.</li>
                 </ul>
             </div>
         </div>
@@ -676,7 +628,7 @@
             <div class="acc-head" onclick="toggleAcc(6)">Educational Qualification <span>+</span></div>
             <div class="acc-body" id="acc6">
                 <ul style="padding-left:20px;">
-                    <li> ➤ Graduated from the National Defence Academy, Pune, earning a Bachelor of Science (B.Sc.) degree awarded by Jawaharlal Nehru University, New Delhi.</li>
+                    <li> ➢ Graduated from the National Defence Academy, Pune, earning a Bachelor of Science (B.Sc.) degree awarded by Jawaharlal Nehru University, New Delhi.</li>
                 </ul>
             </div>
         </div>
