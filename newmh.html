@@ -123,9 +123,9 @@
         .summary-card { background: #e8f5e9; border: 1px dashed #2e7d32; padding: 12px 15px; border-radius: 10px; margin-top: 15px; cursor: pointer; font-size: 13px; transition: 0.2s; position: relative; }
         .summary-card:hover { background: #c8e6c9; }
         
-        /* Fullscreen Image Zoom Overlay - High z-index & explicit pointer-events */
-        #fullscreen-img-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999999; display: none; justify-content: center; align-items: center; padding: 20px; cursor: pointer; }
-        #fullscreen-img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; border: 2px solid #fff; pointer-events: auto; }
+        /* Fullscreen Image Zoom Overlay */
+        #fullscreen-img-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 999999; display: none; justify-content: center; align-items: center; padding: 20px; cursor: pointer; }
+        #fullscreen-img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; border: 2px solid #fff; pointer-events: auto; cursor: default; }
     </style>
 </head>
 <body onclick="closePopup()">
@@ -140,8 +140,12 @@
         <button onclick="requestUserLocation()" style="margin-top:15px; padding:10px 20px; background:#1B5E20; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Allow Location Access</button>
     </div>
 
-    <!-- Process Loader -->
-    <div id="process-loader"><div class="spinner"></div><p style="margin-top:20px; font-weight:bold;">Processing Request...</p></div>
+    <!-- Process Loader with Success Green Tick Icon -->
+    <div id="process-loader">
+        <div class="spinner" id="loader-spinner"></div>
+        <div id="loader-success-icon" style="display:none; font-size: 60px; color: var(--success); margin-bottom: 10px;"><i class="fa fa-check-circle"></i></div>
+        <p style="margin-top:20px; font-weight:bold;" id="loader-text">Processing Request...</p>
+    </div>
 
     <!-- Success Token Popup Box -->
     <div id="popup-box" onclick="event.stopPropagation()">
@@ -201,7 +205,7 @@
         </div>
     </div>
 
-    <!-- Fullscreen Image Zoom Modal (Fixed click handler and visibility) -->
+    <!-- Fullscreen Image Zoom Modal -->
     <div id="fullscreen-img-modal" onclick="closeFullscreenImg()">
         <img id="zoomed-img" src="" alt="Fullscreen Prescription">
     </div>
@@ -387,6 +391,7 @@
             document.getElementById('alt-modal').style.display = show ? 'flex' : 'none';
         }
 
+        // Image compression and submission handling to avoid QuotaExceededError
         function handleEmergencySubmit(e) {
             e.preventDefault();
             const hosp = document.getElementById('e_hosp').value;
@@ -400,11 +405,28 @@
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    const base64Image = event.target.result;
-                    const entryData = { hosp, pat, coord, city, state, dr, image: base64Image };
-                    
-                    saveEntryToStorage(entryData);
-                    finishSubmission();
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const max_size = 700; // optimized size to prevent quota error
+                        if (width > height) {
+                            if (width > max_size) { height *= max_size / width; width = max_size; }
+                        } else {
+                            if (height > max_size) { width *= max_size / height; height = max_size; }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.65);
+
+                        const entryData = { hosp, pat, coord, city, state, dr, image: compressedBase64 };
+                        saveEntryToStorage(entryData);
+                        finishSubmission();
+                    };
+                    img.src = event.target.result;
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
@@ -412,19 +434,38 @@
 
         function finishSubmission() {
             toggleAltModal(false);
-            document.getElementById('process-loader').style.display = 'flex';
+            
+            const loader = document.getElementById('process-loader');
+            const spinner = document.getElementById('loader-spinner');
+            const successIcon = document.getElementById('loader-success-icon');
+            const loaderText = document.getElementById('loader-text');
+            
+            spinner.style.display = 'block';
+            successIcon.style.display = 'none';
+            loaderText.innerText = 'Processing Request...';
+            loader.style.display = 'flex';
 
             setTimeout(() => {
-                document.getElementById('process-loader').style.display = 'none';
-                document.getElementById('emergencyForm').reset();
-                loadSavedEntries();
+                spinner.style.display = 'none';
+                successIcon.style.display = 'block';
+                loaderText.innerText = 'Submitted Successfully!';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.getElementById('emergencyForm').reset();
+                    loadSavedEntries();
+                }, 2000);
             }, 3000);
         }
 
         function saveEntryToStorage(data) {
-            let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
-            entries.push(data);
-            localStorage.setItem('iafz_emergency_entries', JSON.stringify(entries));
+            try {
+                let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+                entries.push(data);
+                localStorage.setItem('iafz_emergency_entries', JSON.stringify(entries));
+            } catch (err) {
+                alert("Storage error: Image file might be too large. Please select a smaller image.");
+            }
         }
 
         function loadSavedEntries() {
@@ -456,7 +497,7 @@
                         <strong>Doctor:</strong> ${entry.dr}<br><br>
                         <strong>Prescription Image:</strong><br>
                         <div style="text-align:center; margin-top:5px;">
-                            <img src="${entry.image}" style="max-width:100%; max-height:180px; object-fit:contain; border-radius:6px; border:1px solid #ddd; cursor:pointer;" onclick="openFullscreenImg(event, '${entry.image}')">
+                            <img src="${entry.image}" style="max-width:100%; max-height:180px; object-fit:contain; border-radius:6px; border:1px solid #ddd; cursor:pointer;" onclick="openFullscreenImgByIndex(event, ${index})">
                             <p style="font-size:10px; color:#666; margin-top:2px;">(Tap image to view full screen)</p>
                         </div>
                     `;
@@ -478,10 +519,13 @@
             }
         }
 
-        function openFullscreenImg(event, src) {
-            event.stopPropagation(); // Prevent closing parent modals
-            document.getElementById('zoomed-img').src = src;
-            document.getElementById('fullscreen-img-modal').style.display = 'flex';
+        function openFullscreenImgByIndex(event, index) {
+            event.stopPropagation(); 
+            let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+            if(entries[index] && entries[index].image) {
+                document.getElementById('zoomed-img').src = entries[index].image;
+                document.getElementById('fullscreen-img-modal').style.display = 'flex';
+            }
         }
 
         function closeFullscreenImg() {
@@ -490,13 +534,27 @@
 
         function handleBooking(e) {
             e.preventDefault();
-            document.getElementById('process-loader').style.display = 'flex';
+            const loader = document.getElementById('process-loader');
+            const spinner = document.getElementById('loader-spinner');
+            const successIcon = document.getElementById('loader-success-icon');
+            const loaderText = document.getElementById('loader-text');
+            
+            spinner.style.display = 'block';
+            successIcon.style.display = 'none';
+            loaderText.innerText = 'Processing Appointment...';
+            loader.style.display = 'flex';
 
             setTimeout(() => {
-                document.getElementById('process-loader').style.display = 'none';
-                const randToken = "MH" + Math.floor(10000000 + Math.random() * 90000000);
-                document.getElementById('token-display').innerText = "Your MH Token No. " + randToken;
-                document.getElementById('popup-box').classList.add('active');
+                spinner.style.display = 'none';
+                successIcon.style.display = 'block';
+                loaderText.innerText = 'Appointment Confirmed!';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    const randToken = "MH" + Math.floor(10000000 + Math.random() * 90000000);
+                    document.getElementById('token-display').innerText = "Your MH Token No. " + randToken;
+                    document.getElementById('popup-box').classList.add('active');
+                }, 1500);
             }, 3000);
         }
 
