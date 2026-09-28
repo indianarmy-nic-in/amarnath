@@ -19,12 +19,10 @@
 
     <!-- CSS & Icon Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png">
 
     <style>
-        /* Protection CSS Rules */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -39,17 +37,11 @@
 
         img {
             -webkit-user-drag: none !important;
-            -khtml-user-drag: none !important;
-            -moz-user-drag: none !important;
-            -o-user-drag: none !important;
             pointer-events: none !important;
         }
 
-        /* Input fields me typing enable rakhne ke liye */
         input, select, textarea {
             -webkit-user-select: auto !important;
-            -moz-user-select: auto !important;
-            -ms-user-select: auto !important;
             user-select: auto !important;
         }
 
@@ -72,7 +64,7 @@
         #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100000; background: #000; }
         .preloader-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        #location-finder, #process-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #FFF; z-index: 99999; display: none; flex-direction: column; justify-content: center; align-items: center; }
+        #location-finder, #process-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #FFF; z-index: 99999; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;}
         .anim-image { width: 250px; height: 100px; object-fit: contain; margin-bottom: 20px; }
 
         .tracking-text {
@@ -96,25 +88,19 @@
         #popup-box.active { transform: translate(-50%, -50%) scale(1); display: block; }
 
         .page-banner { width: 100%; height: 220px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; border-bottom: 4px solid var(--primary); box-shadow: var(--soft-3d); }
-        .logo-container { position: relative; width: 100px; height: 100px; overflow: hidden; border-radius: 12px; box-shadow: none; }
+        
+        .logo-container { position: relative; width: 100px; height: 100px; overflow: hidden; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
         .shining-logo { width: 100%; height: 100%; object-fit: contain; }
 
         .location-bar { padding: 12px 15px; display: flex; align-items: center; font-size: 14px; color: var(--accent); font-weight: bold; }
         .location-bar i { margin-right: 8px; font-size: 18px; }
 
-        .screen { display: none; width: 100%; height: 100vh; overflow-y: auto; padding-bottom: 120px; animation: fadeIn 0.4s ease; -webkit-overflow-scrolling: touch; overscroll-behavior-y: none; }
+        .screen { display: none; width: 100%; height: 100vh; overflow-y: auto; padding-bottom: 160px; animation: fadeIn 0.4s ease; -webkit-overflow-scrolling: touch; overscroll-behavior-y: none; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .card-3d { background: #FFF; border-radius: 18px; margin: 15px; padding: 22px; box-shadow: var(--soft-3d); border: 1px solid rgba(0,0,0,0.05); }
         .input-style { width: 100%; padding: 14px; margin-bottom: 18px; border: 1px solid #DDD; border-radius: 10px; font-size: 16px; background: #FDFDFD; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05); }
         .btn-3d { width: 100%; padding: 16px; background: linear-gradient(145deg, #2E7D32, #1B5E20); color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 0 #0E3512; cursor: pointer; }
-
-        .id-card-wrapper { width: 320px; height: 200px; margin: 15px auto; perspective: 1000px; }
-        .id-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 12px; box-shadow: var(--soft-3d); }
-        .id-card-inner.flipped { transform: rotateY(180deg); }
-        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; overflow: hidden; }
-        .card-face img { width: 100%; height: 100%; object-fit: fill; }
-        .card-back { transform: rotateY(180deg); }
 
         .info-row { display: flex; justify-content: space-between; padding: 10px 5px; border-bottom: 1px solid #EEE; font-size: 12px; gap: 8px; align-items: center; }
         .info-label { color: #666; min-width: 110px; }
@@ -124,25 +110,44 @@
         @keyframes blinker { 50% { opacity: 0.4; } }
 
         .accordion { background-color: #FFF; color: #444; cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; border-bottom: 1px solid #EEE; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; font-size: 13px; line-height: 1.6; color: #555; border-bottom: 1px solid #EEE; padding-bottom: 15px; text-transform: none; }
+        .panel { padding: 12px 18px; background-color: white; display: none; overflow: hidden; font-size: 13px; line-height: 1.6; color: #555; border-bottom: 1px solid #EEE; text-transform: none; }
 
         .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 75px; background: #FFF; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #EEE; z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
         .nav-link { text-align: center; color: #999; text-decoration: none; font-size: 11px; flex: 1; transition: 0.3s; padding: 10px 0; }
         .nav-link i { font-size: 24px; display: block; margin-bottom: 4px; }
         .nav-link.active { color: var(--accent); font-weight: bold; }
+
+        #alt-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 95000; display: none; justify-content: center; align-items: center; padding: 15px; overflow-y: auto; }
+        .modal-content { background: #fff; width: 100%; max-width: 420px; border-radius: 20px; padding: 25px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        
+        .summary-card { background: #e8f5e9; border: 1px dashed #2e7d32; padding: 12px 15px; border-radius: 10px; margin-top: 15px; cursor: pointer; font-size: 13px; transition: 0.2s; position: relative; }
+        .summary-card:hover { background: #c8e6c9; }
+        
+        /* Fullscreen Image Zoom Overlay */
+        #fullscreen-img-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 999999; display: none; justify-content: center; align-items: center; padding: 20px; cursor: pointer; }
+        #fullscreen-img-modal img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; border: 2px solid #fff; pointer-events: auto; cursor: default; }
     </style>
 </head>
 <body onclick="closePopup()">
 
+    <!-- Preloader -->
     <div id="preloader"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9S5h7Lbz1kHP1XNdwvqB24LgvLKGiZT5FTD98tVsqW4kIca6mnCGKuRDZi4qm6dYmsC-JauB3ZRFs8t44jiNG4IL9X0YQYcCFF607Q4jPQQBDsa6qstFzzrA1fpnEODSPvgM4E022DtlmYFUJ7PhVIMOecfU6zxrHY0pqvFdjHa252oz3LS0yVGwLilWR/s1920/Add%20a%20heading.jpeg" class="preloader-img"></div>
     
+    <!-- Location Finder & Permission Prompt -->
     <div id="location-finder">
         <img src="https://assets-v2.lottiefiles.com/a/5de17b98-4485-11f0-a60c-8b3eb8494a4a/f3oFS54DYL.gif" class="anim-image" alt="Tracking">
-        <p class="tracking-text">Tracking Your Location...</p>
+        <p class="tracking-text" id="loc-status-text">Fetching Live Location Permission...</p>
+        <button onclick="requestUserLocation()" style="margin-top:15px; padding:10px 20px; background:#1B5E20; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Allow Location Access</button>
     </div>
 
-    <div id="process-loader"><div class="spinner"></div><p style="margin-top:20px; font-weight:bold;">Processing Appointment...</p></div>
+    <!-- Process Loader with Success Green Tick Icon -->
+    <div id="process-loader">
+        <div class="spinner" id="loader-spinner"></div>
+        <div id="loader-success-icon" style="display:none; font-size: 60px; color: var(--success); margin-bottom: 10px;"><i class="fa fa-check-circle"></i></div>
+        <p style="margin-top:20px; font-weight:bold;" id="loader-text">Processing Request...</p>
+    </div>
 
+    <!-- Success Token Popup Box -->
     <div id="popup-box" onclick="event.stopPropagation()">
         <div style="font-size: 40px; color: var(--success); margin-bottom: 10px;"><i class="fa fa-check-circle"></i></div>
         <h2 style="font-size: 17px; margin-bottom: 10px;" id="token-display">Your MH Token No. MH0000000</h2>
@@ -153,11 +158,68 @@
         </div>
     </div>
 
+    <!-- Alternate / Emergency Form Modal -->
+    <div id="alt-modal" onclick="if(event.target === this) toggleAltModal(false)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div style="text-align: right;"><button onclick="toggleAltModal(false)" style="background:none; border:none; font-size:22px; font-weight:bold; cursor:pointer; color:#555;">&times;</button></div>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <div class="logo-container" style="margin-bottom:8px;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo">
+                </div>
+                <h3 style="font-size:16px; font-weight:bold; color:var(--primary);">Emergency Admission Form</h3>
+                <p style="font-size:12px; color:#666; margin-top:4px;">Fill out emergency coordinator and location details below.</p>
+            </div>
+            <form id="emergencyForm" onsubmit="handleEmergencySubmit(event)">
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter Hospital Name *</label>
+                <input type="text" class="input-style" id="e_hosp" placeholder="Hospital Name" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter Patient Name *</label>
+                <input type="text" class="input-style" id="e_pat" placeholder="Patient Full Name" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter Hospital Coordinator Name *</label>
+                <input type="text" class="input-style" id="e_coord" placeholder="Coordinator Name" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter City *</label>
+                <input type="text" class="input-style" id="e_city" placeholder="City Name" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter State *</label>
+                <input type="text" class="input-style" id="e_state" placeholder="State Name" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Upload Prescription *</label>
+                <input type="file" class="input-style" id="e_rx" accept="image/*" style="padding:10px;" required>
+
+                <label style="font-weight:bold; display:block; margin-bottom:6px; font-size:13px;">Enter Dr Name *</label>
+                <input type="text" class="input-style" id="e_dr" placeholder="Doctor Name" required>
+
+                <button type="submit" class="btn-3d" style="padding:12px;">Submit Details</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Detailed View Modal for Entries -->
+    <div id="detail-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:96000; display:none; justify-content:center; align-items:center; padding:15px;" onclick="if(event.target === this) this.style.display='none'">
+        <div style="background:#fff; width:100%; max-width:380px; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.3); max-height:90vh; overflow-y:auto;" onclick="event.stopPropagation()">
+            <h3 style="font-size:16px; font-weight:bold; color:var(--primary); margin-bottom:12px; border-bottom:1px solid #eee; padding-bottom:8px;">Full Entry Information</h3>
+            <div id="full-detail-content" style="font-size:13px; line-height:1.6; color:#333;"></div>
+            <button onclick="document.getElementById('detail-modal').style.display='none'" style="width:100%; margin-top:15px; padding:10px; background:#333; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+    <!-- Fullscreen Image Zoom Modal -->
+    <div id="fullscreen-img-modal" onclick="closeFullscreenImg()">
+        <img id="zoomed-img" src="" alt="Fullscreen Prescription">
+    </div>
+
+    <!-- SCREEN 1: HOME -->
     <div id="screen1" class="screen" style="display: block;">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
             <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
         </div>
-        <div class="location-bar"><i class="fa fa-map-marker"></i> Govindnagar, 281003</div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #eee;">
+            <div class="location-bar" id="live-location-display"><i class="fa fa-map-marker"></i> Fetching location...</div>
+            <button onclick="toggleAltModal(true)" style="margin-right: 15px; padding: 6px 12px; background: var(--accent); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer;"><i class="fa fa-plus"></i> Emergency Form</button>
+        </div>
         <div class="location-bar"><i class="fa fa-plus-square"></i> Military Hospital, All Over India</div>
 
         <div class="card-3d">
@@ -179,10 +241,12 @@
                 <input type="text" class="input-style" style="width: 55%;" placeholder="ID Number" required>
                 <button type="submit" class="btn-3d">Book Appointment</button>
             </form>
+            
+            <div id="entries-container"></div>
         </div>
-        <div style="height: 100px;"></div>
     </div>
 
+    <!-- SCREEN 2: PROFILE -->
     <div id="screen2" class="screen">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
             <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
@@ -190,21 +254,14 @@
         <div class="card-3d">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
                 <button class="blink">SHAPE-1 (Fit)</button>
-                <div style="width:100px; height:100px; border:2px solid #DDD; border-radius:10px; overflow:hidden;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDenYRlqps_qCbCmZUUeaKhRQNUmx_slOsmSGTbneb2er9kCqHPgj-pJJG5VWEjb3_W5n6Vg5WuGnnQJBN5M4CAZED4K0aE3FaiqI5g2TyiEweUlASOlH98rOKcwm7dk1-EBRXehshiui-ELBv05iSFm6i4vsYZ8z_8_7REbVPAMK1JmUWptEtO0N6GtI0/s1152/Untitled%20design.jpeg" style="width:100%; height:100%; object-fit:cover;"></div>
-            </div>
-            
-            <div class="id-card-wrapper" onclick="this.querySelector('.id-card-inner').classList.toggle('flipped')">
-                <div class="id-card-inner">
-                    <div class="card-face"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQTdmiW4Rt5bs18qmJ9K_N6Jj0ObftuOXwbWqOq4dKitqPPtdLR3dQFUxPpyaeu8dbyD5St_NvWnA1Dcl6UyHA8NhwDZSV4R5v5Yr9KAWEIJTBq_zCUgMIjJjX8pYeMGi32UzhlWvz7gYkG8-3kckxF2XOqSUK0sSoORGGclWphUgOY15tl4glAIbkqa4L/s3200/IMG_5799.jpeg"></div>
-                    <div class="card-face card-back"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCd5ogDiBC-tscUXggAX0JNk7hHpjcVy-I5qphTwV4q_QCsIJwMYdEF-btV9QmRBOZQLtrNoe-9H8pGEYBOfwXaNaJ4cGGAXB8aPz09fEfGqGnpvAMHg1cc4QznMraIZwpNrV3aG4p4Q-8u3wNk4y2PUP4sdA929khlWQ_-w0HXHMVN-cm-SRPfRbIlYSI/s3200/IMG_5800.jpeg"></div>
-                </div>
+                <div style="width:110px; height:130px; border:2px solid #DDD; border-radius:10px; overflow:hidden;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtto6evmRAK9UtyGlLAb9Ae-q2eknTQTb_KfLSlpus3PakYY_gRgKtuYbE80smpALDPlOTyk-_YJsjAHfCd9sakCOULRKB8Vpycru0PmW10ZL4GmMU2ZlZeC9Sblm9IAvAKBEHB57wa9ZviSzfEf0miHwLoyZEUF4rrXWncYSaBWSKbBtOBwwz5AY3IEeY/s1462/B28EEC0D-3D37-4373-AF48-B3A34F6C6BAA.png" style="width:100%; height:100%; object-fit:cover;"></div>
             </div>
 
             <div class="info-row"><span class="info-label">Name</span><span class="info-value">Manish Chaudhary</span></div>
             <div class="info-row"><span class="info-label">Allegiance</span><span class="info-value"><img src="https://flagcdn.com/w20/in.png" class="small-icon">India</span></div>
             <div class="info-row"><span class="info-label">Branch</span><span class="info-value">Indian Army</span></div>
             <div class="info-row"><span class="info-label">Years Of Service</span><span class="info-value">13 June 2020 - Serving</span></div>
-            <div class="info-row"><span class="info-label">Rank</span><span class="info-value"><img src="https://atharvafoundation.in/assets/images/oneforall-gallery/ranks-img/9.jpg" class="small-icon">Captain</span></div>
+            <div class="info-row"><span class="info-label">Rank</span><span class="info-value"><img src="https://www.bharat-rakshak.com/army/wp-content/uploads/sites/2/2006/10/Major.gif" class="small-icon">Major</span></div>
             <div class="info-row"><span class="info-label">Service Number</span><span class="info-value">IC-80129D</span></div>
             <div class="info-row"><span class="info-label">Unit</span><span class="info-value">18 Dogra</span></div>
             <div class="info-row"><span class="info-label">Medical Number</span><span class="info-value">MH87551298A</span></div>
@@ -219,93 +276,286 @@
         </div>
     </div>
 
-    <div id="screen3" class="screen" style="display:flex; flex-direction:column;">
+    <!-- SCREEN 3: MENU -->
+    <div id="screen3" class="screen">
         <div class="page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://pbs.twimg.com/media/GtEL85EXsAAmnHv.jpg');">
             <div class="logo-container"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpesDm7yyep1UDCTx-wrX0Xs5wFtN2PA8uh751WwPLHdDojj1rYGop_xzvDh_tNVakRsGIjohjSKpFMT9nBkxVaPebbxFZoGiQp_OQqDDP6CsUosdYnJnXNFbPf8V6Kw3-CDet8lyyr-v1TaX9MAgEZzoBFB55UuxF2Yr4CjgGS5agAiIbFbol9E65sRxq/s512/INDIAN%20ARMY%20SOCIAL%20MEDIA%20PORTAL.png" class="shining-logo"></div>
         </div>
         <div class="card-3d" style="padding:0; overflow:hidden;">
-            <button class="accordion" onclick="toggleAcc(this)">Term & Condition <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> Welcome to the Indian Army Medical Portal... </div>
-            <button class="accordion" onclick="toggleAcc(this)">Medical Insurance <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> The Indian Army Medical Insurance Portal... </div>
-            <button class="accordion" onclick="toggleAcc(this)">Dependent Insurance <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> The Dependent Insurance section... </div>
-            <button class="accordion" onclick="toggleAcc(this)">Submit Complain <i class="fa fa-chevron-down"></i></button>
-            <div class="panel"> Email at: webmaster.indianarmy@nic.in </div>
+            <button class="accordion" onclick="toggleAcc(this)">Terms & Conditions <i class="fa fa-chevron-down"></i></button>
+            <div class="panel"> Welcome to the Indian Army Medical Portal. All service personnel and their registered dependents are bound by military medical guidelines. Misuse of portal services or false appointments will invite disciplinary action under army rules. </div>
+
+            <button class="accordion" onclick="toggleAcc(this)">Medical Insurance Policy <i class="fa fa-chevron-down"></i></button>
+            <div class="panel"> The Indian Army Medical Insurance Portal provides comprehensive cashless medical coverage across all authorized Military Hospitals (MH), Command Hospitals (CH), and designated empanelled civilian super-specialty network hospitals across India. </div>
+
+            <button class="accordion" onclick="toggleAcc(this)">Dependent Insurance & Eligibility <i class="fa fa-chevron-down"></i></button>
+            <div class="panel"> Dependents include legally wedded wife, dependent sons up to 25 years, unmarried/unemployed daughters, dependent parents, and unmarried sisters residing with the primary service member whose income is within permissible limits. </div>
+
+            <button class="accordion" onclick="toggleAcc(this)">Emergency Medical Evacuation <i class="fa fa-chevron-down"></i></button>
+            <div class="panel"> In case of sudden medical emergencies or field casualties, immediate local unit authorization is required for specialized air or road evacuation to the nearest tertiary care military medical establishment. </div>
+
+            <button class="accordion" onclick="toggleAcc(this)">Submit Complaint / Support <i class="fa fa-chevron-down"></i></button>
+            <div class="panel"> For technical glitches, appointment failures, or data discrepancy issues, raise an official ticket or email directly at: webmaster.indianarmy@nic.in with your Service/MI ID. </div>
         </div>
-        <div style="text-align:center; padding:20px; margin-top:auto;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Armed_forces_logo.png" style="width:35px; margin-bottom:8px;">
+        
+        <div style="text-align:center; padding:20px 20px 40px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Armed_forces_logo.png" style="width:45px; margin-bottom:10px; display:block;">
             <p style="font-weight:900; font-size:16px;">Indian Armed Forces</p>
-            <p style="font-size:11px; color:#555;">Medical Care Life Time Limited New Delhi</p>
+            <p style="font-size:11px; color:#555; margin-top:2px;">Medical Care Life Time Limited New Delhi</p>
             <p style="font-size:11px; color:#555;">Government Of India</p>
         </div>
     </div>
 
+    <!-- Bottom Navigation Bar -->
     <nav class="bottom-nav">
         <a href="javascript:void(0)" onclick="nav('screen1', this)" class="nav-link active"><i class="fa fa-home"></i>Home</a>
         <a href="javascript:void(0)" onclick="nav('screen2', this)" class="nav-link"><i class="fa fa-id-card"></i>Profile</a>
         <a href="javascript:void(0)" onclick="nav('screen3', this)" class="nav-link"><i class="fa fa-bars"></i>Menu</a>
     </nav>
 
-    <!-- Security Script (Disables Right-Click, Copy, Cut, Drag, and DevTools Shortcuts) -->
+    <!-- JavaScript Logic -->
     <script>
-        // Disable Right-Click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // Disable Copy, Cut, Paste, and Drag
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('copy', function(e) { e.preventDefault(); });
         document.addEventListener('cut', function(e) { e.preventDefault(); });
         document.addEventListener('dragstart', function(e) { e.preventDefault(); });
 
-        // Disable Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+S, F12, Ctrl+Shift+I, etc.)
         document.addEventListener('keydown', function(e) {
             if (
-                e.keyCode === 123 || // F12 Key
-                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
-                (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
-                (e.ctrlKey && e.shiftKey && e.keyCode === 67) || // Ctrl+Shift+C
-                (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
-                (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Save)
-                (e.ctrlKey && e.keyCode === 67) || // Ctrl+C (Copy)
-                (e.ctrlKey && e.keyCode === 88) || // Ctrl+X (Cut)
-                (e.ctrlKey && e.keyCode === 65)    // Ctrl+A (Select All)
+                e.keyCode === 123 ||
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+                (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 88 || e.keyCode === 65))
             ) {
                 e.preventDefault();
                 return false;
             }
         });
 
-        // Standard Navigation & Logic Functions
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('preloader').style.display = 'none';
                 document.getElementById('location-finder').style.display = 'flex';
-                setTimeout(() => {
-                    document.getElementById('location-finder').style.display = 'none';
-                }, 5000);
-            }, 4000);
+            }, 2000);
+            
+            loadSavedEntries();
         };
+
+        function requestUserLocation() {
+            const statusText = document.getElementById('loc-status-text');
+            statusText.innerText = "Requesting GPS Location Permission...";
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const address = data.address || {};
+                                const place = address.city || address.town || address.village || address.suburb || "Current Location";
+                                const postcode = address.postcode || "";
+                                document.getElementById('live-location-display').innerHTML = `<i class="fa fa-map-marker"></i> ${place}, ${postcode}`;
+                                document.getElementById('location-finder').style.display = 'none';
+                            })
+                            .catch(() => {
+                                document.getElementById('live-location-display').innerHTML = `<i class="fa fa-map-marker"></i> Lat: ${lat.toFixed(2)}, Lon: ${lon.toFixed(2)}`;
+                                document.getElementById('location-finder').style.display = 'none';
+                            });
+                    },
+                    (error) => {
+                        statusText.innerText = "Location permission denied. Using default.";
+                        setTimeout(() => {
+                            document.getElementById('live-location-display').innerHTML = `<i class="fa fa-map-marker"></i> Govindnagar, 281003`;
+                            document.getElementById('location-finder').style.display = 'none';
+                        }, 1000);
+                    },
+                    { timeout: 8000 }
+                );
+            } else {
+                document.getElementById('live-location-display').innerHTML = `<i class="fa fa-map-marker"></i> Govindnagar, 281003`;
+                document.getElementById('location-finder').style.display = 'none';
+            }
+        }
 
         function nav(id, el) {
             document.querySelectorAll('.screen').forEach(s => s.style.display='none');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.getElementById(id).style.display = (id === 'screen3' ? 'flex' : 'block');
+            document.getElementById(id).style.display = 'block';
             el.classList.add('active');
             window.scrollTo(0,0);
         }
 
-        function handleBooking(e) {
+        function toggleAltModal(show) {
+            document.getElementById('alt-modal').style.display = show ? 'flex' : 'none';
+        }
+
+        // Image compression and submission handling to avoid QuotaExceededError
+        function handleEmergencySubmit(e) {
             e.preventDefault();
-            document.getElementById('process-loader').style.display = 'flex';
+            const hosp = document.getElementById('e_hosp').value;
+            const pat = document.getElementById('e_pat').value;
+            const coord = document.getElementById('e_coord').value;
+            const city = document.getElementById('e_city').value;
+            const state = document.getElementById('e_state').value;
+            const dr = document.getElementById('e_dr').value;
+            
+            const fileInput = document.getElementById('e_rx');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const max_size = 700; // optimized size to prevent quota error
+                        if (width > height) {
+                            if (width > max_size) { height *= max_size / width; width = max_size; }
+                        } else {
+                            if (height > max_size) { width *= max_size / height; height = max_size; }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.65);
+
+                        const entryData = { hosp, pat, coord, city, state, dr, image: compressedBase64 };
+                        saveEntryToStorage(entryData);
+                        finishSubmission();
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        function finishSubmission() {
+            toggleAltModal(false);
+            
+            const loader = document.getElementById('process-loader');
+            const spinner = document.getElementById('loader-spinner');
+            const successIcon = document.getElementById('loader-success-icon');
+            const loaderText = document.getElementById('loader-text');
+            
+            spinner.style.display = 'block';
+            successIcon.style.display = 'none';
+            loaderText.innerText = 'Processing Request...';
+            loader.style.display = 'flex';
 
             setTimeout(() => {
-                document.getElementById('process-loader').style.display = 'none';
-                const randToken = "MH" + Math.floor(10000000 + Math.random() * 90000000);
-                document.getElementById('token-display').innerText = "Your MH Token No. " + randToken;
-                document.getElementById('popup-box').classList.add('active');
-            }, 4000);
+                spinner.style.display = 'none';
+                successIcon.style.display = 'block';
+                loaderText.innerText = 'Submitted Successfully!';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.getElementById('emergencyForm').reset();
+                    loadSavedEntries();
+                }, 2000);
+            }, 3000);
+        }
+
+        function saveEntryToStorage(data) {
+            try {
+                let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+                entries.push(data);
+                localStorage.setItem('iafz_emergency_entries', JSON.stringify(entries));
+            } catch (err) {
+                alert("Storage error: Image file might be too large. Please select a smaller image.");
+            }
+        }
+
+        function loadSavedEntries() {
+            const container = document.getElementById('entries-container');
+            container.innerHTML = '';
+            let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+            
+            entries.forEach((entry, index) => {
+                const card = document.createElement('div');
+                card.className = 'summary-card';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <strong>Patient:</strong> ${entry.pat} | <strong>Hospital:</strong> ${entry.hosp}<br>
+                            <span style="font-size:11px; color:#555;">City: ${entry.city}, State: ${entry.state}</span><br>
+                            <span style="font-size:11px; color:#2e7d32; font-weight:bold;">(Click to view details & prescription)</span>
+                        </div>
+                        <button onclick="deleteEntry(event, ${index})" style="background:#ffdddd; color:#d32f2f; border:none; padding:5px 8px; border-radius:5px; font-size:11px; font-weight:bold; cursor:pointer;"><i class="fa fa-trash"></i> Delete</button>
+                    </div>
+                `;
+                
+                card.onclick = () => {
+                    const fullInfoText = `
+                        <strong>Hospital:</strong> ${entry.hosp}<br>
+                        <strong>Patient Name:</strong> ${entry.pat}<br>
+                        <strong>Coordinator:</strong> ${entry.coord}<br>
+                        <strong>City:</strong> ${entry.city}<br>
+                        <strong>State:</strong> ${entry.state}<br>
+                        <strong>Doctor:</strong> ${entry.dr}<br><br>
+                        <strong>Prescription Image:</strong><br>
+                        <div style="text-align:center; margin-top:5px;">
+                            <img src="${entry.image}" style="max-width:100%; max-height:180px; object-fit:contain; border-radius:6px; border:1px solid #ddd; cursor:pointer;" onclick="openFullscreenImgByIndex(event, ${index})">
+                            <p style="font-size:10px; color:#666; margin-top:2px;">(Tap image to view full screen)</p>
+                        </div>
+                    `;
+                    document.getElementById('full-detail-content').innerHTML = fullInfoText;
+                    document.getElementById('detail-modal').style.display = 'flex';
+                };
+                
+                container.appendChild(card);
+            });
+        }
+
+        function deleteEntry(event, index) {
+            event.stopPropagation();
+            if(confirm("Are you sure you want to delete this saved entry?")) {
+                let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+                entries.splice(index, 1);
+                localStorage.setItem('iafz_emergency_entries', JSON.stringify(entries));
+                loadSavedEntries();
+            }
+        }
+
+        function openFullscreenImgByIndex(event, index) {
+            event.stopPropagation(); 
+            let entries = JSON.parse(localStorage.getItem('iafz_emergency_entries')) || [];
+            if(entries[index] && entries[index].image) {
+                document.getElementById('zoomed-img').src = entries[index].image;
+                document.getElementById('fullscreen-img-modal').style.display = 'flex';
+            }
+        }
+
+        function closeFullscreenImg() {
+            document.getElementById('fullscreen-img-modal').style.display = 'none';
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const loader = document.getElementById('process-loader');
+            const spinner = document.getElementById('loader-spinner');
+            const successIcon = document.getElementById('loader-success-icon');
+            const loaderText = document.getElementById('loader-text');
+            
+            spinner.style.display = 'block';
+            successIcon.style.display = 'none';
+            loaderText.innerText = 'Processing Appointment...';
+            loader.style.display = 'flex';
+
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                successIcon.style.display = 'block';
+                loaderText.innerText = 'Appointment Confirmed!';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    const randToken = "MH" + Math.floor(10000000 + Math.random() * 90000000);
+                    document.getElementById('token-display').innerText = "Your MH Token No. " + randToken;
+                    document.getElementById('popup-box').classList.add('active');
+                }, 1500);
+            }, 3000);
         }
 
         function closePopup() {
