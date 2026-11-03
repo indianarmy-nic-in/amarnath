@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>My App</title>
+
+    <!-- PWA Web App Manifest (Inline base64 - PWA Standalone Mode Force Karne Ke Liye) -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"My App Name","short_name":"My App","start_url":"/","scope":"/","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png","sizes":"1024x1024","type":"image/png"}]}'>
+
+    <!-- iOS Specific PWA Meta Tags -->
+    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7RS7zcB8TGw-MgsLxKTioY8R_Jl7HlQfpf_Hc0YF5MO3sITN2CVb-IooeoIHlNkGKDxBckN9egW4JdKA3UpFifue8JTVL0k6wzpzfF8etVXlrt81N6e8QkVJ_gMBCyZK5M0HeSvWEo9xPtJ9X1B4sU3BRGRZVcGL28jlaK1DZ_UcGhVrcIhSeaEsASlJj/s1024/IMG_5863.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App Name">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+
+    <!-- CSS & Icon Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- App Navigation Script (URL Bar & Browser Open Hone Se Rokne Ke Liye) -->
+    <script>
+      (function() {
+        // App me sabhi internal link clicks ko intercept karein
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          while (target && target.tagName !== 'A') {
+            target = target.parentNode;
+          }
+          
+          if (target && target.tagName === 'A') {
+            var href = target.getAttribute('href');
+            
+            // External links, hash links, ya javascript calls ko ignore karein
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || target.getAttribute('target') === '_blank') {
+              return;
+            }
+
+            var destUrl = new URL(target.href, window.location.href);
+            
+            // Agar same domain ka link hai to browser window ke bajaye app ke andar hi navigate karein
+            if (destUrl.origin === window.location.origin) {
+              e.preventDefault();
+              window.location.href = target.href;
+            }
+          }
+        }, false);
+
+        // Basic Service Worker Registration for PWA Compliance
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            var swCode = "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });";
+            var blob = new Blob([swCode], { type: 'text/javascript' });
+            var swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(function(){});
+          });
+        }
+      })();
+    </script>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Digilocker | Indian Government </title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Poppins,Helvetica,sans-serif;
+}
+
+:root{
+    --primary:#4b25cc;
+    --light-bg:#fff;
+}
+
+/* --- SECURITY & PROTECTION CSS --- */
+html, body {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+body, .app-header, .documents-heading, .explore-heading, .document-section h2, .sub-text, .welcome-text {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+/* SCREENSHOT & VISITOR SHIELD */
+#screenshot-shield {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #111 url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCEug432WfEIavihkZiRkHO7oYXxsH46h-bu6y0REUR4GNm0DPWPEiY6o&s=10') center/cover no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#screenshot-shield img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+}
+
+body{
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+button{cursor:pointer;font-family:inherit}
+
+.app-container{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    height:100vh;
+    height:100dvh;
+    max-height:900px;
+    overflow:hidden;
+    background:var(--light-bg);
+}
+
+/* SPLASH */
+
+#splash-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 500;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: linear-gradient(to left, #4C2DDD, #643CF9);
+    color: white;
+}
+
+.splash-image {
+    width: 250px;
+    height: 250px;
+
+    object-fit: contain;
+
+    position: relative;
+    top: -35px;
+
+    animation: logoZoomOut 1.2s ease-out forwards;
+
+opacity: 0;
+
+}
+
+/* Logo Zoom Out Animation */
+@keyframes logoZoomOut {
+    0% {
+        transform: scale(1.8);
+        opacity: 4;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.splash-footer{
+    position:absolute;
+    bottom:50px;
+    width:100%;
+    text-align:center;
+    font-size:20px;
+line-height:1.3;
+    font-weight:bold;
+    opacity:.70;
+}
+
+/* SCREENS */
+
+.screen{
+    display:none;
+    position:absolute;
+    inset:0 0 65px 0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:#f7f7fa;
+    background-size:cover;
+    background-position:center;
+    background-attachment:scroll;
+}
+
+.screen.active{display:block}
+
+#screen-home,
+#screen-menu,
+#screen-profile{
+    background-image:url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiatu9N0BI_nrXMWPyDLz5xcLmjZRunWfJLTQf0OkEgpKAqrWU5KfuJCW48ADOP4spKZtfXvLF4HJ7uiEw8JOp6BLCt__68_K5gKNlNFdko6MQZ06HOZLtMXMGOiPf2JpAeJQ_1cbYmsWUGfuksE1aoeYRXCEm9Zf9LMF7fMx5lPDeQz6ezeyB6hy7PmbR3/s1920/Realise%20On%20-%2013.jpeg");
+}
+
+#screen-menu {
+    background-image: none;
+    background-color: #f7f7fa;
+}
+
+#screen-search,
+#screen-issued{
+    background-image:url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiryZ5ERTvTeRbHB0uexRv3B1ZMTE7PzKb5FG8M0AvOtKo0AQ1g_ChL6a1SQb97z47uLx-vLs141EbqyqSGqIJGn_35A0HaE_SvATyQSJ3855DO1rT3buF4ZNZSm_TGV3ZWxp1FaGl4mQhPflMc9RdCoqKzf_a8q7TUpgvY0qJvZ2ajlkVz-Xr9HKT8GbVK/s1920/Realise%20On%20-%2014.jpeg");
+}
+
+/* HEADER */
+
+.app-header{
+    padding:22px 20px 15px;
+    color:white;
+}
+
+.header-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:17px;
+}
+
+.top-custom-logo{
+    width:150px;
+    height:32px;
+    object-fit:cover;
+}
+
+.profile-img{
+    width:42px;
+    height:42px;
+    object-fit:cover;
+    border:2px solid white;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.menu-profile-img {
+    width: 50px;
+    height: 65px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.welcome-text{
+    font-size:20px;
+    font-weight:900;
+    margin-bottom:5px;
+    color:white;
+    text-shadow:0 1px 3px #555;
+}
+
+.sub-text{
+    font-size:13px;
+    line-height:1.3;
+    color:white;
+}
+
+.sub-text-container{
+    position:relative;
+    padding-bottom:55px;
+}
+
+.see-all-btn{
+    position:absolute;
+    top:45px;
+    right:0;
+    padding:8px 15px;
+    border:none;
+    border-radius:20px;
+    background:rgba(255,255,255,.65);
+    color:var(--primary);
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* HOME DOCUMENTS - Adjusted padding to shift cards slightly right */
+
+.documents-heading{
+    padding:0 20px;
+    margin-top:-28px;
+    color:white;
+    font-size:20px;
+    font-weight:800;
+}
+
+.cards-slider{
+    display:flex;
+    gap:10px;
+    padding:14px 20px 24px 45px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    scroll-snap-type:x mandatory;
+}
+
+.cards-slider::-webkit-scrollbar{display:none}
+
+.card-box{
+    position:relative;
+    width:300px;
+    min-width:300px;
+    min-height:175px;
+    flex:0 0 300px;
+    padding:18px;
+    overflow:hidden;
+    background:rgba(255,255,255,.97);
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+    cursor:pointer;
+    scroll-snap-align:start;
+}
+
+.card-box::after{
+    content:"";
+    position:absolute;
+    right:16px;
+    bottom:16px;
+    width:90px;
+    height:65px;
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:.10;
+    pointer-events:none;
+}
+
+.watermark-aadhaar::after{
+    background-image:url("https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/1280px-Aadhaar.svg.png");
+}
+
+.watermark-pan::after{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJwSa5mBD1AEcmdfQiDr7xK5G1HGajd7hjtnBmx158w&s=10");
+}
+
+.watermark-uan::after{
+    background-image:url("https://upload.wikimedia.org/wikipedia/commons/1/13/Logo_of_Income_Tax_Department_India.png");
+}
+
+.card-content-flex{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.card-left-img{
+    width:90px;
+    height:70px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.card-title{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.card-number{
+    font-size:14px;
+    color:#A9A9A9;
+    margin-top:4px;
+}
+
+.card-subtitle{
+    position:relative;
+    z-index:2;
+    margin-top:25px;
+    text-align:center;
+    color:#777;
+    font-size:11px;
+}
+
+/* LOADING */
+
+.box-loader{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    margin-top:8px;
+    color:gray;
+    font-size:12px;
+    position:relative;
+    z-index:5;
+}
+
+.small-spinner{
+    width:13px;
+    height:13px;
+    border:2px solid gray;
+    border-top-color:var(--primary);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* UTILITY & HEADINGS */
+
+.utility-section{
+    padding:12px 20px 25px;
+}
+
+.explore-heading,
+.document-section h2{
+    font-size:20px;
+    font-weight:bold;
+    transition:color .2s ease;
+}
+
+.explore-heading.white-text,
+.document-section h2.white-text{
+    color:#fff;
+}
+
+.explore-heading.black-text,
+.document-section h2.black-text{
+    color:#111;
+}
+
+.utility-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    margin-top: 15px;
+}
+
+.utility-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    min-height:90px;
+    padding:14px 6px;
+    text-align:center;
+    font-size:11px;
+    color:#333;
+    background:white;
+    border:1px solid #eee;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.utility-item i{font-size:24px}
+
+/* EXPLORE SLIDER */
+
+.explore-section{
+    padding:10px 20px 30px;
+}
+
+.image-slider{
+    position:relative;
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    border-radius:15px;
+    background:white;
+    margin-top: 15px;
+}
+
+.slider-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:translateX(100%);
+    transition:transform .6s ease-in-out;
+}
+
+.slider-image.active{transform:translateX(0)}
+.slider-image.prev{transform:translateX(-100%)}
+
+.slider-caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:25px 12px 12px;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+   
+}
+
+/* SEARCH PAGE */
+
+#screen-search{
+    background-size:cover;
+    background-position:center;
+}
+
+.search-bar-container{
+    padding:15px 20px 20px;
+}
+
+.search-box{
+    position:relative;
+    width:100%;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.96);
+    border:1px solid #ddd;
+    border-radius:30px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.search-box i{
+    position:absolute;
+    left:calc(50% - 105px);
+    color:#777;
+    font-size:17px;
+    pointer-events:none;
+}
+
+.search-input{
+    width:100%;
+    height:100%;
+    padding:0 38px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    background:transparent;
+    font-size:15px;
+    text-align:center;
+    color:#333;
+}
+
+.search-content{
+    padding:10px 0 30px;
+    background:rgba(250,250,250,.92);
+    color:#333;
+}
+
+.search-section-title{
+    padding:0 20px;
+    margin:22px 0 15px;
+    font-size:20px;
+    font-weight:bold;
+    color:#303030;
+}
+
+.popular-searches{
+    display:flex;
+    gap:12px;
+    padding:0 20px 12px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.popular-searches::-webkit-scrollbar{display:none}
+
+.popular-chip{
+    flex:0 0 auto;
+    padding:12px 18px;
+    border:1px solid #ddd;
+    border-radius:30px;
+    background:rgba(255,255,255,.95);
+    color:#555;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.popular-documents{
+    display:flex;
+    gap:12px;
+    padding:8px 20px 15px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.popular-documents::-webkit-scrollbar{display:none}
+
+.popular-document-card{
+    position:relative;
+    flex:0 0 245px;
+    height:150px;
+    overflow:hidden;
+    border-radius:13px;
+    background:#fff;
+    cursor:pointer;
+}
+
+.popular-document-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.popular-document-name{
+    position:absolute;
+    z-index:2;
+    top:20px;
+    right:10px;
+    max-width:65%;
+    text-align:left;
+    font-size:15px;
+    font-weight:bold;
+    color:#1010a0;
+}
+
+.new-added-list{
+    display:flex;
+    gap:12px;
+    padding:8px 20px 15px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.new-added-list::-webkit-scrollbar{display:none}
+
+.new-added-card{
+    flex:0 0 280px;
+    min-height:75px;
+    height:75px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:9px 12px;
+    border:1px solid #e6e6e6;
+    border-radius:22px;
+    background:white;
+}
+
+.new-added-card i{
+    flex:0 0 48px;
+    text-align:center;
+    font-size:40px;
+}
+
+.new-added-card:nth-child(1) i{color:#0872bd;}
+.new-added-card:nth-child(2) i{color:#16a34a;}
+.new-added-card:nth-child(3) i{color:#f59e0b;}
+
+.new-added-card h3{
+    font-size:12px;
+    font-weight:600;
+    color:#111;
+    margin-bottom:5px;
+}
+
+.new-added-card p{
+    font-size:11px;
+    color:#777;
+    line-height:1.3;
+}
+
+.states-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:22px 8px;
+    padding:10px 15px 25px;
+}
+
+.state-item{
+    min-width:0;
+    text-align:center;
+    cursor:pointer;
+}
+
+.state-map-circle{
+    width:85px;
+    height:85px;
+    max-width:100%;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 5px 13px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.state-map-circle img{
+    width:68%;
+    height:68%;
+    object-fit:contain;
+}
+
+.state-name{
+    font-size:13px;
+    line-height:1.4;
+    color:#444;
+    overflow-wrap:anywhere;
+}
+
+/* ISSUED DOCUMENTS SCREEN */
+
+.issued-heading{
+    padding:60px 15px 15px;
+    color:#111;
+    font-size:20px;
+    font-weight:800;
+}
+
+.issued-list{
+    padding:0 20px 30px;
+    display:flex;
+    flex-direction:column;
+    gap:17px;
+}
+
+.issued-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    min-height:75px;
+    padding:7px 40px 7px 12px;
+    border:1px solid #e6e6e6;
+    border-radius:20px;
+    background:rgba(255,255,255,.97);
+    box-shadow:0 7px 18px rgba(0,0,0,.16);
+    cursor:pointer;
+    overflow:hidden;
+    transition:min-height .2s;
+}
+
+.issued-logo-wrap{
+    width:65px;
+    height:65px;
+    flex:0 0 65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid white;
+    border-radius:16px;
+    background:white;
+    box-shadow:0 0 0 1px #f4f4f4;
+}
+
+.issued-logo{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:5px;
+}
+
+.issued-copy{
+    flex:1;
+    min-width:0;
+    overflow:hidden;
+}
+
+.issued-title{
+    font-size:17px;
+    line-height:1.25;
+    font-weight:500;
+    color:#111;
+    overflow-wrap:anywhere;
+}
+
+.issued-subtitle{
+    position:relative;
+    display:block;
+    width:100%;
+    height:22px;
+    min-width:0;
+    overflow:hidden;
+    white-space:nowrap;
+    margin-top:7px;
+    font-size:14px;
+    line-height:22px;
+    color:#A9A9A9;
+}
+
+.issued-marquee{
+    position:absolute;
+    top:0;
+    left:0;
+    display:inline-block;
+    width:max-content;
+    white-space:nowrap;
+    font-size:14px;
+    line-height:22px;
+    will-change:transform;
+    transform:translateX(0);
+}
+
+.issued-menu{
+    position:absolute;
+    right:8px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:transparent;
+    color:#858997;
+    font-size:24px;
+    padding:8px;
+    z-index:10;
+}
+
+.issued-dropdown{
+    display:none;
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:10px;
+    z-index:30;
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+    overflow:hidden;
+}
+
+.issued-dropdown.show{display:block}
+
+.issued-dropdown button{
+    display:block;
+    width:100%;
+    padding:9px 13px;
+    border:none;
+    background:white;
+    text-align:left;
+    color:#333;
+    font-size:13px;
+}
+
+.issued-card.menu-open{
+    min-height:255px;
+    align-items:flex-start;
+    padding-top:12px;
+}
+
+.issued-card.menu-open .issued-menu{
+    top:12px;
+    transform:none;
+}
+
+.issued-card.menu-open .issued-dropdown{display:block}
+
+/* MENU SCREEN */
+
+.menu-profile{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    background:white;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.menu-profile-left{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.menu-table-container {
+    margin: 15px 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-table tr {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.menu-table tr:last-child {border-bottom: none;}
+.menu-table tr:hover {background-color: #f9f9fc;}
+
+.menu-table td {
+    padding: 20px;
+    font-size: 15px;
+    color: #333;
+}
+
+.menu-table td i {
+    width: 25px;
+    color: var(--primary);
+    text-align: center;
+    margin-right: 10px;
+}
+
+.menu-table tr.logout-row td, 
+.menu-table tr.logout-row td i {
+    color: #d9534f;
+}
+
+/* PROFILE SCREEN */
+
+#screen-profile{
+    inset:0;
+    height:100%;
+    background-color:#;
+    background-size:cover;
+    background-position:center top;
+    z-index:60;
+}
+
+.profile-banner{
+    position:relative;
+    height:160px;
+}
+
+.profile-topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:85px;
+    padding:25px 16px;
+}
+
+.profile-topbar button{
+    padding:4px;
+    border:none;
+    background: transparent;
+    color:white;
+    font-size:22px;
+}
+
+.profile-topbar h2{
+    color:white;
+    font-size:18px;
+}
+
+.profile-top-actions{
+    display:flex;
+    gap:12px;
+}
+
+.profile-photo-wrapper{
+    position:absolute;
+    bottom:-75px;
+    left:50%;
+    width:165px;
+    height:165px;
+    overflow:hidden;
+    transform:translateX(-50%);
+    border:5px solid white;
+    border-radius:50%;
+}
+
+.profile-photo-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.profile-main{
+    padding:88px 18px 30px;
+    text-align:center;
+}
+
+.profile-name{
+    margin-bottom:18px;
+    font-size:27px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 1px 5px #333;
+}
+
+.verified-badge{
+    display:inline-block;
+    margin-bottom:17px;
+    padding:7px 20px;
+    border-radius:25px;
+    background:#36a65b;
+    color:white;
+}
+
+.vcard-button{
+    display:block;
+    margin:0 auto 28px;
+    padding:12px 23px;
+    border:none;
+    border-radius:35px;
+    background:#def5ff;
+    font-size:19px;
+}
+
+.profile-details-card{
+    padding:0 18px;
+    border-radius:16px;
+    background:rgba(255,255,255,.94);
+    text-align:left;
+}
+
+.profile-detail-row{
+    display:grid;
+    grid-template-columns:105px minmax(0,1fr);
+    align-items:center;
+    gap:8px;
+    min-height:68px;
+    border-bottom:1px solid #ddd;
+    font-size:16px;
+}
+
+.profile-detail-row:last-child{border:none}
+
+.edit-mobile{
+    display:flex;
+    justify-content:space-between;
+}
+
+.edit-mobile button{
+    border:none;
+    background:transparent;
+    font-size:17px;
+}
+
+.add-email-button{
+    padding:7px 15px;
+    border:none;
+    border-radius:22px;
+    background:var(--primary);
+    color:white;
+}
+
+.quick-links-title{
+    margin:27px 0 20px;
+    text-align:left;
+    font-size:17px;
+    color:black;
+}
+
+.quick-links{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+}
+
+.quick-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-height:55px;
+    padding:7px 4px;
+    border:1px solid #999;
+    border-radius:30px;
+    background:rgba(255,255,255,.9);
+    color:#333;
+    font-size:10px;
+}
+
+.quick-link img{
+    width:20px;
+    height:20px;
+    object-fit:cover;
+}
+
+/* POPUP */
+
+#popup-modal{
+    display:none;
+    position:absolute;
+    z-index:500;
+    inset:0;
+    justify-content:center;
+    align-items:flex-end;
+    background:rgba(0,0,0,.65);
+}
+
+.popup-content{
+    width:100%;
+    height:92%;
+    overflow-y:auto;
+    padding:15px;
+    border-radius:24px 24px 0 0;
+    background:#f4f4f6;
+}
+
+.popup-top-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.close-popup{
+    border:none;
+    background:transparent;
+    font-size:25px;
+}
+
+.popup-main-image{
+    width:100%;
+    height:500px;
+    margin-bottom:15px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.demo-info{
+    padding:14px;
+    border-radius:14px;
+    background:white;
+    color:#555;
+    font-size:12px;
+    line-height:1.6;
+}
+
+.demo-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.popup-demonstration-text{
+    margin-top:15px;
+    color:var(--primary);
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* BOTTOM NAVIGATION */
+
+.bottom-nav{
+    position:absolute;
+    z-index:50;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:65px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:white;
+    border-top:1px solid #ddd;
+    transform: translateY(-19px);
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    min-width:55px;
+    padding:5px;
+    border:none;
+    background:transparent;
+    color:#666;
+    font-size:11px;
+}
+
+.nav-item.active{
+    color:var(--primary);
+    font-weight:bold;
+}
+
+.nav-icon-img{
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    position:relative;
+    top:-8px;
+    filter:grayscale(1);
+    transition:all .2s ease;
+}
+
+.nav-item.active .nav-icon-img{
+    filter:brightness(0) saturate(100%)
+    invert(19%) sepia(89%) saturate(3000%)
+    hue-rotate(245deg) brightness(85%);
+    transform:scale(1.12);
+}
+
+.nav-item span {
+    position: relative;
+    top: -6px;
+}
+
+/* HOME IMAGE SLIDER */
+
+.home-slider-section{
+    padding:15px 20px 25px;
+}
+
+.home-image-slider{
+    border:3px solid white;
+    border-radius:15px;
+    box-sizing:border-box;
+    overflow:hidden;
+    position:relative;
+    width:100%;
+    height:120px;
+    background:#eee;
+}
+
+.home-slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:translateX(100%);
+    transition:transform .6s ease-in-out;
+}
+
+.home-slide.active{transform:translateX(0);}
+.home-slide.prev{transform:translateX(-100%);}
+
+/* DOCUMENT SLIDER */
+
+.document-section{
+    padding:20px 0;
+    background: transparent;
+    overflow:hidden;
+}
+
+.document-section h2{
+    font-size:20px;
+    font-weight:bold;
+    padding:0 20px;
+    margin-bottom:15px;
+}
+
+.document-slider{
+    display:flex;
+    overflow-x:auto;
+    gap:0;
+    padding:10px 0 15px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+
+.document-slider::-webkit-scrollbar{display:none;}
+
+.document-item{
+    flex:0 0 25%;
+    min-width:25%;
+    text-align:center;
+    scroll-snap-align:start;
+    padding:0 5px;
+}
+
+.document-icon{
+    width:100px;
+    height:100px;
+    max-width:100%;
+    margin:0 auto 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.document-icon img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+}
+
+.document-item p{
+    font-size:12px;
+    line-height:1.5;
+    color:#444;
+    font-weight:500;
+    padding:0 2px;
+}
+
+/* DEFAULT FONT */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* WELCOME TEXT */
+.welcome-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* ISSUED DOCUMENT HEADING */
+.documents-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* AADHAAR CARD */
+.document-card,
+.document-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* DESCRIPTION TEXT */
+.description,
+.document-card p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+/* DIGILOCKER UTILITY */
+.utility-section > .explore-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* BOTTOM NAVIGATION */
+.nav-item,
+.nav-item span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* =================================
+   PAGE-WISE HEADING FONT SIZES
+================================= */
+
+/* COMMON FONT */
+body,
+button,
+input,
+table {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HOMEPAGE */
+
+/* Welcome, Manish Chaudhary */
+#screen-home .welcome-text {
+    font-size: 25px;
+
+line-height:1.3;
+
+    font-weight: 700;
+}
+
+/* Issued Document */
+#screen-home .documents-heading {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+/* Aadhaar Card and other card titles */
+#screen-home .card-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Card description */
+#screen-home .card-subtitle {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* DigiLocker Utility */
+#screen-home .utility-section > .explore-heading {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+/* Explore Digital Services */
+#screen-home .explore-section > .explore-heading {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Document you might need */
+#screen-home .document-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Utility item text */
+#screen-home .utility-item {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* Document slider description */
+#screen-home .document-item p {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+
+/* SEARCH PAGE */
+
+#screen-search .welcome-text {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+#screen-search .search-section-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#screen-search .popular-document-name {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#screen-search .new-added-card h3 {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#screen-search .new-added-card p {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+#screen-search .state-name {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+/* ISSUED DOCUMENT PAGE */
+
+#screen-issued .welcome-text {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#screen-issued .sub-text {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+#screen-issued .issued-heading {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#screen-issued .issued-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#screen-issued .issued-subtitle {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* MENU PAGE */
+
+#screen-menu .menu-profile {
+    font-size: 16px;
+}
+
+#screen-menu .menu-table td {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* PROFILE PAGE */
+
+#screen-profile .profile-topbar h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#screen-profile .profile-name {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#screen-profile .profile-detail-row {
+    font-size: 15px;
+}
+
+#screen-profile .quick-links-title {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+/* BOTTOM NAVIGATION */
+
+.nav-item,
+.nav-item span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* PROFILE IMAGE CLICK FIX */
+
+#screen-home .profile-img {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* DIGILOCKER UTILITY IMAGES */
+
+.utility-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+/* UTILITY ITEM */
+.utility-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 90px;
+    padding: 14px 6px;
+    text-align: center;
+    font-size: 11px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+/* =========================
+   RENNO SIDE BUTTON
+========================= */
+
+:root {
+    --renno-button-top: 80%;
+    --renno-button-width: 65px;
+    --renno-button-height: 32px;
+
+    --renno-panel-width: 90%;
+    --renno-panel-height: 65%;
+
+    --renno-image-width: 100%;
+    --renno-image-height: 280px;
+}
+
+.renno-tab {
+    position: absolute;
+    z-index: 300;
+    right: 0;
+    top: var(--renno-button-top);
+
+    width: 100px;
+    height: 40px;
+
+    background: #FF5F1F;
+    color: white;
+    border: none;
+    border-radius: 7px 0 0 7px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.renno-panel {
+    position: absolute;
+    z-index: 200;
+    bottom: 0;
+    left: 50%;
+
+    width: 100%;
+    height: 75%;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
+    transform: translate(-50%, 110%);
+    transition: transform 0.45s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.renno-panel.open {
+    transform: translate(-50%, 0);
+}
+
+.renno-main-image {
+    display: block;
+
+    width: 130%;
+    height: 95%;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: contain;
+    object-position: center;
+
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+    margin: auto;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.renno-link-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #0877e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 5;
+}
+
+.utility-grid {
+    background: #f0f0f0;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+/* Utility Grid Left Alignment */
+
+.utility-grid {
+    text-align: left;
+}
+
+.utility-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+.utility-item img,
+.utility-item i {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.utility-item span,
+.utility-item p {
+    text-align: left;
+    width: 100%;
+}
+
+
+/* RENNO Only on Home Page */
+
+.renno-tab,
+.renno-panel {
+    display: none;
+}
+
+#screen-home.active ~ .renno-tab,
+#screen-home.active ~ .renno-panel {
+    display: flex;
+}
+
+#screen-home.active ~ .renno-tab {
+    display: block;
+}
+
+/* Search - Most Popular Documents Images */
+
+#screen-search .document-slider img {
+    width: 100%;
+    height: 90px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Image Container */
+#screen-search .document-slider .document-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Responsive Images */
+#screen-search .document-slider {
+    align-items: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SCREENSHOT & SECURITY SHIELD -->
+<div id="screenshot-shield">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png" alt="Security Shield">
+    <h2 style="font-size: 22px; margin-bottom: 10px; color: #ff4d4d;">Security Notice</h2>
+    <p style="font-size: 14px; max-width: 300px; line-height: 1.5; opacity: 0.9;">
+        Screenshots, recording, and content copying are restricted for security and privacy compliance. Visitor activity is monitored.
+    </p>
+</div>
+
+<div class="app-container">
+
+<!-- SPLASH SCREEN -->
+<div id="splash-screen">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirpZPSsyeU9BXm2tbeVieWMwLonhNxwbzbkLfDWwZVq6bKBLd6C-y5TACN0b8uIZO4C5w9FaHTjpRdRZpZafQ9STEv5kfRk6CbiMsXyp1Cbroc_GBDR9I7M8vyZtZA7oKtN6x_Fp_5n_xpbBU8t7Jeh3Tg79c-vXZEFx7WeIsJaIdAVY8jupyznmRtxM73/s1800/Copy%20of%20SGMC%20NEW.png"
+    class="splash-image" alt="Application banner">
+    <div class="splash-footer">
+        Document Wallet to<br>Empower Citizen
+    </div>
+</div>
+
+<!-- HOME SCREEN -->
+<div id="screen-home" class="screen active">
+    <div class="app-header">
+        <div class="header-top">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPltoWZKh_a2inCiHDKGd9NSouQdIqwjKLECkiQALsTdHcELDZU12-x0IThacbe5pD9OYG7tcK_-gaeR83t6fE0Wwc2Uq84NOQuYoNEl1q4ZcG_SloxbEwqfak9x_ztVOHAWu74lwYuE74e1HvHu-lQV1vmyAWTHh9uddTVriNKQU5XP9HEZdBiL8vWQ6A/s300/Untitled%20design.png"
+            class="top-custom-logo" alt="Home logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png"
+            class="profile-img" alt="Profile"
+            onclick="switchTab('screen-profile',null)">
+        </div>
+        <div class="welcome-text">
+            Welcome, Manish<br>Chaudhary
+        </div>
+        <div class="sub-text-container">
+            <div class="sub-text">
+                DigiLocker 'Issued Documents' are at par with original documents as per<br>
+                IT ACT, 2000
+            </div>
+            <button class="see-all-btn"
+            onclick="switchTab('screen-issued',document.getElementById('nav-issued'))">
+                See All
+            </button>
+        </div>
+    </div>
+
+    <div class="documents-heading">Issued Document</div>
+
+    <div class="cards-slider">
+        <div class="card-box watermark-aadhaar" onclick="triggerBoxLoading(this,'Aadhaar Card')">
+            <div class="card-content-flex">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/1280px-Aadhaar.svg.png" class="card-left-img" alt="Aadhaar">
+                <div>
+                    <div class="card-title">Aadhaar Card</div>
+                    <div class="card-number">xxxx xxxx 7443</div>
+                </div>
+            </div>
+            <div class="card-subtitle">Unique Identification Authority of India (UIDAI)</div>
+            <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+        </div>
+
+        <div class="card-box watermark-pan" onclick="triggerBoxLoading(this,'Defence Identity Card')">
+            <div class="card-content-flex">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Indian_Army_Circular_Insignia.svg/250px-Indian_Army_Circular_Insignia.svg.png" class="card-left-img" alt="Army">
+                <div>
+                    <div class="card-title">Defence Identity Card</div>
+                    <div class="card-number">IC-80xxxD</div>
+                </div>
+            </div>
+            <div class="card-subtitle">Integrated Headquarters of MoD (Army)</div>
+            <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+        </div>
+
+        <div class="card-box watermark-uan" onclick="triggerBoxLoading(this,'PAN Verification Record')">
+            <div class="card-content-flex">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Logo_of_Income_Tax_Department_India.png" class="card-left-img" alt="Income Tax">
+                <div>
+                    <div class="card-title">PAN Verification Record</div>
+                    <div class="card-number">CECPC4839P</div>
+                </div>
+            </div>
+            <div class="card-subtitle">Income Tax Department</div>
+            <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+        </div>
+    </div>
+
+    <!-- HOME IMAGE SLIDER -->
+    <div class="home-slider-section">
+        <div class="home-image-slider">
+            <img class="home-slide active" src="https://cdn.digilocker.gov.in/digilocker-landing-page/assets/img/banner/web-banner-1.jpg" alt="Slide 1">
+            <img class="home-slide" src="https://cdn.digilocker.gov.in/digilocker-landing-page/assets/img/banner/web-banner-3.jpg" alt="Slide 2">
+            <img class="home-slide" src="https://cdn.digilocker.gov.in/digilocker-landing-page/assets/img/banner/web-banner-4.jpg" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- UTILITY -->
+    <div class="utility-section">
+        <div class="explore-heading">DigiLocker Utility</div>
+        <div class="utility-grid">
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLu78UpiVbPLuY2u3JDq_u7Z836Whj-deis148mbfHr-N82wslQvIf5VrPZKsr526efQP5XCNqaCCMMqMEICeurLMTHnWTkyVX9aJp5fJ6nkaVpYU_-bAmRyEotPh4Ycl-j5pGC_mt_iBRKpZ_cNOvO4yc_kJR1T-rAVcE1N9qVNmtySrPNPNT7u7qTGGj/s1272/36B98457-5879-4ED1-A9EC-0A64F49DED5D.png" class="utility-icon" alt="Authenticator">
+    Authenticator
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDKiB8gtvZ24nmMWYflogxcwL4iT-ahVg2jlsKAeK9zGKfVsd4XuL5_AFjyFKJyqwsCH2mkZ9VzijqktPgzNvERsOQZmyC3o_9rqqYQubs_KxLchARtRRlkSzRj7zJSP__uOgQsfpXaehX7MOaagn8eV9_c75tmEI56Coa_mGSZ3q4T6NeAjPRbgQmIz53/s1319/6F902521-E4FE-4B38-9A1F-E86A3D142BAD.png" class="utility-icon" alt="Authenticator">
+    Drive
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq1eLKkfe8N7YcTMdBwbjxOOyLkhpjd5Zy0VK-j2ahN7IXEMSEXPtPnb0sPjJriDCYG3fedZlFvWDbEWYEFAhUG5d55B5uEl-9qfEdrPYIwgVYx9YEwt3oJ5-3vYYrC6SN9OECUZrh6Cjwd1bvXQZq23wYbSw24W73P_i7-6ST_LhST9uReyRj-YY6mpCY/s500/IMG_9625.png" class="utility-icon" alt="Authenticator">
+    Verifiable
+Credential
+</div>
+            <div class="utility-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" class="utility-icon" alt="Authenticator">
+    Govt.<br/>
+Employee
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOYKHPUvwaYblC-28_wooODToJI9nZty7_175jbDCExUeUMfMlTaBJxwuyaQYQgAo1Hvpp1ZTQeujklpyY3axKw_wgEzYG9jAQlrvBVx6AtcJSS-vWfoxCNvl2JyCgs7y4uxwu-6YepOfD_C9EF8AAqpu66U8aubqv78yNtkWOpbXIFngyqLDn7kIKLwQO/s1319/C4B189BF-9150-494A-A5A1-239888189456.png" class="utility-icon" alt="Authenticator">
+    Nominee
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGzlhRVElfooKggE8qrF25zbPXtttwrGM5l9L9VHmriGZR9UUrrWERxYpmAR5aB-alDKPIkSsz_apMpjQbphYcBItSIuZBwKXlFjH9ZP1qVw4FTQmozJcODKYTZrXdTvzGCo4o-h2OucSOhxC2BQHUbIAXSB7w4zLQhy2seljWsYxRQdadL8rf0iUwo1ek/s1319/8204D2CC-50C0-4655-950D-7B3C1CBA60C7.png" class="utility-icon" alt="Authenticator">
+    My Consent
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDXcwGEMmz6p1sM3v-a8MZhsSn7Wclin0OUy4oPTnob3GvbADJC4BVjlhtEV4-7G9FteAoNtq1PWWWCOlSUr3rNV9O3lskYZq4qyy8xbnGWyUrPsVT-jN3oM_LLxkiN84quQmAq-1Ma8M7mGwwyQiWYBSUCXgJB6Vti_4GFZ_agLdZx2vl-FR3PbbPuQJ8/s1319/81E4A5C6-C4B7-449A-AC1F-78A91A261569.png" class="utility-icon" alt="Authenticator">
+    My Activity
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4krYiLyhecUL2xHeVMLCM4AuU-5Q16FWvpPxVqOqv5KXpECSqCmCN9ZQylQft8GuEzXpga7RbqRCFxjeO_vyhRxAPs7ZBOWCiMlq-lEe2ORRZgOiQ9_KxHGxgRyJ8HI5DG6pw9d7ucovf63NudRnsyBKRonfgtniTBqa4Oc39pn-cM9FB9Xyq08xlz5Pq/s1319/EF5C6F56-FB04-4605-BC66-FBDD278DFB32.png" class="utility-icon" alt="Authenticator">
+    Scan QR
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiP_tyAfRqvVZ_ChhaOARI90LI_8mZnnBX9Tgti8n7x3trngXdLwyl0iHi-FdrobkFyyZkLYoCpYxtwRF2WQuRJ1mBPGEpDfoMWmc3l8TrCud89DcARLhavxSCkryjJU-uik22TOhUqFCp_AfMlaPe8tBOz8FErsX9MkHcB4bDuTwlbvKVftZz02uGGH5EP/s525/IMG_9624.png" class="utility-icon" alt="Authenticator">
+    UMANG
+</div>
+            <div class="utility-item">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiwu4kBGP2aGG5a2M7GtAY45lVHGdjXndhnQqyA5ROp-Xfa-31R7DsLIosTz9LzvlXgNE_Vn77ptzZPJcbdfV2isTMa2l7ie73Gu8ycr1BJ3h6FsJzNQPK3hevVO2i9bfem822mLmAft_otZuqF0tjvHLDtJ92k4JJPRmNbXW2KiUTdzs5tbVIIT75flrE/s1319/58F6DD30-7AA6-4A07-8CE2-8D8335BC646C.png" class="utility-icon" alt="Authenticator">
+    ABHA
+</div>
+        </div>
+    </div>
+
+    <!-- DOCUMENT YOU MIGHT NEED -->
+    <div class="document-section">
+        <h2>Document you might need</h2>
+        <div class="document-slider" id="documentSlider">
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSyXU0Fm2IIUAdqrm2mK0PxP4OO_dlARHZztP9-XmZn1-nSTsMIN9m4bKeBOMP0RJfNQcXFIvxwNpu5xN7gRpvyjnMp9NqD_79MJ0noj60IEBPWo_ZBj93iSaLQnEOyzzU_bHquKvuOBMyaq2OOesTjktzeRCra9w9W76Gzt3jyjaLwrkyi5L0E1B-S3T7/s96/Untitled%20design%20-%201.jpeg"></div><p>Employees Provident Fund</p></div>
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRHqFET5JzJ-Jgzw-WmQ-975kH1OMewLtSEbxCygykWiuIHpFOV8aR5Nd3JLxYOptJ52RvP0JUqNF_8d5QkYWKmGkrIOse2esU-jYTOsMDbH9VNz6f-HGHVWfrawOg3CmX5IFDisjt58ER0czblrjPZwcMVR0GdJsvzL3IDGibMxkjcWKw-c7sVX9PRBw_/s96/Untitled%20design%20-%202.jpeg"></div><p>Academic Bank of Credits</p></div>
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHrCg766ukzBgKbZa3Qla0U1F3WLL4GBVlX0bFdjizTnyLERrXZxCmcQnQDSS_SuCkmgnqkMjL7I8gpgmeKwUyj4h2RbBbtrzMmcrMZbmtLFFLjfYBI6T6U4xazIUPPTunWoVK7O2njlpAlsJtQi220f9Y6r2aVQbYefZBPZJbttrdL1F0WK34WuXQYNny/s96/Untitled%20design%20-%203.jpeg"></div><p>Ministry of Road Transport and</p></div>
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikMOqPKDq9eHPqO_7Udfnkaa9rMY_4bhyt0VhtIbfp0j-vXnWr-pA5UJj9savtZcwlvtInLmtSckEhVgIWONJsi6PMuab8XY_aijYtXENppLVxzBXuz_Pfhjj1YMipuxFIW8f6H-jiah1djsw7BTOoh-ay-f4fGSwY8PlaBswtIbBWb_ovpyK9MHbI-Dru/s96/Untitled%20design%20-%204.jpeg"></div><p> Ministry of
+Health & Family </p></div>
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6bxlWEnebUcdwu0AYHqs8vHCH3xaFrXLfTRS7ZPwbzsBtnSi0DczDuccVUeQvSZseWlJkC1KRSziHJbWox9mEatJ48lhJjT0krh-JbQH4V893qzb2Vt1uqt9CE_8JxdY-i2J4XzEYI2-2qB4dJEWA2rFYrDNMeJsoBgmIfbzOzEDcd0vOVn1oMggRqATA/s96/Untitled%20design%20-%205.jpeg"></div><p> Ministry of Road Transport and </p></div>
+            <div class="document-item"><div class="document-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdikdLvAaEqrLbCNQhYff6CzrUTt1nXn9SAjvT9yVLlvjeouZ1P5KWnkkPKgxyuYAPTSfr7IzAfozKiIKNovqEX3lFpfakl0DGaXVplUuVNKWI5f-bdKwIVDXTYDNiAyuuBeolXrd01ZVJk8HMj_mTrcNSusI49qI-SmDlnfdx18GI8LhCblAzAYNng30L/s96/Untitled%20design%20-%206.jpeg"></div><p> Department of Food, Public </p></div>
+            <div class="document-item"></div>
+        </div>
+    </div>
+
+    <!-- EXPLORE SLIDER -->
+    <div class="explore-section">
+        <div class="explore-heading"> New in DigiLocker </div>
+        <div class="image-slider">
+            <img class="slider-image active" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiydJZY0FKMwida7_oggVIFEEBv1l1QTmW1VhZMx-fhqq3Mqf2Hlri3UGxwKRL6_b51p2tFJInfoRmigsjTVSKbg6YExS5SH_VhnP-KXFIwZmTUHoS1LDE4y6XKQjK_lZIg1y06nXPvFZDJLljhwzSsnpS3IZf-LCiJRlL6LrgRUMicWKVr3I049Po24hWf/s1007/Character%20Certificate%20-%201.jpeg" alt="">
+            <img class="slider-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGsScnSjoah6zb9ZJ1H_qbPB2PWkY5fGC35LaDg-HeOiICu4KFUOl7m9gxPHGrVd0uEH_GgCofxvqtsLiNeev1rYf8S61JukyXYhJ1eIgcVu_AzfeOWmKrOJD-e-RZuAstLjIWqHq6Vb4htocMNympoW5GFMFefkCdg1uN7_vVpovpeBcwNQC3tf08KcW-/s1007/Character%20Certificate%20-%203.jpeg" alt="">
+            <img class="slider-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKQfWrlWfT2eJ7hJ_B_lvFHx_UV7WTDOu7EWmBVB7q5l2pA9W3XxjBR9Agd065ohb1tW6XVCy0hezHlMhFfuazCZnnkOygTK0FAMGTB4iSKW9FWM1_VO6eMcJlENejpYdTcQVApuHX4nDSrv0ynO5JzB6i2Zwj-0pNssdjkYFkL3od-HnEgUUGhaFyp3h8/s1007/Character%20Certificate%20-%202.jpeg" alt="">
+            <div class="slider-caption" id="slider-caption"></div>
+        </div>
+    </div>
+</div>
+
+<!-- SEARCH SCREEN -->
+<div id="screen-search" class="screen">
+    <div class="app-header">
+        <div class="header-top">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw4VOqlphwImMRgUWayp2OQQ0feuiL-YM8sDs3LhKgqyYUEOJ_Vy5aDhoVuUz8o9f3ubQ0NFSv8nheVWwuWAVRdu_eMYUb3vtAAon-sKW4JnbqxQ0oUUSk4uvcGVHYoRRhaQC8yjhvp3-OqpT08KE88NBolVAvpsQ7jFdE4QeEDS1rnCjHythTL_2ANpO2/s300/Untitled%20design.png"
+            class="top-custom-logo" alt="Search logo">
+        </div>
+        <div class="welcome-text"> DigiLocker provides access to more than 5 Billion authentic documents </div>
+    </div>
+
+    <div class="search-bar-container">
+        <div class="search-box">
+            <i class="fa fa-search"></i>
+            <input type="search" id="document-search" class="search-input" placeholder="Search for documents...">
+        </div>
+    </div>
+
+    <div class="search-content">
+        <div class="popular-searches">
+            <button class="popular-chip" onclick="searchForDocument('PAN Verification Record')"><i class="fa-solid fa-arrow-trend-up"></i> PAN Verification Record</button>
+            <button class="popular-chip" onclick="searchForDocument('UAN Card')"><i class="fa-solid fa-arrow-trend-up"></i> UAN Card</button>
+            <button class="popular-chip" onclick="searchForDocument('Aadhaar Card')"><i class="fa-solid fa-arrow-trend-up"></i> Aadhaar Card</button>
+        </div>
+
+        <h2 class="search-section-title">Most Popular Documents</h2>
+        <div class="popular-documents">
+            <div class="popular-document-card" onclick="triggerBoxLoading(this,'PAN Verification Record')">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbGMEn1nUy_l_1lROKf_AgxtJ-3wFdoA1yTSecAOB37NKjN8KPvq8n11rj-FRFSXA9vUVkDiTnCkj4czTQ62iCi2SPR5o9mAefZE_FtrAOU7py31T6Vov2KgOQ09Bz5_-NaQNuQsBUa9MAgzE9R94fmEkrhJCWjKYBZqQXiddyatd5bwX8Uju0qSYBAO3P/s1382/Untitled%20design%20-%202.jpeg" alt="PAN Verification">
+                <div class="popular-document-name">PAN Verification<br>Record</div>
+                <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+            </div>
+            <div class="popular-document-card" onclick="triggerBoxLoading(this,'UAN Card')">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_-uKgoFZtKJpdRbmQajZvaB1FpcIFqM75auFFgvi6S0iPE0ITIBs65EqnlvN_xvEgZzZB2MqB_jKu-74a5CSRT54_IMlnf9OzBmgPGukeBaT_uGC15mtEoo58FrLGHmya3Z8_ZNkOlQGN74UftBRURBC5Sonc_4IB2IvqqqcFYVe6sanlTgSwRC0YfJQp/s1382/Untitled%20design%20-%203.jpeg" alt="UAN Card">
+                <div class="popular-document-name" style="color:blue">UAN Card</div>
+                <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+            </div>
+            <div class="popular-document-card" onclick="triggerBoxLoading(this,'Aadhaar Card')">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDMojD6CvYG5KHWO4SZ9NP8rNkwmzMBAXar1hhVy2AEvHruwiUmqfOdFzCbij3iREmyt7gQfRGFa3xcu3MydTZdD3dM1yrfV4SFFin4LnU7EVnAW9tddpbYD8EfWINkBY1cTKbc0KQH0RQAZshsU1mbqXC7tMo_Mg61dCI_9ec2YcyKBN_F9GcQDBGd1lh/s1382/Untitled%20design%20-%201.jpeg" alt="Aadhaar Card">
+                <div class="popular-document-name" style="color:#c22">AADHAAR CARD</div>
+                <div class="box-loader"><span class="small-spinner"></span> Fetching...</div>
+            </div>
+        </div>
+
+        <h2 class="search-section-title">New Added Documents</h2>
+        <div class="new-added-list">
+            <div class="new-added-card">
+                <i class="fa-solid fa-file-lines"></i>
+                <div><h3>Degree/ Diploma Marksheet</h3><p>Narayana Engineering College, Nellore</p></div>
+            </div>
+            <div class="new-added-card">
+                <i class="fa-solid fa-money-check-dollar"></i>
+                <div><h3>Bank Account Statement</h3><p>Banking Documents</p></div>
+            </div>
+            <div class="new-added-card">
+                <i class="fa-solid fa-id-card"></i>
+                <div><h3>Driving Licence</h3><p>Ministry of Road Transport</p></div>
+            </div>
+        </div>
+
+        <h2 class="search-section-title">States</h2>
+        <div class="states-grid" id="states-grid"></div>
+    </div>
+</div>
+
+<!-- ISSUED DOCUMENTS SCREEN -->
+<div id="screen-issued" class="screen">
+    <div class="app-header">
+        <div class="header-top">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw4VOqlphwImMRgUWayp2OQQ0feuiL-YM8sDs3LhKgqyYUEOJ_Vy5aDhoVuUz8o9f3ubQ0NFSv8nheVWwuWAVRdu_eMYUb3vtAAon-sKW4JnbqxQ0oUUSk4uvcGVHYoRRhaQC8yjhvp3-OqpT08KE88NBolVAvpsQ7jFdE4QeEDS1rnCjHythTL_2ANpO2/s300/Untitled%20design.png"
+            class="top-custom-logo" alt="Issued logo">
+        </div>
+        <div class="welcome-text">Issued Documents</div>
+        <div class="sub-text">DigiLocker 'Issued Documents' are at par with original documents as per IT ACT, 2000</div>
+    </div>
+
+    <div class="issued-heading">My Issued Document (3)</div>
+
+    <div class="issued-list">
+        <div class="issued-card" onclick="triggerBoxLoading(this,'Aadhaar Card')">
+            <div class="issued-logo-wrap">
+                <img class="issued-logo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/1280px-Aadhaar.svg.png" alt="Aadhaar">
+            </div>
+            <div class="issued-copy">
+                <div class="issued-title">Aadhaar Card</div>
+                <div class="issued-subtitle"><span class="issued-marquee">Unique Identification Authority of India (UIDAI)</span></div>
+            </div>
+            <button class="issued-menu" onclick="toggleIssuedMenu(event,this)"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <div class="issued-dropdown">
+                <button onclick="issuedAction(event,this,'Download')">Download</button>
+                <button onclick="issuedAction(event,this,'View')">View</button>
+                <button onclick="issuedAction(event,this,'Refresh')">Refresh</button>
+                <button onclick="issuedAction(event,this,'Delete')">Delete</button>
+                <button onclick="issuedAction(event,this,'View PDF')">View PDF</button>
+            </div>
+            <div class="box-loader"><span class="small-spinner"></span>Fetching...</div>
+        </div>
+
+        <div class="issued-card" onclick="triggerBoxLoading(this,'Defence Identity Card')">
+            <div class="issued-logo-wrap">
+                <img class="issued-logo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Indian_Army_Circular_Insignia.svg/250px-Indian_Army_Circular_Insignia.svg.png" alt="Indian Army">
+            </div>
+            <div class="issued-copy">
+                <div class="issued-title">Defence Identity Card</div>
+                <div class="issued-subtitle"><span class="issued-marquee">Integrated Headquarters of MoD (Army)</span></div>
+            </div>
+            <button class="issued-menu" onclick="toggleIssuedMenu(event,this)"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <div class="issued-dropdown">
+                <button onclick="issuedAction(event,this,'Download')">Download</button>
+                <button onclick="issuedAction(event,this,'View')">View</button>
+                <button onclick="issuedAction(event,this,'Refresh')">Refresh</button>
+                <button onclick="issuedAction(event,this,'Delete')">Delete</button>
+                <button onclick="issuedAction(event,this,'View PDF')">View PDF</button>
+            </div>
+            <div class="box-loader"><span class="small-spinner"></span>Fetching...</div>
+        </div>
+
+        <div class="issued-card" onclick="triggerBoxLoading(this,'PAN Verification Record')">
+            <div class="issued-logo-wrap">
+                <img class="issued-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Logo_of_Income_Tax_Department_India.png" alt="Income Tax">
+            </div>
+            <div class="issued-copy">
+                <div class="issued-title">PAN Verification Record</div>
+                <div class="issued-subtitle"><span class="issued-marquee">Income Tax Department</span></div>
+            </div>
+            <button class="issued-menu" onclick="toggleIssuedMenu(event,this)"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <div class="issued-dropdown">
+                <button onclick="issuedAction(event,this,'Download')">Download</button>
+                <button onclick="issuedAction(event,this,'View')">View</button>
+                <button onclick="issuedAction(event,this,'Refresh')">Refresh</button>
+                <button onclick="issuedAction(event,this,'Delete')">Delete</button>
+                <button onclick="issuedAction(event,this,'View PDF')">View PDF</button>
+            </div>
+            <div class="box-loader"><span class="small-spinner"></span>Fetching...</div>
+        </div>
+    </div>
+</div>
+
+<!-- MENU SCREEN -->
+<div id="screen-menu" class="screen">
+    <div class="menu-profile" onclick="switchTab('screen-profile',null)">
+        <div class="menu-profile-left">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png"
+            class="menu-profile-img" alt="Profile">
+            <div>
+                <div style="font-weight:bold;font-size:16px;color:#333;">Manish Chaudhary</div>
+                <div style="font-size:13px;color:green;margin-top:3px"><i class="fa-solid fa-circle-check"></i> Verified</div>
+            </div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color:#777;"></i>
+    </div>
+
+    <div class="menu-table-container">
+        <table class="menu-table">
+            <tr onclick="showMessage('Drive')"><td><i class="fa-solid fa-folder"></i>Drive</td></tr>
+            <tr onclick="switchTab('screen-profile',null)"><td><i class="fa-solid fa-user"></i>My Account</td></tr>
+            <tr onclick="showMessage('Nominee')"><td><i class="fa-solid fa-user-plus"></i>Nominee</td></tr>
+            <tr onclick="showMessage('Settings')"><td><i class="fa-solid fa-gear"></i>Settings</td></tr>
+            <tr onclick="showMessage('Scan QR')"><td><i class="fa-solid fa-qrcode"></i>Scan QR</td></tr>
+            <tr onclick="showMessage('My Activity')"><td><i class="fa-solid fa-chart-line"></i>My Activity</td></tr>
+            <tr onclick="showMessage('Need Help')"><td><i class="fa-solid fa-circle-question"></i>Need Help</td></tr>
+            <tr onclick="showMessage('About')"><td><i class="fa-solid fa-circle-info"></i>About</td></tr>
+            <tr class="logout-row" onclick="showMessage('Demo logout')"><td><i class="fa-solid fa-right-from-bracket"></i>Logout</td></tr>
+        </table>
+    </div>
+
+    <div style="text-align:center;font-size:12px;color:#777;margin-bottom:20px">APP VERSION: 4.3.4</div>
+</div>
+
+<!-- PROFILE SCREEN -->
+<div id="screen-profile" class="screen">
+    <div class="profile-banner">
+        <div class="profile-topbar">
+            <button onclick="goHome()"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2>My Profile</h2>
+            <div class="profile-top-actions">
+                <button onclick="refreshProfile()"><i class="fa-solid fa-rotate-right"></i></button>
+                <button onclick="shareProfile()"><i class="fa-solid fa-share-nodes"></i></button>
+            </div>
+        </div>
+        <div class="profile-photo-wrapper">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png" alt="Profile">
+        </div>
+    </div>
+
+    <div class="profile-main">
+        <div class="profile-name">Manish Chaudhary</div>
+        <div class="verified-badge"><i class="fa-solid fa-check"></i> Verified</div>
+        <button class="vcard-button" onclick="showMessage('Generate vCard')">Generate vCard &nbsp;<i class="fa-solid fa-qrcode"></i></button>
+
+        <div class="profile-details-card">
+            <div class="profile-detail-row"><strong>DOB</strong><span>09-08-1995</span></div>
+            <div class="profile-detail-row"><strong>Gender</strong><span>Male</span></div>
+            <div class="profile-detail-row">
+                <strong>Mobile</strong>
+                <span class="edit-mobile">
+                    <span>8755758050</span>
+                    <button onclick="showMessage('Edit Mobile')"><i class="fa-regular fa-pen-to-square"></i></button>
+                </span>
+            </div>
+            <div class="profile-detail-row">
+                <strong>Email</strong>
+                <span><button class="add-email-button" onclick="showMessage('Add Email')">Add Email &rsaquo;</button></span>
+            </div>
+        </div>
+
+        <h3 class="quick-links-title">Quick Links</h3>
+        <div class="quick-links">
+            <button class="quick-link" onclick="showMessage('My Account')"><img src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="">My Account</button>
+            <button class="quick-link" onclick="showMessage('Nominee')"><img src="https://www.svgrepo.com/show/444021/gui-user-plus.svg" alt="">Nominee</button>
+            <button class="quick-link" onclick="showMessage('My Activity')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm1OdB8cRTypH98wmS6K2h6nHMd_SMRKkZruqdMUwDqX-a7FGz8W-Wp0g6&s=10" alt="">My Activity</button>
+        </div>
+    </div>
+</div>
+
+<!-- DOCUMENT POPUP -->
+<div id="popup-modal" role="dialog" aria-modal="true">
+    <div class="popup-content">
+        <div class="popup-top-bar">
+            <button class="close-popup" onclick="closePopup()">&larr;</button>
+            <strong id="popup-title">Document Preview</strong>
+            <i class=""></i>
+        </div>
+        <img id="popup-main-image" class="popup-main-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900" alt="Document preview">
+        <div class="demo-info">
+            <strong>Did you know?</strong>
+            Indian Railways and Airports accept Digital Aadhaar through DigiLocker as valid identity proof.
+        </div>
+        <div class="popup-demonstration-text">Tell your friends and family about DigiLocker</div>
+    </div>
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-nav">
+    <button class="nav-item active" id="nav-home" onclick="switchTab('screen-home',this)">
+        <img class="nav-icon-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbq1BdL8cnoOBkYrJ7Z-Ig9EJ_Ua1j78wWrxfgW0zdD5KfZ8rPIu-_DTpHoEnPYgdFTq8buQEdbAg9MMIuHBKGpqCg-32MrFjR7Kv5rZKNtGvuTzWUivx7vo9AZjF4XC5oekFsYf3ulPegHdV88vTNU6UjzB_MiEfHzOBiIwPgEd4mnLj8DkUWS5IpVSdW/s1269/Untitled%20design%20-%201.png" alt="">
+        <span>Home</span>
+    </button>
+    <button class="nav-item" id="nav-search" onclick="switchTab('screen-search',this)">
+        <img class="nav-icon-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLj-yzEmDwOYZfPS6akcoPJ12DVn3oldxOZalE7tePw1ZvMpV2sHFRZHC8YZnO1gXJKw2HuGSLIF7z5Lt2hL-dVHz1BExWjh8nVsp9OR7EfF-8O2QMVbfYKGrhhkLv5M3EBHkrE4rnRsrgBO1RyDSK8phCsw8ZIWkc7mnE4AFmUYTogucfJfeooXpTwe1Y/s1269/Untitled%20design%20-%202.png" alt="">
+        <span>Search</span>
+    </button>
+    <button class="nav-item" id="nav-issued" onclick="switchTab('screen-issued',this)">
+        <img class="nav-icon-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2FafkpwqSRoYTl-rpLIDJv-lXeYkXVGKj_4yQaW7hyphenhyphenhupaaOvJyL5vrjn8xyxWHZFJ7C1rKr64OuirT8d5vauuo10-ATZM00UzdRuMgHQTeLIFbNNgOjKW425i7FmNmd4XRcTrkPwqVLy3Mv-kTGig_S_rmzSovvwhP4FB80SzR-kJSY6MthM3XKXUCZc/s1269/Untitled%20design%20-%203.png" alt="">
+        <span>Issued</span>
+    </button>
+    <button class="nav-item" id="nav-menu" onclick="switchTab('screen-menu',this)">
+        <img class="nav-icon-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMcOFWTkI13LJqTsAtcfQPuJBmyssXWzDxXPb1u4rBH7Pslpcig5Cm8d-IK8IsjIIRZrjAOEw-THn10GoC_TJZ6aMeimx3BqnXbzRXperlAVCmWLyKiWjWpyUO8GI5AayV_5x4C6wGOnNcy7tSym5RPE-rjnqPUhqu27bSu44iwUZnLF4mglA_86wmsYxg/s1269/Untitled%20design%20-%204.png" alt="">
+        <span>Menu</span>
+    </button>
+</div>
+
+<!-- RENNO SIDE BUTTON -->
+<button class="renno-tab" onclick="toggleRennoPanel()">
+    UMANG
+</button>
+
+
+<!-- RENNO SLIDE PANEL -->
+<div class="renno-panel" id="rennoPanel">
+
+    <img
+        src="https://cdn.aptoide.com/imgs/3/8/7/38798c4e64143ae7c2a33f3129abcc85_screen.png"
+        class="renno-main-image"
+        alt="RENNO Image"
+        onclick="window.open('https://apps.apple.com/in/app/umang/id1236448857','_blank')"
+    >
+
+</div>
+
+</div>
+
+<script>
+/* --- SECURITY & ANTI-SCREENSHOT SCRIPTS --- */
+document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(e) {
+    let now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) { e.preventDefault(); }
+    lastTouchEnd = now;
+}, false);
+
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('Content copying is disabled for security reasons.');
+});
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'p')) || e.key === 'F12') {
+        e.preventDefault();
+    }
+});
+
+const shield = document.getElementById('screenshot-shield');
+window.addEventListener('blur', function() { shield.style.display = 'flex'; });
+window.addEventListener('focus', function() {
+    setTimeout(() => { shield.style.display = 'none'; }, 500);
+});
+document.addEventListener('keyup', function(e) {
+    if (e.key === 'PrintScreen') {
+        navigator.clipboard.writeText('');
+        shield.style.display = 'flex';
+    }
+});
+
+/* SPLASH */
+window.addEventListener("load",function(){
+    setTimeout(function(){
+        document.getElementById("splash-screen").style.display="none";
+    },2000);
+});
+
+/* NAVIGATION */
+function switchScreen(screenId){
+    document.querySelectorAll(".screen").forEach(function(screen){
+        screen.classList.remove("active");
+    });
+    const target=document.getElementById(screenId);
+    if(target){
+        target.classList.add("active");
+        target.scrollTop=0;
+    }
+    if(screenId==="screen-issued"){
+        setTimeout(setupIssuedMarquees,100);
+    }
+    if(screenId==="screen-home"){
+        updateHeadingColors();
+    }
+}
+
+function switchTab(screenId,button){
+    switchScreen(screenId);
+    document.querySelectorAll(".nav-item").forEach(function(item){
+        item.classList.remove("active");
+    });
+    if(button && button.classList.contains("nav-item")){
+        button.classList.add("active");
+    }
+}
+
+function goHome(){
+    switchTab("screen-home",document.getElementById("nav-home"));
+}
+
+/* PROFILE */
+function refreshProfile(){
+    document.getElementById("screen-profile").scrollTop=0;
+}
+
+function shareProfile(){
+    const data={ title:"My Profile", text:"Manish Chaudhary - Demo Profile" };
+    if(navigator.share){
+        navigator.share(data).catch(function(){});
+    }else{
+        alert(data.text);
+    }
+}
+
+/* IMAGE SLIDER */
+let currentSlide=0;
+let sliderInterval=null;
+const slideCaptions=["","",""];
+
+function showSlide(index){
+    const images=document.querySelectorAll(".slider-image");
+    const dots=document.querySelectorAll(".slider-dot");
+    const caption=document.getElementById("slider-caption");
+    if(!images.length)return;
+    currentSlide=(index+images.length)%images.length;
+    images.forEach(function(image,i){
+        image.classList.toggle("active",i===currentSlide);
+        image.classList.toggle("prev",i===(currentSlide-1+images.length)%images.length);
+    });
+    dots.forEach(function(dot,i){
+        dot.classList.toggle("active",i===currentSlide);
+    });
+    if(caption) caption.textContent=slideCaptions[currentSlide];
+}
+
+function startSlider(){
+    if(sliderInterval!==null){ clearInterval(sliderInterval); }
+    showSlide(currentSlide);
+    sliderInterval=setInterval(function(){
+        showSlide(currentSlide+1);
+    },4000);
+}
+
+/* SEARCH */
+function searchForDocument(name){
+    const input=document.getElementById("document-search");
+    input.value=name;
+    input.dispatchEvent(new Event("input"));
+}
+
+const searchInput = document.getElementById("document-search");
+if(searchInput){
+    searchInput.addEventListener("input",function(){
+        const term=this.value.trim().toLowerCase();
+        document.querySelectorAll(".popular-document-card").forEach(function(item){
+            const name=item.querySelector(".popular-document-name").textContent.toLowerCase();
+            item.style.display=name.includes(term)?"":"none";
+        });
+        document.querySelectorAll(".new-added-card").forEach(function(item){
+            item.style.display=item.textContent.toLowerCase().includes(term)?"":"none";
+        });
+        document.querySelectorAll(".state-item").forEach(function(item){
+            const name=item.dataset.name.toLowerCase();
+            item.style.display=name.includes(term)?"":"none";
+        });
+        document.querySelectorAll(".popular-chip").forEach(function(item){
+            item.style.display=item.textContent.toLowerCase().includes(term)?"":"none";
+        });
+    });
+}
+
+/* STATES AND UNION TERRITORIES */
+const indiaStates=[
+    "Andaman and Nicobar Islands","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh",
+    "Dadra and Nagar Haveli and Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir",
+    "Jharkhand","Karnataka","Kerala","Ladakh","Lakshadweep","Madhya Pradesh","Maharashtra","Manipur","Meghalaya",
+    "Mizoram","Nagaland","Odisha","Puducherry","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura",
+    "Uttar Pradesh","Uttarakhand","West Bengal"
+];
+
+const indiaEmblemURL="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg";
+
+function createStateCards(){
+    const grid=document.getElementById("states-grid");
+    if(!grid) return;
+    grid.innerHTML="";
+    indiaStates.forEach(function(state){
+        const item=document.createElement("div");
+        item.className="state-item";
+        item.dataset.name=state;
+        const circle=document.createElement("div");
+        circle.className="state-map-circle";
+        const image=document.createElement("img");
+        image.src=indiaEmblemURL;
+        image.alt="Emblem of India";
+        circle.appendChild(image);
+        const name=document.createElement("div");
+        name.className="state-name";
+        name.textContent=state;
+        item.appendChild(circle);
+        item.appendChild(name);
+        grid.appendChild(item);
+    });
+}
+createStateCards();
+
+/* MARQUEE */
+const marqueeAnimations=new Map();
+
+function stopMarquee(card){
+    const animation=marqueeAnimations.get(card);
+    if(animation){
+        cancelAnimationFrame(animation.frame);
+        marqueeAnimations.delete(card);
+    }
+    const text=card.querySelector(".issued-marquee");
+    if(text){ text.style.transform="translateX(0px)"; }
+}
+
+function startMarquee(card){
+    const viewport=card.querySelector(".issued-subtitle");
+    const text=card.querySelector(".issued-marquee");
+    if(!viewport || !text)return;
+    stopMarquee(card);
+    if(card.classList.contains("is-loading"))return;
+    const viewportWidth=viewport.clientWidth;
+    const textWidth=text.scrollWidth;
+    if(viewportWidth<=0 || textWidth<=0)return;
+    if(textWidth<=viewportWidth){
+        text.style.transform="translateX(0px)";
+        return;
+    }
+    const startPosition=viewportWidth;
+    const endPosition=-textWidth;
+    const distance=startPosition-endPosition;
+    const duration=distance/35;
+    let startTime=null;
+    const animation={frame:null};
+
+    function animate(timestamp){
+        if(!document.body.contains(card)){ stopMarquee(card); return; }
+        if(card.classList.contains("is-loading")){ stopMarquee(card); return; }
+        if(startTime===null){ startTime=timestamp; }
+        const elapsed=(timestamp-startTime)/1000;
+        let progress=elapsed/duration;
+        if(progress>=1){ startTime=timestamp; progress=0; }
+        const currentPosition=startPosition-(distance*progress);
+        text.style.transform="translateX("+currentPosition+"px)";
+        animation.frame=requestAnimationFrame(animate);
+    }
+    marqueeAnimations.set(card,animation);
+    text.style.transform="translateX("+startPosition+"px)";
+    animation.frame=requestAnimationFrame(animate);
+}
+
+function setupIssuedMarquees(){
+    document.querySelectorAll(".issued-card").forEach(function(card){
+        startMarquee(card);
+    });
+}
+
+function initializeMarquees(){
+    setTimeout(function(){ setupIssuedMarquees(); },300);
+}
+
+/* THREE DOT MENU */
+function toggleIssuedMenu(event,button){
+    event.stopPropagation();
+    const currentCard=button.closest(".issued-card");
+    const alreadyOpen=currentCard.classList.contains("menu-open");
+    document.querySelectorAll(".issued-card.menu-open").forEach(function(card){
+        card.classList.remove("menu-open");
+        const menu=card.querySelector(".issued-dropdown");
+        if(menu){ menu.classList.remove("show"); }
+    });
+    if(!alreadyOpen){
+        currentCard.classList.add("menu-open");
+        const menu=currentCard.querySelector(".issued-dropdown");
+        if(menu){ menu.classList.add("show"); }
+    }
+}
+
+function issuedAction(event,button,action){
+    event.stopPropagation();
+    const card=button.closest(".issued-card");
+    const documentName=card.querySelector(".issued-title").textContent.trim();
+    card.classList.remove("menu-open");
+    const menu=card.querySelector(".issued-dropdown");
+    if(menu){ menu.classList.remove("show"); }
+
+    if(action==="Refresh"){ startMarquee(card); return; }
+    if(action==="Delete"){
+        if(confirm("Delete "+documentName+" from this demo list?")){
+            stopMarquee(card);
+            card.remove();
+            updateIssuedCount();
+        }
+        return;
+    }
+    if(action==="View" || action==="View PDF"){ openPopup(documentName); return; }
+    if(action==="Download"){ alert("Download is a demo action for: "+documentName); }
+}
+
+function updateIssuedCount(){
+    const count=document.querySelectorAll("#screen-issued .issued-card").length;
+    const heading=document.querySelector(".issued-heading");
+    if(heading) heading.textContent="My Issued Document ("+count+")";
+}
+
+document.addEventListener("click",function(){
+    document.querySelectorAll(".issued-card.menu-open").forEach(function(card){
+        card.classList.remove("menu-open");
+        const menu=card.querySelector(".issued-dropdown");
+        if(menu){ menu.classList.remove("show"); }
+    });
+});
+
+/* DOCUMENT LOADING */
+function triggerBoxLoading(element,documentName){
+    if(!element || element.dataset.loading==="true")return;
+    element.classList.remove("menu-open");
+    const menu=element.querySelector(".issued-dropdown");
+    if(menu){ menu.classList.remove("show"); }
+    const loader=element.querySelector(".box-loader");
+    if(!loader)return;
+    element.dataset.loading="true";
+    element.classList.add("is-loading");
+    if(element.classList.contains("issued-card")){ stopMarquee(element); }
+    loader.style.display="flex";
+    setTimeout(function(){
+        loader.style.display="none";
+        element.dataset.loading="false";
+        element.classList.remove("is-loading");
+        if(element.classList.contains("issued-card")){ startMarquee(element); }
+        openPopup(documentName);
+    },900);
+}
+
+/* POPUP */
+function openPopup(documentName){
+    const modal=document.getElementById("popup-modal");
+    const title=document.getElementById("popup-title");
+    const image=document.getElementById("popup-main-image");
+    const imageMap={
+        "Aadhaar Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0C7IFgzg_abemB-RHQbskIr30_OZh8FDokE8eNkmJS7jM-EujrgVoVczRMyuDh_SSVaQ4g4Nqm8hFF6Wv-_XpFSiUpF2x-_oJsPlbm2NKe8NMJ7gQY4RtBEu6cdAzcPYVlPErfpQr7SNL8GdkivOpQfOXj0THEEjPNgnX4a6AVrqdGD6Bitqie2_TBleA/s1320/Ministry%20of%20Defence%20-%201.jpeg",
+        "Defence Identity Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNbGzha7QMn8nvmCxHxNCfVCC0A5xyHVjtFiUyTWEnElb20z_0_hlzYRW-VaKRohh3b6GuTgnwFGOk8ACoWwCQVJXe0WPKvVKXXpAwiKwkVYpG1z0ca6ys9eckH3ykYUW0wLYEXPqsm_2cIn4JHm4319C9TI47HUorEKoN1oEXhKTyUiN6dEBI9dHJ_ZYb/s960/Ministry%20of%20Defence.png",
+        "PAN Verification Record":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG5kAf4pnsSz4Nou06ISzXyj9UNW6gsW9Lrma8I15jhywQ_BIwQtEZbzEp0uMHHsLOAp8GVbfl8iX_IC0lrAcP0YJSfZ3Hrv2KLp7Z9g6DIuxSr6ptllYPmcbDkXuSuEQ5QpcMYcClA9hIhww7l9GyTwzSE6nMllEAYYZescLTKRc7GwzWnlKRkNSZGbCG/s1320/Ministry%20of%20Defence%20-%202.jpeg",
+        "UAN Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG5kAf4pnsSz4Nou06ISzXyj9UNW6gsW9Lrma8I15jhywQ_BIwQtEZbzEp0uMHHsLOAp8GVbfl8iX_IC0lrAcP0YJSfZ3Hrv2KLp7Z9g6DIuxSr6ptllEAYYZescLTKRc7GwzWnlKRkNSZGbCG/s1320/Ministry%20of%20Defence%20-%202.jpeg"
+    };
+    if(title) title.textContent=documentName;
+    if(image){
+        image.src=imageMap[documentName] || "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900";
+        image.alt=documentName+" demonstration preview";
+    }
+    modal.style.display="flex";
+}
+
+function closePopup(){
+    document.getElementById("popup-modal").style.display="none";
+}
+
+const popupModal = document.getElementById("popup-modal");
+if(popupModal){
+    popupModal.addEventListener("click",function(event){
+        if(event.target===this){ closePopup(); }
+    });
+}
+
+document.addEventListener("keydown",function(event){
+    if(event.key==="Escape"){ closePopup(); }
+});
+
+function showMessage(itemName){
+    if(itemName==="Demo logout"){
+        alert("This is a demonstration interface. No account is logged in.");
+        return;
+    }
+    alert(itemName+" is part of this demonstration interface.");
+}
+
+startSlider();
+window.addEventListener("load",initializeMarquees);
+
+let marqueeResizeTimer=null;
+window.addEventListener("resize",function(){
+    clearTimeout(marqueeResizeTimer);
+    marqueeResizeTimer=setTimeout(function(){ setupIssuedMarquees(); },200);
+});
+
+if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){ setupIssuedMarquees(); });
+}
+
+/* HOME IMAGE SLIDER */
+let homeSlideIndex = 0;
+let homeSliderTimer;
+function changeHomeSlide(index){
+    const slides = document.querySelectorAll(".home-slide");
+    const dots = document.querySelectorAll(".home-dot");
+    homeSlideIndex = index;
+    slides.forEach(function(slide, i){
+        slide.classList.toggle("active", i === index);
+        slide.classList.toggle("prev", i === (index - 1 + slides.length) % slides.length);
+    });
+}
+
+function startHomeSlider(){
+    clearInterval(homeSliderTimer);
+    changeHomeSlide(homeSlideIndex);
+    homeSliderTimer = setInterval(function(){
+        homeSlideIndex = (homeSlideIndex + 1) % 3;
+        changeHomeSlide(homeSlideIndex);
+    }, 4000);
+}
+startHomeSlider();
+
+/* DOCUMENT SLIDER SWIPE */
+const documentSlider = document.getElementById("documentSlider");
+if(documentSlider){
+    documentSlider.addEventListener("wheel",function(e){
+        if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ this.scrollLeft += e.deltaY; }
+    },{passive:true});
+}
+
+/* AUTOMATIC HEADING COLOR */
+function updateHeadingColors(){
+    const screen = document.querySelector("#screen-home");
+    if(!screen) return;
+    const splitPoint = screen.getBoundingClientRect().height / 2;
+    document.querySelectorAll(".explore-heading, .document-section h2").forEach(function(heading){
+        const position = heading.getBoundingClientRect();
+        const center = position.top + position.height / 2;
+        if(center < splitPoint){
+            heading.classList.add("white-text");
+            heading.classList.remove("black-text");
+        }else{
+            heading.classList.add("black-text");
+            heading.classList.remove("white-text");
+        }
+    });
+}
+
+const homeScr = document.querySelector("#screen-home");
+if(homeScr) homeScr.addEventListener("scroll", updateHeadingColors);
+window.addEventListener("resize", updateHeadingColors);
+updateHeadingColors();
+
+/* RENNO PANEL */
+
+function toggleRennoPanel() {
+    const panel = document.getElementById("rennoPanel");
+    panel.classList.toggle("open");
+}
+
+</script>
+
+</body>
+</html>
