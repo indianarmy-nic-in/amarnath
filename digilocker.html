@@ -684,7 +684,7 @@ button{cursor:pointer;font-family:inherit}
     align-items:center;
     gap:12px;
     width:100%;
-    min-height:75px;
+    min-height:95px;
     padding:7px 40px 7px 12px;
     border:1px solid #e6e6e6;
     border-radius:20px;
@@ -1206,6 +1206,7 @@ button{cursor:pointer;font-family:inherit}
 /* DOCUMENT SLIDER */
 .document-section{
     padding:20px 0;
+     padding-left: 15px;
     background: transparent;
     overflow:hidden;
 }
@@ -1330,6 +1331,19 @@ button{cursor:pointer;font-family:inherit}
     object-position: center;
     cursor: pointer;
     border-radius: 12px;
+     pointer-events: auto !important;
+    cursor: pointer;
+}
+
+.renno-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.renno-image-link img {
+    pointer-events: none;
 }
 
 /* RENNO Only on Home Page */
@@ -1374,7 +1388,7 @@ button{cursor:pointer;font-family:inherit}
 
 <!-- SCREENSHOT & SECURITY SHIELD -->
 <div id="screenshot-shield">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png" alt="Security Shield">
+    
     <h2 style="font-size: 22px; margin-bottom: 10px; color: #ff4d4d;">Security Notice</h2>
     <p style="font-size: 14px; max-width: 300px; line-height: 1.5; opacity: 0.9;">
         Screenshots, recording, and content copying are restricted for security and privacy compliance. Visitor activity is monitored.
@@ -1795,15 +1809,21 @@ button{cursor:pointer;font-family:inherit}
     UMANG
 </button>
 
-<!-- RENNO SLIDE PANEL -->
 <div class="renno-panel" id="rennoPanel">
-    <button class="renno-close-btn" onclick="toggleRennoPanel()"><i class="fa-solid fa-xmark"></i></button>
-    <img
-        src="https://cdn.aptoide.com/imgs/3/8/7/38798c4e64143ae7c2a33f3129abcc85_screen.png"
-        class="renno-main-image"
-        alt="UMANG Image"
-        onclick="window.open('https://www.gla.ac.in','_blank')"
-    >
+    <button class="renno-close-btn" onclick="toggleRennoPanel()">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <a href="https://apps.apple.com/in/app/umang/id1236448857"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="renno-image-link">
+
+        <img
+            src="https://cdn.aptoide.com/imgs/3/8/7/38798c4e64143ae7c2a33f3129abcc85_screen.png"
+            class="renno-main-image"
+            alt="UMANG Image">
+    </a>
 </div>
 
 </div>
