@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Digilocker | Indian Government</title>
+<title> DigiLocker | Access, Share & Verify Digital Documents </title>
+
+
+<!-- WhatsApp Share Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital Document Demo">
+<meta property="og:description" content="Join me on Digital Document Demo! Explore the digital document demo.">
+<meta property="og:image" content="https://akshayakendra.com/wp-content/uploads/2018/04/DigiLocker-Banner.png">
+<meta property="og:url" content="https://www.digilocker.gov.in//">
+<meta property="og:site_name" content="DigiLocker | Access, Share & Verify Digital Documents">
 
 <!-- APP ICON -->
 <link rel="apple-touch-icon" sizes="180x180" href="https://play-lh.googleusercontent.com/pZQowHx0ANVf_7Kra61qgi6NCX3gYgLiQgz3NYlaVoCYMTQu4T_b_lumz9KjqjiOegEF8Q8QJXGQ3YlwU9wtMA">
@@ -12,7 +21,7 @@
 <!-- IOS HOME SCREEN -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="IAFZ">
+<meta name="apple-mobile-web-app-title" content="DigiLocker">
 <meta name="theme-color" content="transparent">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -63,7 +72,7 @@ img {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: #111 url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCEug432WfEIavihkZiRkHO7oYXxsH46h-bu6y0REUR4GNm0DPWPEiY6o&s=10') center/cover no-repeat;
+    background: #111 url('') center/cover no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -166,9 +175,7 @@ button{cursor:pointer;font-family:inherit}
 
 .screen.active{display:block}
 
-#screen-home,
-#screen-menu,
-#screen-profile{
+#screen-home{
     background-image:url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiatu9N0BI_nrXMWPyDLz5xcLmjZRunWfJLTQf0OkEgpKAqrWU5KfuJCW48ADOP4spKZtfXvLF4HJ7uiEw8JOp6BLCt__68_K5gKNlNFdko6MQZ06HOZLtMXMGOiPf2JpAeJQ_1cbYmsWUGfuksE1aoeYRXCEm9Zf9LMF7fMx5lPDeQz6ezeyB6hy7PmbR3/s1920/Realise%20On%20-%2013.jpeg");
 }
 
@@ -226,7 +233,7 @@ button{cursor:pointer;font-family:inherit}
 }
 
 .sub-text{
-    font-size:13px;
+    font-size:12px;
     line-height:1.3;
     color:white;
 }
@@ -238,7 +245,7 @@ button{cursor:pointer;font-family:inherit}
 
 .see-all-btn{
     position:absolute;
-    top:45px;
+    top:27px;
     right:0;
     padding:8px 15px;
     border:none;
@@ -665,7 +672,7 @@ button{cursor:pointer;font-family:inherit}
 
 /* ISSUED DOCUMENTS SCREEN */
 .issued-heading{
-    padding:20px 15px 15px;
+    padding:60px 15px 15px;
     color:#111;
     font-size:16px;
     font-weight:600;
@@ -684,7 +691,7 @@ button{cursor:pointer;font-family:inherit}
     align-items:center;
     gap:12px;
     width:100%;
-    min-height:95px;
+    min-height:70px;
     padding:7px 40px 7px 12px;
     border:1px solid #e6e6e6;
     border-radius:20px;
@@ -1232,8 +1239,8 @@ button{cursor:pointer;font-family:inherit}
 }
 
 .document-icon{
-    width:100px;
-    height:100px;
+    width:70px;
+    height:70px;
     max-width:100%;
     margin:0 auto 20px;
     display:flex;
@@ -1245,8 +1252,8 @@ button{cursor:pointer;font-family:inherit}
 }
 
 .document-icon img{
-    width:70px;
-    height:70px;
+    width:50px;
+    height:50px;
     object-fit:contain;
 }
 
@@ -1260,51 +1267,96 @@ button{cursor:pointer;font-family:inherit}
 
 /* RENNO SIDE BUTTON & PANEL */
 :root {
-    --renno-button-top: 75%;
+    --renno-button-top: 80%;
 }
 
 .renno-tab {
+
     position: absolute;
-    z-index: 300;
+
+    z-index: 298;
+
     right: 0;
+
     top: var(--renno-button-top);
+
     width: 100px;
+
     height: 40px;
+
     background: #FF5F1F;
-    color: white;
+
+    color: #ffffff !important;
+
     border: none;
+
     border-radius: 7px 0 0 7px;
+
     font-size: 16px;
+
     font-weight: 700;
+
+    cursor: pointer;
+
 }
+
+/* ==============================
+
+   UMANG OPEN PANEL
+
+============================== */
 
 .renno-panel {
+
     position: absolute;
-    z-index: 350;
+
+    z-index: 299;
+
     bottom: 0;
+
     left: 50%;
+
     width: 100%;
-    height: 80%;
-    background: rgba(255,255,255,0.98);
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -5px 25px rgba(0,0,0,0.2);
-    padding: 15px;
-    transform: translate(-50%, 110%);
-    transition: transform 0.45s ease;
+
+    height: 75%;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+
     align-items: center;
-    overflow: hidden;
+
+    justify-content: center;
+
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    transform: translate(-50%, 110%);
+
+    transition: transform 0.4s ease;
+
+    overflow: visible;
+
 }
 
+/* ==============================
+
+   UMANG PANEL OPEN
+
+============================== */
+
 .renno-panel.open {
+
     transform: translate(-50%, 0);
+
 }
 
 .renno-close-btn {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 20px;
     background: #e0e0e0;
     border: none;
@@ -1325,9 +1377,9 @@ button{cursor:pointer;font-family:inherit}
     display: block;
     width: 100%;
     height: 100%;
-    max-width: 100%;
+    max-width: 150%;
     max-height: 100%;
-    object-fit: contain;
+   
     object-position: center;
     cursor: pointer;
     border-radius: 12px;
@@ -1381,6 +1433,405 @@ button{cursor:pointer;font-family:inherit}
 #screen-search .document-slider {
     align-items: center;
 }
+
+/* MENU PAGE BACKGROUND IMAGE REMOVE */
+#screen-menu {
+    background-image: none !important;
+    background: #f7f7fa !important;
+    background-color: #f7f7fa !important;
+}
+
+
+.utility-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: center;
+    text-align: left !important;
+}
+
+.utility-item img,
+.utility-item i {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.utility-item span,
+.utility-item p {
+    width: 100%;
+    text-align: left !important;
+}
+
+.error-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 90px;
+    transform: translateX(-50%);
+    background: #00008B;
+    color: #fff;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 99999;
+    width: max-content;
+    max-width: 90%;
+    display: none;
+}
+
+/* REFRESH BUTTON ANIMATION */
+
+.refresh-btn i {
+    display: inline-block;
+}
+
+.refresh-btn.rotate i {
+    animation: refreshRotate 0.7s ease-in-out;
+}
+
+@keyframes refreshRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-field input {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+}
+
+.profile-field input:not([readonly]) {
+    border-bottom: 1px solid #4b25cc;
+    padding: 5px 0;
+}
+
+.edit-btn {
+    border: none;
+    background: transparent;
+    color: #4b25cc;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4b25cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 20px;
+    margin: 5px 0 15px;
+    cursor: pointer;
+}
+
+.menu-verified {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.verified-text {
+    color: #000000 !important;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.menu-verified img {
+    width: 20px;
+    height: 15px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+
+/* ==============================
+   DRIVE STORAGE PAGE
+============================== */
+
+#screen-drive-vault {
+    background: #f5f6fa !important;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drive-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0 20px;
+}
+
+.drive-header h2 {
+    flex: 1;
+    font-size: 21px;
+    color: #222;
+}
+
+.drive-back {
+    border: none;
+    background: transparent;
+    font-size: 21px;
+    color: #4b25cc;
+    cursor: pointer;
+}
+
+.drive-storage-icon {
+    font-size: 23px;
+    color: #4b25cc;
+}
+
+
+/* UPLOAD AREA */
+
+.drive-upload-area {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px dashed #4b25cc;
+}
+
+.drive-upload-btn {
+    display: inline-block;
+    background: #4b25cc;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.drive-upload-area p {
+    font-size: 12px;
+    color: #777;
+    margin-top: 12px;
+}
+
+
+/* FOLDERS */
+
+.drive-folder {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 18px;
+}
+
+.drive-folder-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.drive-folder-heading i {
+    color: #4b25cc;
+    font-size: 19px;
+}
+
+.drive-folder-heading span:last-child {
+    margin-left: auto;
+    color: #777;
+}
+
+
+/* FILE LIST */
+
+.drive-file-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.drive-file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    min-width: 0;
+}
+
+.drive-file-thumb {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    object-fit: cover;
+    background: #f0f0f0;
+    cursor: pointer;
+}
+
+.drive-file-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0edff;
+    color: #4b25cc;
+    border-radius: 7px;
+    font-size: 22px;
+}
+
+.drive-file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.drive-file-info strong {
+    display: block;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    color: #333;
+}
+
+.drive-file-info small {
+    color: #888;
+    font-size: 10px;
+}
+
+.drive-view-btn,
+.drive-delete-btn {
+    border: none;
+    background: transparent;
+    font-size: 17px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.drive-view-btn {
+    color: #4b25cc;
+}
+
+.drive-delete-btn {
+    color: #e53935;
+}
+
+.drive-empty {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    padding: 20px 5px;
+}
+
+
+/* FULL SCREEN FILE VIEWER */
+
+.drive-image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    background: #000;
+    flex-direction: column;
+}
+
+.drive-image-viewer.show {
+    display: flex;
+}
+
+.drive-viewer-header {
+    width: 100%;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    color: white;
+    background: #111;
+    box-sizing: border-box;
+}
+
+.drive-viewer-header span {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.drive-image-close {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.drive-image-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    touch-action: pan-x pan-y pinch-zoom;
+}
+
+.drive-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    touch-action: pinch-zoom;
+}
+
+.drive-preview-frame {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border: none;
+    background: white;
+}
+
+#driveUnsupportedMessage {
+    flex: 1;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#driveUnsupportedMessage i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+#driveDownloadButton {
+    background: #4b25cc;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -1488,10 +1939,10 @@ button{cursor:pointer;font-family:inherit}
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLu78UpiVbPLuY2u3JDq_u7Z836Whj-deis148mbfHr-N82wslQvIf5VrPZKsr526efQP5XCNqaCCMMqMEICeurLMTHnWTkyVX9aJp5fJ6nkaVpYU_-bAmRyEotPh4Ycl-j5pGC_mt_iBRKpZ_cNOvO4yc_kJR1T-rAVcE1N9qVNmtySrPNPNT7u7qTGGj/s1272/36B98457-5879-4ED1-A9EC-0A64F49DED5D.png" class="utility-icon" alt="Authenticator">
                 Authenticator
             </div>
-            <div class="utility-item">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDKiB8gtvZ24nmMWYflogxcwL4iT-ahVg2jlsKAeK9zGKfVsd4XuL5_AFjyFKJyqwsCH2mkZ9VzijqktPgzNvERsOQZmyC3o_9rqqYQubs_KxLchARtRRlkSzRj7zJSP__uOgQsfpXaehX7MOaagn8eV9_c75tmEI56Coa_mGSZ3q4T6NeAjPRbgQmIz53/s1319/6F902521-E4FE-4B38-9A1F-E86A3D142BAD.png" class="utility-icon" alt="Drive">
-                Drive
-            </div>
+            <div class="utility-item" onclick="openDriveVault()" style="cursor:pointer;">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDKiB8gtvZ24nmMWYflogxcwL4iT-ahVg2jlsKAeK9zGKfVsd4XuL5_AFjyFKJyqwsCH2mkZ9VzijqktPgzNvERsOQZmyC3o_9rqqYQubs_KxLchARtRRlkSzRj7zJSP__uOgQsfpXaehX7MOaagn8eV9_c75tmEI56Coa_mGSZ3q4T6NeAjPRbgQmIz53/s1319/6F902521-E4FE-4B38-9A1F-E86A3D142BAD.png" class="utility-icon" alt="Drive">
+    Drive
+</div>
             <div class="utility-item">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq1eLKkfe8N7YcTMdBwbjxOOyLkhpjd5Zy0VK-j2ahN7IXEMSEXPtPnb0sPjJriDCYG3fedZlFvWDbEWYEFAhUG5d55B5uEl-9qfEdrPYIwgVYx9YEwt3oJ5-3vYYrC6SN9OECUZrh6Cjwd1bvXQZq23wYbSw24W73P_i7-6ST_LhST9uReyRj-YY6mpCY/s500/IMG_9625.png" class="utility-icon" alt="Verifiable">
                 Verifiable Credential
@@ -1698,7 +2149,11 @@ button{cursor:pointer;font-family:inherit}
             class="menu-profile-img" alt="Profile">
             <div>
                 <div style="font-weight:bold;font-size:16px;color:#333;">Manish Chaudhary</div>
-                <div style="font-size:13px;color:green;margin-top:3px"><i class="fa-solid fa-circle-check"></i> Verified</div>
+               <div class="menu-verified">
+    <span class="verified-text">Verified</span>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/5972/5972778.png" alt="Verified Icon">
+</div>
             </div>
         </div>
         <i class="fa-solid fa-chevron-right" style="color:#777;"></i>
@@ -1706,7 +2161,7 @@ button{cursor:pointer;font-family:inherit}
 
     <div class="menu-table-container">
         <table class="menu-table">
-            <tr onclick="showMessage('Drive')"><td><i class="fa-solid fa-folder"></i>Drive</td></tr>
+            <tr onclick="openDriveVault()"><td><i class="fa-solid fa-folder"></i>Drive</td></tr>
             <tr onclick="switchTab('screen-profile',null)"><td><i class="fa-solid fa-user"></i>My Account</td></tr>
             <tr onclick="showMessage('Nominee')"><td><i class="fa-solid fa-user-plus"></i>Nominee</td></tr>
             <tr onclick="showMessage('Settings')"><td><i class="fa-solid fa-gear"></i>Settings</td></tr>
@@ -1728,8 +2183,12 @@ button{cursor:pointer;font-family:inherit}
             <button onclick="goHome()"><i class="fa-solid fa-arrow-left"></i></button>
             <h2>My Profile</h2>
             <div class="profile-top-actions">
-                <button onclick="refreshProfile()"><i class="fa-solid fa-rotate-right"></i></button>
-                <button onclick="shareProfile()"><i class="fa-solid fa-share-nodes"></i></button>
+             <button class="refresh-btn" onclick="refreshAnimation()">
+    <i class="fa-solid fa-rotate"></i>
+</button>
+             <button onclick="shareProfile()">
+    <i class="fa-solid fa-share-nodes"></i>
+</button>
             </div>
         </div>
         <div class="profile-photo-wrapper">
@@ -1745,18 +2204,53 @@ button{cursor:pointer;font-family:inherit}
         <div class="profile-details-card">
             <div class="profile-detail-row"><strong>DOB</strong><span>09-08-1995</span></div>
             <div class="profile-detail-row"><strong>Gender</strong><span>Male</span></div>
-            <div class="profile-detail-row">
-                <strong>Mobile</strong>
-                <span class="edit-mobile">
-                    <span>8755758050</span>
-                    <button onclick="showMessage('Edit Mobile')"><i class="fa-regular fa-pen-to-square"></i></button>
-                </span>
-            </div>
-            <div class="profile-detail-row">
-                <strong>Email</strong>
-                <span><button class="add-email-button" onclick="showMessage('Add Email')">Add Email &rsaquo;</button></span>
-            </div>
+            
+
+ <div class="profile-field">
+
+        <div>
+
+            <label><strong> Mobile </strong></label>
+
+            <input type="text" id="mobileNumber" value="9876543210" readonly>
+
         </div>
+
+        <button class="edit-btn" onclick="editField('mobileNumber','mobileSave')">
+
+            <i class="fa-solid fa-pencil"></i>
+
+        </button>
+
+    </div>
+
+    <button id="mobileSave" class="save-btn" onclick="saveField('mobileNumber','mobileSave')" style="display:none;">
+
+        Save
+
+    </button>
+
+
+
+           <div class="profile-field">
+        <div>
+            <label><strong> Email </strong></label>
+            <input type="email" id="emailAddress" value="majmanish@indianarmy.nic.in" readonly>
+        </div>
+
+        <button class="edit-btn" onclick="editField('emailAddress','emailSave')">
+            <i class="fa-solid fa-pencil"></i>
+        </button>
+    </div>
+
+    <button id="emailSave" class="save-btn" onclick="saveField('emailAddress','emailSave')" style="display:none;">
+        Save
+    </button>
+
+</div>
+
+
+
 
         <h3 class="quick-links-title">Quick Links</h3>
         <div class="quick-links">
@@ -1766,6 +2260,452 @@ button{cursor:pointer;font-family:inherit}
         </div>
     </div>
 </div>
+
+
+
+<!-- =========================================
+     DRIVE STORAGE PAGE
+========================================= -->
+
+<div class="screen" id="screen-drive-vault">
+
+    <!-- HEADER -->
+    <div class="drive-header">
+
+        <button onclick="closeDriveVault()" class="drive-back">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h2>My Drive</h2>
+
+        <span class="drive-storage-icon">
+            <i class="fa-solid fa-cloud"></i>
+        </span>
+
+    </div>
+
+
+    <!-- UPLOAD AREA -->
+    <div class="drive-upload-area">
+
+        <label for="driveFileInput" class="drive-upload-btn">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            Upload
+        </label>
+
+        <input
+            type="file"
+            id="driveFileInput"
+            multiple
+            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+            hidden
+        >
+
+        <p> Securely store and manage your important personal documents and digital records in one place. </p>
+
+    </div>
+
+
+    <!-- PHOTO FOLDER -->
+    <div class="drive-folder">
+
+        <div class="drive-folder-heading">
+
+            <i class="fa-solid fa-images"></i>
+
+            <span>Photos</span>
+
+            <span id="photoCount">0</span>
+
+        </div>
+
+        <div id="drivePhotos" class="drive-file-list">
+
+            <p class="drive-empty">No photos uploaded yet.</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOCUMENT FOLDER -->
+    <div class="drive-folder">
+
+        <div class="drive-folder-heading">
+
+            <i class="fa-solid fa-folder-open"></i>
+
+            <span>Documents </span>
+
+            <span id="documentCount">0</span>
+
+        </div>
+
+        <div id="driveDocuments" class="drive-file-list">
+
+            <p class="drive-empty">No documents uploaded yet.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     FULL SCREEN IMAGE & FILE VIEWER
+========================================= -->
+
+<div id="driveImageViewer" class="drive-image-viewer">
+
+    <!-- VIEWER HEADER -->
+    <div class="drive-viewer-header">
+
+        <span id="driveViewerTitle">Preview</span>
+
+        <button
+            onclick="closeDriveImage()"
+            class="drive-image-close"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+
+    <!-- IMAGE PREVIEW -->
+    <div id="driveImageContainer" class="drive-image-container">
+
+        <img
+            id="drivePreviewImage"
+            src=""
+            alt="Uploaded Image"
+        >
+
+    </div>
+
+
+    <!-- PDF AND TEXT PREVIEW -->
+    <iframe
+        id="drivePreviewFrame"
+        class="drive-preview-frame"
+        title="File Preview"
+        style="display:none;"
+    ></iframe>
+
+
+    <!-- UNSUPPORTED FILE MESSAGE -->
+    <div
+        id="driveUnsupportedMessage"
+        class="drive-unsupported-message"
+        style="display:none;"
+    >
+
+        <i class="fa-solid fa-file-circle-exclamation"></i>
+
+        <p>This file cannot be previewed in the browser.</p>
+
+        <button id="driveDownloadButton" type="button">
+            <i class="fa-solid fa-download"></i>
+            Download File
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     DRIVE VIEWER STYLES
+========================================= -->
+
+<style>
+
+#screen-drive-vault {
+    background: #f5f6fa !important;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drive-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0 20px;
+}
+
+.drive-header h2 {
+    flex: 1;
+    font-size: 21px;
+    color: #222;
+}
+
+.drive-back {
+    border: none;
+    background: transparent;
+    font-size: 21px;
+    color: #4b25cc;
+    cursor: pointer;
+}
+
+.drive-storage-icon {
+    font-size: 23px;
+    color: #4b25cc;
+}
+
+
+/* UPLOAD AREA */
+
+.drive-upload-area {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px dashed #4b25cc;
+}
+
+.drive-upload-btn {
+    display: inline-block;
+    background: #4b25cc;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.drive-upload-area p {
+    font-size: 12px;
+    color: #777;
+    margin-top: 12px;
+}
+
+
+/* FOLDERS */
+
+.drive-folder {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 18px;
+}
+
+.drive-folder-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.drive-folder-heading i {
+    color: #4b25cc;
+    font-size: 19px;
+}
+
+.drive-folder-heading span:last-child {
+    margin-left: auto;
+    color: #777;
+}
+
+
+/* FILE LIST */
+
+.drive-file-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.drive-file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    min-width: 0;
+}
+
+.drive-file-thumb {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    object-fit: cover;
+    background: #f0f0f0;
+    cursor: pointer;
+}
+
+.drive-file-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0edff;
+    color: #4b25cc;
+    border-radius: 7px;
+    font-size: 22px;
+}
+
+.drive-file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.drive-file-info strong {
+    display: block;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    color: #333;
+}
+
+.drive-file-info small {
+    color: #888;
+    font-size: 10px;
+}
+
+.drive-view-btn,
+.drive-delete-btn {
+    border: none;
+    background: transparent;
+    font-size: 17px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.drive-view-btn {
+    color: #4b25cc;
+}
+
+.drive-delete-btn {
+    color: #e53935;
+}
+
+.drive-empty {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    padding: 20px 5px;
+}
+
+
+/* FULL SCREEN VIEWER */
+
+.drive-image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    background: #000;
+    flex-direction: column;
+}
+
+.drive-image-viewer.show {
+    display: flex;
+}
+
+.drive-viewer-header {
+    width: 100%;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    color: white;
+    background: #111;
+    box-sizing: border-box;
+}
+
+.drive-viewer-header span {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.drive-image-close {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+
+/* IMAGE */
+
+.drive-image-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    touch-action: pan-x pan-y pinch-zoom;
+}
+
+.drive-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    touch-action: pinch-zoom;
+}
+
+
+/* PDF VIEWER */
+
+.drive-preview-frame {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border: none;
+    background: white;
+}
+
+
+/* UNSUPPORTED FILE */
+
+.drive-unsupported-message {
+    flex: 1;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.drive-unsupported-message i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.drive-unsupported-message p {
+    font-size: 14px;
+}
+
+#driveDownloadButton {
+    background: #4b25cc;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+</style>
+
+
 
 <!-- DOCUMENT POPUP -->
 <div id="popup-modal" role="dialog" aria-modal="true">
@@ -1820,7 +2760,7 @@ button{cursor:pointer;font-family:inherit}
        class="renno-image-link">
 
         <img
-            src="https://cdn.aptoide.com/imgs/3/8/7/38798c4e64143ae7c2a33f3129abcc85_screen.png"
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWyj15mADG1o1KP9prPEA-PJIJzPM0CXPgPFwV4bt1-M3L634CCDUhXqSeMvdlRDbtZAx8HvataybCpZgfLY-IBdSskw6KSGESfte3KrOGe9sgbd_rW1zMbsXlUuTUN467lcQ5kv9_OYWI5TgL1kkv2W8rLIG3NNo3mFOLHp0O5Us4nk7tBujp8IyMhpu1/s1792/DOWNLOAD%20NOW.png"
             class="renno-main-image"
             alt="UMANG Image">
     </a>
@@ -2260,6 +3200,836 @@ function toggleRennoPanel() {
     const panel = document.getElementById("rennoPanel");
     panel.classList.toggle("open");
 }
+
+function showErrorMessage() {
+    const toast = document.getElementById("errorToast");
+
+    if (!toast) return;
+
+    toast.style.display = "block";
+
+    clearTimeout(window.errorToastTimer);
+
+    window.errorToastTimer = setTimeout(function () {
+        toast.style.display = "none";
+    }, 3000);
+}
+
+
+// DigiLocker Utilities ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¸ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ® ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂªÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ° ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ²ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¿ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ
+document.querySelectorAll(".utility-grid img, .utility-grid i, .utility-grid .utility-item")
+.forEach(function (item) {
+    item.style.cursor = "pointer";
+
+    item.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        showErrorMessage();
+    });
+});
+
+
+function shareProfile() {
+
+    const shareData = {
+        title: "DigiLocker | Access, Share & Verify Digital Documents",
+        text: "Join me on DigiLocker! Access your digital documents securely through the official DigiLocker website: https://www.digilocker.gov.in",
+        url: "https://www.digilocker.gov.in"
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch(function(error) {
+                console.log("Sharing cancelled");
+            });
+    } else {
+        const message = shareData.text;
+
+        navigator.clipboard.writeText(message)
+            .then(function() {
+                alert("Message copied successfully!");
+            });
+    }
+}
+
+function refreshAnimation() {
+    const button = document.querySelector(".refresh-btn");
+
+    if (!button) return;
+
+    button.classList.remove("rotate");
+
+    void button.offsetWidth;
+
+    button.classList.add("rotate");
+
+    setTimeout(function () {
+        button.classList.remove("rotate");
+    }, 700);
+}
+
+
+function editField(fieldId, saveId) {
+    const field = document.getElementById(fieldId);
+
+    field.removeAttribute("readonly");
+    field.focus();
+
+    document.getElementById(saveId).style.display = "block";
+}
+
+function saveField(fieldId, saveId) {
+    const field = document.getElementById(fieldId);
+    const value = field.value.trim();
+
+    if (!value) {
+        alert("Please enter a valid value");
+        return;
+    }
+
+    localStorage.setItem(fieldId, value);
+
+    field.setAttribute("readonly", true);
+    document.getElementById(saveId).style.display = "none";
+}
+
+// Previously saved values load
+window.addEventListener("DOMContentLoaded", function () {
+    ["mobileNumber", "emailAddress"].forEach(function (id) {
+        const savedValue = localStorage.getItem(id);
+
+        if (savedValue) {
+            document.getElementById(id).value = savedValue;
+        }
+    });
+});
+
+
+/* =========================================
+   DRIVE STORAGE - INDEXED DB
+   COMPLETE UPDATED CODE
+========================================= */
+
+let driveDatabase;
+let previousDriveScreen = "screen-home";
+let driveCurrentObjectURL = null;
+let driveCurrentFile = null;
+
+const DRIVE_DB_NAME = "DigitalDocumentDrive";
+const DRIVE_DB_VERSION = 1;
+
+
+/* =========================================
+   OPEN DATABASE
+========================================= */
+
+function openDriveDatabase() {
+
+    return new Promise(function(resolve, reject) {
+
+        const request = indexedDB.open(
+            DRIVE_DB_NAME,
+            DRIVE_DB_VERSION
+        );
+
+        request.onupgradeneeded = function(event) {
+
+            const db = event.target.result;
+
+            if (!db.objectStoreNames.contains("driveFiles")) {
+
+                db.createObjectStore("driveFiles", {
+                    keyPath: "id",
+                    autoIncrement: true
+                });
+
+            }
+
+        };
+
+        request.onsuccess = function(event) {
+
+            driveDatabase = event.target.result;
+
+            driveDatabase.onversionchange = function() {
+                driveDatabase.close();
+                driveDatabase = null;
+            };
+
+            resolve(driveDatabase);
+
+        };
+
+        request.onerror = function() {
+            reject(request.error);
+        };
+
+    });
+
+}
+
+
+/* =========================================
+   OPEN DRIVE PAGE
+========================================= */
+
+async function openDriveVault() {
+
+    const activeScreen = document.querySelector(".screen.active");
+
+    if (activeScreen && activeScreen.id !== "screen-drive-vault") {
+        previousDriveScreen = activeScreen.id;
+    }
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+    });
+
+    const driveScreen = document.getElementById("screen-drive-vault");
+
+    if (!driveScreen) {
+        alert("Drive page not found.");
+        return;
+    }
+
+    driveScreen.classList.add("active");
+
+    try {
+
+        if (!driveDatabase) {
+            await openDriveDatabase();
+        }
+
+        if (navigator.storage && navigator.storage.persist) {
+            try {
+                await navigator.storage.persist();
+            } catch(error) {
+                console.log("Storage persistence request unavailable.");
+            }
+        }
+
+        loadDriveFiles();
+
+    } catch(error) {
+
+        alert("Drive could not be opened. Please try again.");
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =========================================
+   CLOSE DRIVE PAGE
+========================================= */
+
+function closeDriveVault() {
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+    });
+
+    const previous = document.getElementById(previousDriveScreen);
+
+    if (previous) {
+        previous.classList.add("active");
+    } else {
+        document.getElementById("screen-home").classList.add("active");
+    }
+
+}
+
+
+/* =========================================
+   UPLOAD FILES
+========================================= */
+
+const driveInput = document.getElementById("driveFileInput");
+
+if (driveInput) {
+
+    driveInput.addEventListener("change", async function(event) {
+
+        const files = Array.from(event.target.files || []);
+
+        if (!files.length) return;
+
+        const uploadButton = document.querySelector(".drive-upload-btn");
+
+        if (!driveDatabase) {
+            await openDriveDatabase();
+        }
+
+        if (uploadButton) {
+            uploadButton.innerHTML = "Uploading...";
+        }
+
+        try {
+
+            const transaction = driveDatabase.transaction(
+                "driveFiles",
+                "readwrite"
+            );
+
+            const store = transaction.objectStore("driveFiles");
+
+            files.forEach(function(file) {
+
+                const type = file.type.startsWith("image/")
+                    ? "photo"
+                    : "document";
+
+                store.add({
+
+                    name: file.name,
+
+                    type: type,
+
+                    mime: file.type || "application/octet-stream",
+
+                    size: file.size,
+
+                    date: new Date().toISOString(),
+
+                    data: file
+
+                });
+
+            });
+
+            transaction.oncomplete = function() {
+
+                if (uploadButton) {
+                    uploadButton.innerHTML =
+                        '<i class="fa-solid fa-cloud-arrow-up"></i> Upload Photos & Files';
+                }
+
+                event.target.value = "";
+
+                loadDriveFiles();
+
+            };
+
+            transaction.onerror = function() {
+
+                alert("Upload failed. Your browser storage may be full.");
+
+                if (uploadButton) {
+                    uploadButton.innerHTML =
+                        '<i class="fa-solid fa-cloud-arrow-up"></i> Upload Photos & Files';
+                }
+
+            };
+
+            transaction.onabort = function() {
+
+                alert("Upload was cancelled. Please try again.");
+
+                if (uploadButton) {
+                    uploadButton.innerHTML =
+                        '<i class="fa-solid fa-cloud-arrow-up"></i> Upload Photos & Files';
+                }
+
+            };
+
+        } catch(error) {
+
+            alert("Unable to upload files. Please try again.");
+
+            console.error(error);
+
+            if (uploadButton) {
+                uploadButton.innerHTML =
+                    '<i class="fa-solid fa-cloud-arrow-up"></i> Upload Photos & Files';
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   LOAD SAVED FILES
+========================================= */
+
+function loadDriveFiles() {
+
+    if (!driveDatabase) return;
+
+    const transaction = driveDatabase.transaction(
+        "driveFiles",
+        "readonly"
+    );
+
+    const store = transaction.objectStore("driveFiles");
+
+    const request = store.getAll();
+
+    request.onsuccess = function() {
+
+        const files = request.result || [];
+
+        const photos = files.filter(function(file) {
+            return file.type === "photo";
+        });
+
+        const documents = files.filter(function(file) {
+            return file.type === "document";
+        });
+
+        document.getElementById("photoCount").textContent = photos.length;
+
+        document.getElementById("documentCount").textContent = documents.length;
+
+        renderDriveFiles(photos, "drivePhotos");
+
+        renderDriveFiles(documents, "driveDocuments");
+
+    };
+
+    request.onerror = function() {
+        alert("Unable to load saved files.");
+    };
+
+}
+
+
+/* =========================================
+   DISPLAY FILES
+========================================= */
+
+function renderDriveFiles(files, containerId) {
+
+    const container = document.getElementById(containerId);
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    if (!files.length) {
+
+        container.innerHTML =
+            '<p class="drive-empty">No files uploaded yet.</p>';
+
+        return;
+
+    }
+
+    files.forEach(function(file) {
+
+        const item = document.createElement("div");
+
+        item.className = "drive-file-item";
+
+
+        /* FILE INFORMATION */
+
+        const info = document.createElement("div");
+
+        info.className = "drive-file-info";
+
+        const name = document.createElement("strong");
+
+        name.textContent = file.name;
+
+        const size = document.createElement("small");
+
+        size.textContent = formatDriveSize(file.size);
+
+        info.appendChild(name);
+
+        info.appendChild(size);
+
+
+        /* PHOTO THUMBNAIL */
+
+        if (file.type === "photo") {
+
+            const image = document.createElement("img");
+
+            image.className = "drive-file-thumb";
+
+            image.src = URL.createObjectURL(file.data);
+
+            image.alt = file.name;
+
+            image.addEventListener("click", function() {
+                openDriveImage(file.data, file.name);
+            });
+
+            item.appendChild(image);
+
+        } else {
+
+            const icon = document.createElement("div");
+
+            icon.className = "drive-file-icon";
+
+            icon.innerHTML =
+                '<i class="fa-solid fa-file-lines"></i>';
+
+            item.appendChild(icon);
+
+        }
+
+
+        /* VIEW BUTTON */
+
+        const viewButton = document.createElement("button");
+
+        viewButton.className = "drive-view-btn";
+
+        viewButton.type = "button";
+
+        viewButton.innerHTML =
+            '<i class="fa-solid fa-eye"></i>';
+
+        viewButton.addEventListener("click", function() {
+
+            if (file.type === "photo") {
+
+                openDriveImage(file.data, file.name);
+
+            } else {
+
+                openDriveFile(file);
+
+            }
+
+        });
+
+
+        /* DELETE BUTTON */
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.className = "drive-delete-btn";
+
+        deleteButton.type = "button";
+
+        deleteButton.innerHTML =
+            '<i class="fa-solid fa-trash"></i>';
+
+        deleteButton.addEventListener("click", function() {
+
+            deleteDriveFile(file.id);
+
+        });
+
+
+        item.appendChild(info);
+
+        item.appendChild(viewButton);
+
+        item.appendChild(deleteButton);
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* =========================================
+   FILE SIZE
+========================================= */
+
+function formatDriveSize(bytes) {
+
+    if (bytes < 1024) {
+        return bytes + " B";
+    }
+
+    if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + " KB";
+    }
+
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+
+}
+
+
+/* =========================================
+   CLOSE PREVIOUS VIEWER
+========================================= */
+
+function resetDriveViewer() {
+
+    const viewer = document.getElementById("driveImageViewer");
+
+    const image = document.getElementById("drivePreviewImage");
+
+    const frame = document.getElementById("drivePreviewFrame");
+
+    const container = document.getElementById("driveImageContainer");
+
+    const message = document.getElementById("driveUnsupportedMessage");
+
+    if (image) {
+        image.src = "";
+        image.style.display = "block";
+    }
+
+    if (frame) {
+        frame.src = "about:blank";
+        frame.style.display = "none";
+    }
+
+    if (container) {
+        container.style.display = "flex";
+    }
+
+    if (message) {
+        message.style.display = "none";
+    }
+
+    if (viewer) {
+        viewer.classList.remove("show");
+    }
+
+    if (driveCurrentObjectURL) {
+        URL.revokeObjectURL(driveCurrentObjectURL);
+        driveCurrentObjectURL = null;
+    }
+
+    driveCurrentFile = null;
+
+}
+
+
+/* =========================================
+   OPEN IMAGE FULL SCREEN
+========================================= */
+
+function openDriveImage(file, fileName) {
+
+    resetDriveViewer();
+
+    const viewer = document.getElementById("driveImageViewer");
+
+    const image = document.getElementById("drivePreviewImage");
+
+    const frame = document.getElementById("drivePreviewFrame");
+
+    const container = document.getElementById("driveImageContainer");
+
+    const message = document.getElementById("driveUnsupportedMessage");
+
+    const title = document.getElementById("driveViewerTitle");
+
+    if (!viewer || !image) return;
+
+    driveCurrentObjectURL = URL.createObjectURL(file);
+
+    driveCurrentFile = file;
+
+    image.src = driveCurrentObjectURL;
+
+    image.style.display = "block";
+
+    container.style.display = "flex";
+
+    frame.style.display = "none";
+
+    message.style.display = "none";
+
+    title.textContent = fileName || "Image Preview";
+
+    viewer.classList.add("show");
+
+}
+
+
+/* =========================================
+   OPEN PDF OR DOCUMENT
+========================================= */
+
+function openDriveFile(file) {
+
+    resetDriveViewer();
+
+    const viewer = document.getElementById("driveImageViewer");
+
+    const image = document.getElementById("drivePreviewImage");
+
+    const frame = document.getElementById("drivePreviewFrame");
+
+    const container = document.getElementById("driveImageContainer");
+
+    const message = document.getElementById("driveUnsupportedMessage");
+
+    const title = document.getElementById("driveViewerTitle");
+
+    const downloadButton = document.getElementById("driveDownloadButton");
+
+    if (!viewer || !frame) return;
+
+    driveCurrentFile = file;
+
+    driveCurrentObjectURL = URL.createObjectURL(file.data);
+
+    image.style.display = "none";
+
+    container.style.display = "none";
+
+    frame.style.display = "none";
+
+    message.style.display = "none";
+
+    title.textContent = file.name;
+
+    viewer.classList.add("show");
+
+
+    const mime = file.mime || "";
+
+    const extension = file.name.split(".").pop().toLowerCase();
+
+
+    /* PDF PREVIEW */
+
+    if (
+        mime === "application/pdf" ||
+        extension === "pdf"
+    ) {
+
+        frame.style.display = "block";
+
+        frame.src = driveCurrentObjectURL;
+
+        return;
+
+    }
+
+
+    /* TEXT FILE PREVIEW */
+
+    if (
+        mime.startsWith("text/") ||
+        extension === "txt"
+    ) {
+
+        frame.style.display = "block";
+
+        frame.src = driveCurrentObjectURL;
+
+        return;
+
+    }
+
+
+    /* OTHER FILES */
+
+    message.style.display = "flex";
+
+    downloadButton.onclick = function() {
+
+        downloadDriveFile(file);
+
+    };
+
+}
+
+
+/* =========================================
+   DOWNLOAD FILE
+========================================= */
+
+function downloadDriveFile(file) {
+
+    const url = URL.createObjectURL(file.data);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = file.name;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    setTimeout(function() {
+
+        URL.revokeObjectURL(url);
+
+    }, 60000);
+
+}
+
+
+/* =========================================
+   CLOSE VIEWER
+========================================= */
+
+function closeDriveImage() {
+
+    resetDriveViewer();
+
+}
+
+
+/* =========================================
+   DELETE FILE
+========================================= */
+
+function deleteDriveFile(id) {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this file?"
+    );
+
+    if (!confirmDelete) return;
+
+    if (!driveDatabase) return;
+
+    const transaction = driveDatabase.transaction(
+        "driveFiles",
+        "readwrite"
+    );
+
+    transaction.objectStore("driveFiles").delete(id);
+
+    transaction.oncomplete = function() {
+
+        loadDriveFiles();
+
+    };
+
+    transaction.onerror = function() {
+
+        alert("Unable to delete file. Please try again.");
+
+    };
+
+}
+
+
+/* =========================================
+   ESCAPE KEY CLOSE VIEWER
+========================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeDriveImage();
+
+    }
+
+});
+
 </script>
+
+<div id="errorToast" class="error-toast">
+    something wents wrong please try again later
+</div>
+
 </body>
 </html>
