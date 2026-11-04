@@ -44,7 +44,7 @@ html, body {
     -ms-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
-    background-color: transparent;
+    background-color: #000;
 }
 
 body, .app-header, .documents-heading, .explore-heading, .document-section h2, .sub-text, .welcome-text {
@@ -146,7 +146,7 @@ button{cursor:pointer;font-family:inherit}
     opacity:.70;
 }
 
-/* SCREENS - Background images start from absolute top */
+/* SCREENS - Removed top shadows & glow, added safe area spacing for status bar */
 .screen{
     display:none;
     position:absolute;
@@ -161,6 +161,7 @@ button{cursor:pointer;font-family:inherit}
     background-repeat:no-repeat;
     box-shadow: none;
     border: none;
+    filter: none;
 }
 
 .screen.active{display:block}
@@ -176,9 +177,9 @@ button{cursor:pointer;font-family:inherit}
     background-image:url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiryZ5ERTvTeRbHB0uexRv3B1ZMTE7PzKb5FG8M0AvOtKo0AQ1g_ChL6a1SQb97z47uLx-vLs141EbqyqSGqIJGn_35A0HaE_SvATyQSJ3855DO1rT3buF4ZNZSm_TGV3ZWxp1FaGl4mQhPflMc9RdCoqKzf_a8q7TUpgvY0qJvZ2ajlkVz-Xr9HKT8GbVK/s1920/Realise%20On%20-%2014.jpeg");
 }
 
-/* HEADER */
+/* HEADER - Added top padding for status bar visibility (battery, network) */
 .app-header{
-    padding:22px 20px 15px;
+    padding: 45px 20px 15px 20px;
     color:white;
 }
 
@@ -809,7 +810,7 @@ button{cursor:pointer;font-family:inherit}
 
 .issued-card.menu-open .issued-dropdown{display:block}
 
-/* MENU SCREEN - Clean blue click without color shifts */
+/* MENU SCREEN - Clean Dark Blue click state without color shifts */
 .menu-profile{
     display:flex;
     justify-content:space-between;
@@ -847,7 +848,6 @@ button{cursor:pointer;font-family:inherit}
 
 .menu-table tr:last-child {border-bottom: none;}
 
-/* Strictly Blue on Menu Item Hover/Active */
 .menu-table tr:hover,
 .menu-table tr:active,
 .menu-table tr:focus {
@@ -895,7 +895,7 @@ button{cursor:pointer;font-family:inherit}
     align-items:center;
     justify-content:space-between;
     height:85px;
-    padding:25px 16px;
+    padding:35px 16px 15px 16px;
 }
 
 .profile-topbar button{
@@ -1160,6 +1160,7 @@ button{cursor:pointer;font-family:inherit}
     transition:all .2s ease;
 }
 
+/* Strictly Dark Blue active filter */
 .nav-item.active .nav-icon-img{
     filter:brightness(0) saturate(100%)
     invert(19%) sepia(89%) saturate(3000%)
@@ -1300,6 +1301,25 @@ button{cursor:pointer;font-family:inherit}
     transform: translate(-50%, 0);
 }
 
+.renno-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: #e0e0e0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
 .renno-main-image {
     display: block;
     width: 100%;
@@ -1361,7 +1381,7 @@ button{cursor:pointer;font-family:inherit}
     </p>
 </div>
 
-<div class="app-container">
+<div class="app-container" id="appContainer">
 
 <!-- SPLASH SCREEN -->
 <div id="splash-screen">
@@ -1657,6 +1677,7 @@ button{cursor:pointer;font-family:inherit}
 
 <!-- MENU SCREEN -->
 <div id="screen-menu" class="screen">
+    <div style="height: 30px;"></div>
     <div class="menu-profile" onclick="switchTab('screen-profile',null)">
         <div class="menu-profile-left">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibrSwxGx1L8hSNYfbL7W5CAfnl40aDStYqQRcf9sxk6OnZ1VKjRJHtQ9UMtHMq6DNq8fUpr7FbE_hzZyxlfZ8akW9nbQW2SKwPP19JK9n0Noik3N3-tgeZVsizCTfKTaDlW6Yd-wjvVZSauxmcf-W9p8neoa3sDiF7itUDWzD2KYA-k6Vo7mP0uKBaQmBL/s1396/D9FA754D-B58E-4A19-A8CB-4BD213A26001.png"
@@ -1776,6 +1797,7 @@ button{cursor:pointer;font-family:inherit}
 
 <!-- RENNO SLIDE PANEL -->
 <div class="renno-panel" id="rennoPanel">
+    <button class="renno-close-btn" onclick="toggleRennoPanel()"><i class="fa-solid fa-xmark"></i></button>
     <img
         src="https://cdn.aptoide.com/imgs/3/8/7/38798c4e64143ae7c2a33f3129abcc85_screen.png"
         class="renno-main-image"
@@ -2067,12 +2089,21 @@ function updateIssuedCount(){
     if(heading) heading.textContent="My Issued Document ("+count+")";
 }
 
-document.addEventListener("click",function(){
+document.addEventListener("click",function(e){
     document.querySelectorAll(".issued-card.menu-open").forEach(function(card){
         card.classList.remove("menu-open");
         const menu=card.querySelector(".issued-dropdown");
         if(menu){ menu.classList.remove("show"); }
     });
+
+    // Close UMANG panel if clicked outside
+    const rennoPanel = document.getElementById("rennoPanel");
+    const rennoTab = document.querySelector(".renno-tab");
+    if(rennoPanel && rennoPanel.classList.contains("open")){
+        if(!rennoPanel.contains(e.target) && !rennoTab.contains(e.target)){
+            rennoPanel.classList.remove("open");
+        }
+    }
 });
 
 /* DOCUMENT LOADING */
@@ -2105,7 +2136,7 @@ function openPopup(documentName){
         "Aadhaar Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0C7IFgzg_abemB-RHQbskIr30_OZh8FDokE8eNkmJS7jM-EujrgVoVczRMyuDh_SSVaQ4g4Nqm8hFF6Wv-_XpFSiUpF2x-_oJsPlbm2NKe8NMJ7gQY4RtBEu6cdAzcPYVlPErfpQr7SNL8GdkivOpQfOXj0THEEjPNgnX4a6AVrqdGD6Bitqie2_TBleA/s1320/Ministry%20of%20Defence%20-%201.jpeg",
         "Defence Identity Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNbGzha7QMn8nvmCxHxNCfVCC0A5xyHVjtFiUyTWEnElb20z_0_hlzYRW-VaKRohh3b6GuTgnwFGOk8ACoWwCQVJXe0WPKvVKXXpAwiKwkVYpG1z0ca6ys9eckH3ykYUW0wLYEXPqsm_2cIn4JHm4319C9TI47HUorEKoN1oEXhKTyUiN6dEBI9dHJ_ZYb/s960/Ministry%20of%20Defence.png",
         "PAN Verification Record":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG5kAf4pnsSz4Nou06ISzXyj9UNW6gsW9Lrma8I15jhywQ_BIwQtEZbzEp0uMHHsLOAp8GVbfl8iX_IC0lrAcP0YJSfZ3Hrv2KLp7Z9g6DIuxSr6ptllYPmcbDkXuSuEQ5QpcMYcClA9hIhww7l9GyTwzSE6nMllEAYYZescLTKRc7GwzWnlKRkNSZGbCG/s1320/Ministry%20of%20Defence%20-%202.jpeg",
-        "UAN Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG5kAf4pnsSz4Nou06ISzXyj9UNW6gsW9Lrma8I15jhywQ_BIwQtEZbzEp0uMHHsLOAp8GVbfl8iX_IC0lrAcP0YJSfZ3Hrv2KLp7Z9g6DIuxSr6ptllYPmcbDkXuSuEQ5QpcMYcClA9hIhww7l9GyTwzSE6nMllEAYYZescLTKRc7GwzWnlKRkNSZGbCG/s1320/Ministry%20of%20Defence%20-%202.jpeg"
+        "UAN Card":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG5kAf4pnsSz4Nou06ISzXyj9UNW6gsW9Lrma8I15jhywQ_BIwQtEZbzEp0uMHHsLOAp8GVbfl8iX_IC0lrAcP0YJSfZ3Hrv2KLp7Z9g6DIuxSr6ptllYPmcbDkXuSuEQ5QpcMYcClA9hLilEAYYZescLTKRc7GwzWnlKRkNSZGbCG/s1320/Ministry%20of%20Defence%20-%202.jpeg"
     };
     if(title) title.textContent=documentName;
     if(image){
